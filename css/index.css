@@ -1,0 +1,1253 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Gillroy';
+    src: url('../fonts/Gilroy-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url('../fonts/Helvetica.ttf') format('truetype');
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: #fff;
+    /* Optional: background for better visibility */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+}
+
+.navbar-left img {
+    max-width: 220px;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 20px;
+    /* Curved edges */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Download Button */
+.btn.download {
+    background-color: #C4283C;
+    color: white;
+    border: none;
+}
+
+.btn.download:hover {
+    background-color: #C4283C;
+    /* Darker red on hover */
+}
+
+/* Contact Us Button */
+.btn.contact {
+    background-color: white;
+    color: #C4283C;
+    border: 2px solid #C4283C;
+    /* Red border */
+}
+
+.btn.contact:hover {
+    background-color: #C4283C;
+    /* Red background on hover */
+    color: white;
+    /* White text on hover */
+}
+
+/* promo section*/
+/* General Section Styles */
+.promo-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px;
+    background-image: url('../assets/bgpic.png');
+
+    /* Light background */
+    gap: 20px;
+    padding-left: 190px;
+    padding-right: 100px;
+    /* Spacing between columns */
+}
+
+.promo-left {
+    flex: 1;
+    padding: 20px;
+}
+
+.promo-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 50px;
+}
+
+.promo {
+    display: flex; /* Enables flexbox layout */
+    align-items: center; /* Vertically center the items */
+    padding-bottom: -30px;
+}
+
+.leaf {
+    margin-right: 8px; /* Adds space between the image and text */
+}
+
+.promo-tagline {
+    margin: 0; /* Removes default margin for the <p> */
+}
+
+.promo-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.promo-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.promo-buttons .btn {
+    width: 150px;
+    /* Same size as navbar buttons */
+}
+
+.platform-icons {
+    display: flex;
+    justify-content: left; /* Ensure spacing between items */
+    align-items: left;
+    gap: 20px;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    margin-top: 10px;
+    /* padding-right:420px; */
+}
+
+/* Individual Platform Item: Image and text side-by-side */
+.platform-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    font-size: 0.9rem;
+    color: #444;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.platform-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.promo-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    /* Optional rounded corners */
+}
+
+/*end promo section */
+.choose-isselo {
+    padding: 60px 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: white;
+    /* Light gray background */
+    text-align: center;
+}
+
+.choose-isselo .section-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    /* Dark text */
+    margin-bottom: 40px;
+}
+
+/* Features container styling */
+.features-container {
+    padding-left: 90px;
+    padding-right: 90px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Ensure boxes are of equal size */
+    gap: 20px;
+    justify-items: center;
+    /* Center the feature items */
+}
+
+/* Feature item styling */
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    /* White background */
+    border: 1px solid #9c9999;
+    border-radius: 10px;
+    /* padding: 20px; */
+    box-sizing: border-box;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 300px;
+    /* Fixed height for all feature items */
+    width: 90%;
+    /* Make the boxes take full available width */
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Feature box styling (no circle) */
+.feature-box {
+    width: 100%;
+    height: 190px;
+    /* Set a fixed height for the images */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 45px;
+    background-color: #f0f0f0;
+    /* Light background for image area */
+}
+
+.feature-box .feature-icon {
+    width: 80%;
+    /* Set image width to 80% of the feature box */
+    height: auto;
+    object-fit: contain;
+    /* Ensure the image maintains its aspect ratio */
+}
+
+/* Feature item text styling */
+.feature-item p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #666;
+    /* Medium gray text */
+    font-weight: 500;
+}
+
+/*end choose-isselo */
+/* start suitable for */
+.suitable-for {
+    padding: 60px 20px;
+    text-align: center;
+    background-color:white;
+    /* Light background */
+}
+
+/* Main heading styling */
+.suitable-for .main-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+/* Content wrapper that holds both left and right sections */
+.content-wrapper {
+    display: flex;
+    padding-left: 60px;
+    padding-right: 60px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 70px;
+    flex-wrap: wrap;
+    /* This ensures content wraps to the next row */
+}
+
+.content-wrapper.reverse {
+    flex-direction: row-reverse;
+    /* Reverse the layout for the second set */
+}
+
+/* Left side (heading, paragraph, button) styling */
+.left-side {
+    max-width: 50%;
+    text-align: left;
+    margin-bottom: 20px;
+    /* Add margin for spacing between rows */
+}
+
+.left-side .sub-heading {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #3b3b3b;
+    /* Red color for sub-heading */
+    margin-bottom: 15px;
+}
+
+.left-side .description {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.left-side .download-btn {
+    padding: 12px 25px;
+    background-color: #C4283C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.left-side .download-btn:hover {
+    background-color: #C4283C;
+}
+
+/* Right side (image) styling */
+.right-side {
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    /* Add margin for spacing between rows */
+}
+
+.right-side .suitable-image {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+}
+
+/*module */
+.modules {
+    text-align: center;
+    padding: 20px;
+    padding-bottom: 70px;
+}
+
+.section-heading {
+    font-family: 'Gillroy', sans-serif;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    margin-bottom: 80px;
+}
+
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Adds space between boxes */
+    justify-items: center; /* Centers items in the grid */
+}
+
+.module-item {
+    background-color:white; /* Light ash background */
+    border: 1px solid #e0e0e0; /* Light ash border */
+    border-radius: 8px; /* Optional: Rounds corners */
+    padding: 15px;
+    text-align: center;
+    max-width: 200px; /* Limits the width of each item */
+}
+
+.module-item img {
+    width: 100%; /* Responsive images */
+    max-width: 150px; /* Optional: Controls image size */
+    margin-bottom: 10px;
+}
+
+.module-text {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+/*form start */
+.demo-section {
+    padding: 50px 20px;
+    background-color: white;
+}
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.form-content {
+    flex: 1;
+    max-width: 500px;
+}
+
+.form-content p {
+    flex: 1;
+    padding-bottom: 10px;
+
+}
+
+h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.demo-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow flex to wrap elements */
+    gap: 10px;
+}
+.labels{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    font-family: 'Helvetica', sans-serif;
+    color: #363433;
+}
+
+.input-container {
+    position: relative;
+    width: 48%;
+    /* Default width for fields that will be placed side by side */
+}
+
+.input-container.full-name {
+    width: 100%;
+    /* Make Full Name input span the full width */
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-container label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 1rem;
+    color: #aaa;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-container input:focus+label,
+.input-container input:not(:placeholder-shown)+label {
+    top: -12px;
+    left: 12px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    color: white;
+    background-color: #C4283C;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #C4283C;
+}
+
+.form-image {
+    flex: 1;
+    padding-left: 20px;
+    text-align: center;
+}
+
+.form-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Contact Section */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #FBFBFB;
+    padding: 20px;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow sections to wrap on smaller screens */
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.footer-center {
+    display: flex;
+    justify-content: center; /* Center the content */
+    gap: 160px; /* Adds space between phone and email */
+    align-items: center; /* Aligns items in the center vertically */
+    flex-wrap: wrap; /* Allow wrapping if necessary */
+    padding-top: 40px;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+    flex: 1 1 30%; /* Each section takes 30% width on larger screens */
+    margin: 10px;
+    padding-top: 10px;
+}
+
+.footer-logo {
+    width: 185px;
+    margin-bottom: 16px;
+}
+
+.footer-left p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.footer-center .contact-item span {
+    font-size: 14px;
+}
+
+/* Social Icons Section */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.footer-social-icons {
+    width: 15px; /* Reduced size of icons */
+    height: 20px;
+    padding-bottom: 10px;
+}
+
+/* Footer Info */
+.footer-info {
+    text-align: center; /* Ensures text is horizontally centered */
+    font-size: 16px;
+    margin-top: 10px;
+    padding-top: 15px; /* Padding above the address */
+    width: 100%; /* Ensure it takes full width to center content */
+    margin: 0 auto; /* Center align it within its container */
+    max-width: 1200px; /* Optional: Set a maximum width for large screens */
+}
+
+/* Find Us On Text Styling */
+.footer-social p {
+    margin-right: 10px;
+    font-size: 16px; /* Reduce the size of the 'Find Us On' text */
+}
+
+/* Large Screens (Desktop) */
+@media (min-width: 1024px) {
+    .navbar-left img {
+        max-width: 220px;
+    }
+
+    .promo-left {
+        padding: 40px;
+    }
+
+    .platform-icons {
+        gap: 30px;
+    }
+
+    .platform-icon {
+        max-width: 50px;
+    }
+
+    .feature-box {
+        width: 59%;
+        height: 100px;
+        /* Set a fixed height for the images */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 45px;
+        background-color: #f0f0f0;
+        /* Light background for image area */
+    }
+
+    .feature-item {
+        padding-top: 70px;
+    }
+
+    .suitable-for {
+        padding: 130px 130px;
+        /* Increase padding on the left and right sides */
+    }
+
+    .module-section {
+        padding: 80px 40px;
+    }
+
+    .module-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 columns for larger screens */
+    }
+
+    .module-item {
+        max-width: 200px;
+        /* Reduce the width of the item box */
+        padding: 15px;
+        /* Adjust padding if necessary */
+    }
+
+    .module-item img {
+        max-width: 180px;
+        /* Reduce the max width of the image */
+        height: auto;
+        /* Keep the image aspect ratio */
+        gap: 10px
+    }
+
+    h2 {
+        font-size: 3rem;
+        /* Larger heading for bigger screens */
+    }
+
+    /*form */
+    .footer-center {
+        display: flex;
+        justify-content: center; /* Center the content */
+        gap: 30px; /* Adds space between phone and email */
+        align-items: center; /* Aligns items in the center vertically */
+        flex-wrap: wrap; /* Allow wrapping if necessary */
+        padding-top: 30px;
+    }
+    .footer-social-icons {
+        max-width: 25px;
+        height: auto;
+    }
+    .social-icons{
+        padding-top: 10px;
+    }
+    .footer-social{
+        padding-top: 20px;
+    }
+}
+
+/* Medium Screens (Tablet) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .navbar-left img {
+        max-width: 180px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        /* Adjust button size for tablets */
+        font-size: 14px;
+    }
+
+    .promo-section {
+        padding: 20px;
+    }
+
+    .promo-left {
+        padding: 20px;
+    }
+
+    .promo-buttons .btn {
+        width: 140px;
+        /* Slightly smaller buttons */
+    }
+
+    .platform-icons {
+        gap: 15px;
+    }
+
+    .platform-icon {
+        max-width: 40px;
+    }
+
+    .feature-box {
+        width: 58%;
+        height: 100px;
+        /* Set a fixed height for the images */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 45px;
+        background-color: #f0f0f0;
+        /* Light background for image area */
+    }
+
+    .feature-item {
+        padding-top: 70px;
+    }
+
+    .suitable-for {
+        padding: 100px 100px;
+        /* Increase padding on the left and right sides */
+    }
+
+    .content-wrapper {
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+
+    /* module */
+    .modules-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns for larger screens */
+    }
+    /* module */
+    /* form start */
+    .form-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-image {
+        margin-top: 20px;
+        padding-left: 0;
+    }
+
+    .form-content {
+        max-width: 100%;
+    }
+
+    .submit-btn {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .footer-social-icons {
+        max-width: 20px;
+    }
+    .social-icons{
+        padding-top: 10px;
+    }
+    .footer-center {
+        display: flex;
+        justify-content: center; /* Center the content */
+        gap: 10px; /* Adds space between phone and email */
+        align-items: center; /* Aligns items in the center vertically */
+        flex-wrap: wrap; /* Allow wrapping if necessary */
+        padding-top: 10px;
+    }
+}
+
+/* Small Screens (Mobile) */
+@media (max-width: 768px) {
+    .navbar {
+        display: flex;
+        /* Flexbox layout */
+        justify-content: space-between;
+        /* Space out left and right sections */
+        align-items: center;
+        /* Vertically align items */
+        padding: 10px 20px;
+        /* Adjust padding for mobile view */
+    }
+
+    .navbar-left,
+    .navbar-right {
+        display: flex;
+        /* Use flexbox for consistent alignment */
+        align-items: center;
+        /* Center items vertically */
+    }
+
+    .navbar-left img,
+    .navbar-right img {
+        max-width: 100px;
+        /* Adjust image size for mobile view */
+        height: auto;
+        /* Maintain aspect ratio */
+    }
+
+    .navbar-right {
+        display: flex;
+        flex-direction: row;
+        /* Ensure images/buttons are in a single row */
+        justify-content: flex-end;
+        /* Align to the right */
+        gap: 10px;
+        /* Add space between items */
+
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .promo-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .promo-right {
+        margin-top: 20px;
+    }
+
+    .promo-buttons {
+        flex-direction: column;
+        /* Stack buttons vertically */
+        gap: 10px;
+        width: 100%;
+        /* Ensures buttons are centered */
+        align-items: center;
+        /* Centers buttons horizontally */
+        justify-content: center;
+        /* Centers content vertically within the container */
+    }
+
+    .promo-buttons .btn {
+        width: 100%;
+        /* Full-width buttons */
+        max-width: 200px;
+        /* Limit button size */
+        text-align: center;
+        /* Centers text inside the button */
+    }
+
+    .platform-icons {
+        flex-wrap: wrap; /* Allow wrapping for better layout */
+        justify-content: center; /* Center items */
+        gap: 15px;
+    }
+
+    .platform-item {
+        flex: 1 1 auto; /* Allow items to adjust their size */
+        justify-content: center; /* Align icons and text properly */
+    }
+
+    .platform-icon {
+        max-width: 40px;
+        /* Adjust icon size for better visibility */
+        height: auto;
+        /* Maintain aspect ratio */
+    }
+
+    .platform-item span {
+        font-size: 14px;
+        /* Adjust text size for mobile screens */
+        text-align: center;
+        /* Center the text */
+    }
+
+    /*choose isello */
+    .choose-isselo {
+        padding: 40px 10px;
+    }
+
+    .choose-isselo .section-heading {
+        font-size: 1.5rem;
+    }
+
+    .features-container {
+        gap: 15px;
+    }
+
+    .feature-item {
+        padding: 15px;
+    }
+
+    /* .feature-box {
+        height: 120px; 
+    } */
+    .feature-box {
+        width: 60%;
+        height: 100px;
+        /* Set a fixed height for the images */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 45px;
+        background-color: #f0f0f0;
+        /* Light background for image area */
+    }
+
+    .feature-box .feature-icon {
+        width: 80%;
+        /* Set image width to 80% of the feature box */
+        height: auto;
+        object-fit: contain;
+        /* Ensure the image maintains its aspect ratio */
+    }
+
+    .feature-item {
+        padding-top: 70px;
+    }
+
+    .feature-item p {
+        font-size: 1rem;
+    }
+
+    /*chooseisello end */
+    /* suitable for */
+    .suitable-for {
+        padding: 100px 100px;
+        /* Increase padding on the left and right sides */
+    }
+
+    .suitable-for .main-heading {
+        font-size: 2rem;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        /* Stack content vertically */
+        text-align: center;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+
+    .left-side,
+    .right-side {
+        max-width: 100%;
+    }
+
+    .right-side {
+        margin-top: 20px;
+        /* Add spacing between rows */
+    }
+
+    .left-side .sub-heading {
+        font-size: 1.5rem;
+    }
+
+    .left-side .description {
+        font-size: 1rem;
+    }
+
+    .left-side .download-btn {
+        font-size: 1rem;
+    }
+
+    .right-side .suitable-image {
+        max-height: 250px;
+        /* Adjust image size on mobile */
+    }
+
+    /*end */
+    /*module */
+    .modules-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+    }
+    /* module */
+    /*form start */
+    .form-container {
+        flex-direction: column;
+        /* Stack the form and image vertically */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-image {
+        margin-top: 20px;
+        padding-left: 0;
+    }
+
+    .form-content {
+        max-width: 100%;
+    }
+
+
+    .footer-container {
+        flex-direction: column; /* Stack sections vertically on smaller screens */
+        align-items: center;
+    }
+    .footer-center {
+        display: flex;
+        justify-content: center; /* Center the content */
+        gap: 10px; /* Adds space between phone and email */
+        align-items: center; /* Aligns items in the center vertically */
+        flex-wrap: wrap; /* Allow wrapping if necessary */
+        padding-top: 10px;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        flex: 1 1 100%; /* Take up full width on small screens */
+        text-align: center; /* Center align text */
+        margin: 10px 0;
+    }
+
+    .footer-logo {
+        width: 80px; /* Adjust logo size for smaller screens */
+    }
+
+    .footer-icon {
+        width: 25px; /* Adjust icon size for smaller screens */
+        height: 25px;
+    }
+    .social-icons{
+        padding-top: 15px;
+    }
+
+    .footer-social {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .footer-info {
+        font-size: 14px; /* Adjust font size for very small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    /* Ensure navbar-left stays aligned */
+    .navbar-left img {
+        max-width: 80px;
+    }
+
+    /* Right section: Flexbox to keep buttons in one row */
+    .navbar-right {
+        display: flex;
+        gap: 10px;
+        /* Space between buttons */
+        align-items: center;
+    }
+
+    .content-wrapper {
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+    .left-side .sub-heading{
+        font-size: 33px;
+    }
+
+    /* Buttons Styling */
+    .btn {
+        font-size: 14px;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 8px;
+        /* Rounded corners */
+        cursor: pointer;
+        text-align: center;
+        white-space: nowrap;
+        /* Prevent text wrapping */
+    }
+
+    .btn.download {
+        background-color: #C4283C;
+        color: white;
+    }
+
+    .btn.contact {
+        background-color: white;
+        color: #C4283C;
+        border: 2px solid #C4283C;
+    }
+
+    /*promo section start */
+    .promo-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+        /* Adjusted for smaller screens */
+    }
+    .promo{
+        padding-left: 46px;
+    }
+
+    .promo-left {
+        margin-bottom: 15px;
+        /* Add spacing below text content */
+    }
+    .promo-left h1 {
+        font-size: 1.8rem;
+    }
+
+    .promo-right img {
+        max-width: 100%;
+        /* Ensure image scales to fit the screen */
+        height: auto;
+        /* Maintain aspect ratio */
+
+    }
+
+    .promo-buttons {
+        display: flex;
+        flex-direction: column;
+        /* Stack buttons vertically */
+        gap: 10px;
+        width: 100%;
+        /* Full width for buttons container */
+        align-items: center;
+        /* Center buttons horizontally */
+    }
+
+    .promo-buttons .btn {
+        width: 90%;
+        /* Buttons take 90% of the screen width */
+        max-width: 180px;
+        /* Limit maximum width */
+        text-align: center;
+        /* Center text inside buttons */
+        padding: 10px;
+        /* Ensure consistent padding */
+        font-size: 14px;
+        /* Adjust font size for smaller screens */
+    }
+
+     .platform-icons {
+        gap: 10px; /* Reduce gap for smaller screens */
+    }
+
+    .platform-item {
+        font-size: 0.8rem; /* Reduce font size for text */
+        gap: 6px; /* Less space between icon and text */
+    }
+
+    .platform-icon {
+        max-width: 50px;
+        /* Set icon size */
+        height: auto;
+        /* Maintain aspect ratio */
+    }
+
+    .platform-item span {
+        font-size: 14px;
+        /* Text size */
+        text-align: center;
+        /* Center the text below the icon */
+    }
+
+    .suitable-for {
+        padding: 50px 50px;
+        /* Increase padding on the left and right sides */
+    }
+
+    .choose-isselo {
+        justify-content: center;
+        /* Increase padding on the left and right sides */
+
+    }
+
+    .features-container {
+        padding-left: 10px;
+        padding-right: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        /* Ensure boxes are of equal size */
+        gap: 20px;
+        justify-items: center;
+        /* Center the feature items */
+    }
+
+    /*module */
+    .modules-grid {
+        grid-template-columns: 1fr; /* One column on small screens */
+    }
+    /* form start */
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .form-row input {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .submit-btn {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    /* Reorder the image to appear below the form */
+    .form-container {
+        flex-direction: column-reverse;
+        /* Reverses the order of the items */
+    }
+    .footer-info {
+        font-size: 12px; /* Slightly smaller text for very small screens */
+    }
+    .footer-center {
+        display: flex;
+        justify-content: center; /* Center the content */
+        gap: 10px; /* Adds space between phone and email */
+        align-items: center; /* Aligns items in the center vertically */
+        flex-wrap: wrap; /* Allow wrapping if necessary */
+        padding-top: 10px;
+    }
+    .footer-right{
+        padding-top: 0px;
+    }
+    .social-icons{
+        padding-top: 15px;
+    }
+    .footer-logo{
+        width: 180px;
+    }
+}
