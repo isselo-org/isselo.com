@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isselo - Smart Restaurant Management & POS Software</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/[YOUR-KIT-CODE].css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Add audio element at the start of body -->
+    <audio id="printerSound">
+        <source src="assets/sound/082499_thermal-receipt-print-amp-cut-48054.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 py-4 bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="h-8">
+                    <img src="assets/icons/isselo_icons/red_logo_with_name.png" alt="isselo" class="h-full">
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <div class="group relative">
+                        <a href="#pos" class="nav-link">POS</a>
+                        <div class="hidden group-hover:block absolute top-full left-0 bg-white shadow-lg rounded-lg p-4 w-48">
+                            <a href="#billing" class="block py-2 hover:text-primary">Billing</a>
+                            <a href="#inventory" class="block py-2 hover:text-primary">Inventory</a>
+                            <a href="#online-ordering" class="block py-2 hover:text-primary">Online ordering</a>
+                            <a href="#reporting" class="block py-2 hover:text-primary">Reporting</a>
+                            <a href="#menu" class="block py-2 hover:text-primary">Menu</a>
+                            <a href="#crm" class="block py-2 hover:text-primary">CRM</a>
+                        </div>
+                    </div>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a onclick="openPosGame()" class="bnav-link cursor-pointer">Print Demo Bill</a>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a href="#download" class="px-4 py-1.5 rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors text-sm">Download Now</a>
+                    <a href="#demo" class="px-4 py-1.5 rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors text-sm">Book A Demo</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <!-- Left Content -->
+                <div style="margin-left: 100px;" class="md:w-3/5 md:pr-12">
+                    <h1 class="mb-6 text-black" style="font-family: 'Poppins', sans-serif; font-weight:100; font-size: 3.3rem; line-height: 1.2;">
+                        <div>Restaurant billing</div>
+                        <div>software that is</div>
+                        <div class="usp-container relative inline-block">
+                            <span class="text-primary font-bold cursor-pointer flex items-center gap-2" id="rotating-usp">
+                                10x faster
+                                <span class="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">Click to explore</span>
+                            </span>
+                            <div class="usp-tooltip hidden absolute left-0 top-full mt-2 w-80 bg-white rounded-lg shadow-xl p-6 z-50">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="text-base font-semibold text-gray-700">Why isselo?</h4>
+                                    <div class="flex gap-1">
+                                        <button class="usp-nav-btn active" data-index="0"></button>
+                                        <button class="usp-nav-btn" data-index="1"></button>
+                                        <button class="usp-nav-btn" data-index="2"></button>
+                                        <button class="usp-nav-btn" data-index="3"></button>
+                                    </div>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="usp-item cursor-pointer group" data-usp="10x faster">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-bold text-lg group-hover:text-primary transition-colors">10x faster</span>
+                                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">Select</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Lightning-quick 3-click billing process</p>
+                                        <div class="w-0 group-hover:w-full h-0.5 bg-primary mt-2 transition-all duration-300"></div>
+                                    </div>
+                                    <div class="usp-item cursor-pointer group" data-usp="4x affordable">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-bold text-lg group-hover:text-primary transition-colors">4x affordable</span>
+                                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">Select</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Best value for your investment</p>
+                                        <div class="w-0 group-hover:w-full h-0.5 bg-primary mt-2 transition-all duration-300"></div>
+                                    </div>
+                                    <div class="usp-item cursor-pointer group" data-usp="100% reliable">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-bold text-lg group-hover:text-primary transition-colors">100% reliable</span>
+                                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">Select</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Works offline with cloud backup</p>
+                                        <div class="w-0 group-hover:w-full h-0.5 bg-primary mt-2 transition-all duration-300"></div>
+                                    </div>
+                                    <div class="usp-item cursor-pointer group" data-usp="24/7 support">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-bold text-lg group-hover:text-primary transition-colors">24/7 support</span>
+                                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">Select</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Always here when you need us</p>
+                                        <div class="w-0 group-hover:w-full h-0.5 bg-primary mt-2 transition-all duration-300"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 font-normal">
+                        A 3-click billing process that is smart, efficient, and user-friendly! It's time for you to upgrade to isselo restaurant billing software.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#demo" class="btn-primary block text-center">Book A Demo</a>
+                        <a href="#download" style="background-color: white; color: black; border: 1px solid #e5e5e5;" class="btn-primary block text-center">Download Now</a>
+                        
+                    </div>
+                </div>  
+                
+                <!-- Right Illustration -->
+                <div class="md:w-1/2 mt-12 md:mt-0">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-[#FFF5F5] rounded-full transform scale-125"></div>
+                        <img 
+                            src="assets/images/header_illustration/restaurant-worker-using-mobile-to-take-bill-printo.svg" 
+                            alt="Restaurant Management Illustration" 
+                            class="relative z-10 w-full max-w-lg mx-auto"
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <!-- <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="ui-preview rounded-xl overflow-hidden shadow-2xl">
+                    <img 
+                        src="assets/images/screenshots/sales_dashboard.png" 
+                        alt="isselo Sales Dashboard Interface" 
+                        class="w-full"
+                    >
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Features Grid -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">An all-rounder restaurant billing software</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Customizable bill format -->
+                <div class="bg-[#FFF5F0] rounded-2xl p-8 transition-all">
+                    <div class="mb-6">
+                        <img src="assets/images/features/customizable-bill.png" alt="Customizable Bill Format" class="w-full rounded-lg">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">Customizable bill format</h3>
+                    <p class="text-gray-600 text-lg">Print your restaurant logo, create bill break-ups, edit customer details or add a dynamic QR code for payments right at the billing counter - everything is possible with isselo restaurant POS software</p>
+                </div>
+
+                <!-- Multi-terminal billing -->
+                <div class="bg-[#F0F7FF] rounded-2xl p-8 transition-all">
+                    <div class="mb-6">
+                        <img src="assets/images/features/multi-terminal.png" alt="Multi-terminal Billing" class="w-full rounded-lg">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">Multi-terminal billing</h3>
+                    <p class="text-gray-600 text-lg">In need of multiple billing terminals for your different areas and menus? Don't worry! isselo POS lets you easily create multiple billing counters and sync them with one master station so that your captains can generate KOTs and settle bills from the right station.</p>
+                </div>
+
+                <!-- Station-wise KOT printing -->
+                <div class="bg-[#F0FFF5] rounded-2xl p-8 transition-all">
+                    <div class="mb-6">
+                        <img src="assets/images/features/kot-printing.png" alt="Station-wise KOT Printing" class="w-full rounded-lg">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">Station-wise KOT printing</h3>
+                    <p class="text-gray-600 text-lg">Assign unique printers to every station and send KOTs to respective stations automatically.</p>
+                </div>
+
+                <!-- Table and area management -->
+                <div class="bg-[#FFF5F0] rounded-2xl p-8 transition-all">
+                    <div class="mb-6">
+                        <img src="assets/images/features/table-management.png" alt="Table and Area Management" class="w-full rounded-lg">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">Table and area management</h3>
+                    <p class="text-gray-600 text-lg">Efficiently manage your restaurant's tables and different areas with our intuitive table management system.</p>
+                </div>
+
+                <!-- Configure taxes & discounts -->
+                <div class="bg-[#F0F7FF] rounded-2xl p-8 transition-all">
+                    <div class="mb-6">
+                        <img src="assets/images/features/taxes-discounts.png" alt="Configure Taxes and Discounts" class="w-full rounded-lg">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">Configure taxes & discounts</h3>
+                    <p class="text-gray-600 text-lg">Easily set up and manage multiple tax rates, service charges, and flexible discount schemes. Create custom discount rules for happy hours, special occasions, or loyal customers.</p>
+                </div>
+
+                <!-- AI menu scanning -->
+                <div class="bg-[#F0FFF5] rounded-2xl p-8 transition-all">
+                    <div class="mb-6">
+                        <img src="assets/images/features/ai-menu-scan.png" alt="AI Menu Scanning" class="w-full rounded-lg">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">AI menu scanning</h3>
+                    <p class="text-gray-600 text-lg">Start billing instantly by scanning your existing menu cards. Our AI-powered system automatically detects and imports menu items, prices, and categories, saving hours of manual setup time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-[#FFF5F5]">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">Quick & simple</h2>
+                <p class="text-gray-600 mb-16">isselo restaurant billing software works easily with any existing infrastructure</p>
+                
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <!-- Left Image -->
+                    <div class="md:w-1/2">
+                        <img src="assets/images/features/pos-usage.jpg" alt="POS Usage" class="rounded-2xl w-full">
+                    </div>
+
+                    <!-- Features Grid on Right -->
+                    <div class="md:w-1/2">
+                        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+                            <!-- Works offline -->
+                            <div class="text-center">
+                                <div class="w-16 h-16 mx-auto mb-4">
+                                    <img src="assets/icons/features/offline-cloud.webp" alt="Offline Mode" class="w-full h-full">
+                                </div>
+                                <p class="text-sm font-medium">Works offline, cloud-based software</p>
+                            </div>
+
+                            <!-- Works on any hardware -->
+                            <div class="text-center">
+                                <div class="w-16 h-16 mx-auto mb-4">
+                                    <img src="assets/icons/features/any-hardware.webp" alt="Any Hardware" class="w-full h-full">
+                                </div>
+                                <p class="text-sm font-medium">Works on any hardware</p>
+                            </div>
+
+                            <!-- Works on major OS -->
+                            <div class="text-center">
+                                <div class="w-16 h-16 mx-auto mb-4">
+                                    <img src="assets/icons/features/operating-system.webp" alt="Operating Systems" class="w-full h-full">
+                                </div>
+                                <p class="text-sm font-medium">Works on major Operating systems</p>
+                            </div>
+
+                            <!-- Keyboard/touchscreen view -->
+                            <div class="text-center">
+                                <div class="w-16 h-16 mx-auto mb-4">
+                                    <img src="assets/icons/features/touch-keyboard.webp" alt="Input Methods" class="w-full h-full">
+                                </div>
+                                <p class="text-sm font-medium">Keyboard / touchscreen view</p>
+                            </div>
+
+                            <!-- 24x7 Support -->
+                            <div class="text-center">
+                                <div class="w-16 h-16 mx-auto mb-4">
+                                    <img src="assets/icons/features/24x7_support.png" alt="24x7 Support" class="w-full h-full">
+                                </div>
+                                <p class="text-sm font-medium">24x7 Support</p>
+                            </div>
+
+                            <!-- E-bill receipts -->
+                            <div class="text-center">
+                                <div class="w-16 h-16 mx-auto mb-4">
+                                    <img src="assets/icons/features/E-bill-2.webp" alt="E-bill Receipts" class="w-full h-full">
+                                </div>
+                                <p class="text-sm font-medium">Customizable Reports</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-white" id="pricing">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">Simple & Transparent Pricing</h2>
+                <p class="text-gray-600">Get started with our affordable plans designed for restaurants of all sizes</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-2xl p-8 border-2 border-primary relative overflow-hidden">
+                    <!-- Popular Badge -->
+             
+
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                        <div class="w-full md:w-7/12">
+                            <h3 class="text-2xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">Basic Plan</h3>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 text-gray-600">
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Cloud billing
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Inventory module
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    80+ reports
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    200+ integrations
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Unlimited-user rights
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Unlimited cash register
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Central kitchen module
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Multi-terminal billing
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Scan & order app
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Captain ordering app
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Order reconciliation
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    24x7 support
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Free training
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="text-center md:text-right md:w-5/12">
+                            <div class="mb-4">
+                                <span class="text-4xl font-bold">₹2,999</span>
+                                <span class="text-gray-600">/year</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-6">+ ₹499/year for each additional device</p>
+                            <div class="space-y-3">
+                                <a href="#demo" class="btn-primary block text-center">Start 3-Day Free Trial</a>
+                                <p class="text-sm text-gray-500">No credit card required</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coming Soon Plan -->
+                <div class="mt-8 bg-gray-50 rounded-2xl p-8 border-2 border-dashed border-gray-300">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2" style="font-family: 'Poppins', sans-serif;">Pro Plan</h3>
+                            <p class="text-gray-600">Perfect for growing restaurants with advanced needs</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <span class="inline-block px-4 py-2 bg-gray-200 rounded-full text-gray-600 font-medium">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16" style="font-family: 'Poppins', sans-serif;">FAQs</h2>
+                
+                <div class="space-y-4">
+                    <div class="border-b border-gray-200 pb-4">
+                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                            <h3 class="text-lg font-medium text-primary">What is the importance of restaurant billing software?</h3>
+                            <span class="text-gray-400">▼</span>
+                        </div>
+                        <div class="answer mt-4 text-gray-600 hidden">
+                            A restaurant billing system helps businesses manage everyday operations like billing, inventory consumption, online orders, CRM, etc.
+                        </div>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-4">
+                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                            <h3 class="text-lg font-medium">Is the restaurant billing process complex?</h3>
+                            <span class="text-gray-400">▼</span>
+                        </div>
+                        <div class="answer mt-4 text-gray-600 hidden">
+                            No, isselo makes the billing process simple with its intuitive interface and 3-click billing process.
+                        </div>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-4">
+                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                            <h3 class="text-lg font-medium">How much time does it take to set up a restaurant pos?</h3>
+                            <span class="text-gray-400">▼</span>
+                        </div>
+                        <div class="answer mt-4 text-gray-600 hidden">
+                            With isselo, you can set up your restaurant POS in less than a day. Our team helps you with the entire setup process.
+                        </div>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-4">
+                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                            <h3 class="text-lg font-medium">How can I track my Orders in real time?</h3>
+                            <span class="text-gray-400">▼</span>
+                        </div>
+                        <div class="answer mt-4 text-gray-600 hidden">
+                            isselo provides real-time order tracking through its dashboard and mobile app, allowing you to monitor orders as they happen.
+                        </div>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-4">
+                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                            <h3 class="text-lg font-medium">Do I need to keep my internet connection ON every time I create an order?</h3>
+                            <span class="text-gray-400">▼</span>
+                        </div>
+                        <div class="answer mt-4 text-gray-600 hidden">
+                            No, isselo works offline. You can create orders without an internet connection, and they will sync automatically when you're back online.
+                        </div>
+                    </div>
+
+                    <div class="border-b border-gray-200 pb-4">
+                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                            <h3 class="text-lg font-medium">Can I operate and print my bills in my regional language?</h3>
+                            <span class="text-gray-400">▼</span>
+                        </div>
+                        <div class="answer mt-4 text-gray-600 hidden">
+                            Yes, isselo supports multiple languages including regional languages for both operation and bill printing.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const arrow = element.querySelector('span');
+            answer.classList.toggle('hidden');
+            arrow.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="h-8 mb-4">
+                        <img src="assets/icons/isselo_icons/red_logo_with_name.png" alt="isselo" class="h-full">
+                    </div>
+                    <p class="text-gray-600">Simple and cost-effective restaurant management solution.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="footer-link">Features</a></li>
+                        <li><a href="#pricing" class="footer-link">Pricing</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Download</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link">Windows</a></li>
+                        <li><a href="#" class="footer-link">macOS</a></li>
+                        <li><a href="#" class="footer-link">iOS</a></li>
+                        <li><a href="#" class="footer-link">Android</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="footer-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="footer-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 mt-12 pt-8 text-center text-gray-600">
+                <p>&copy; 2024 isselo. All rights reserved. | <a href="terms.html" class="hover:text-primary">Terms of Service</a> | <a href="privacy.html" class="hover:text-primary">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-2xl w-full mx-4 relative">
+            <!-- Close Button -->
+            <button onclick="closeDownloadModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <!-- Download Content -->
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-2" style="font-family: 'Poppins', sans-serif;">Download isselo</h3>
+                <p class="text-gray-600">Choose your platform to download isselo POS software</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Windows -->
+                <a href="#" class="download-option group">
+                    <div class="p-6 rounded-xl border-2 border-gray-200 hover:border-primary hover:shadow-lg transition-all text-center">
+                        <i class="fab fa-windows text-[#00A4EF] text-5xl mb-4"></i>
+                        <p class="font-medium text-gray-800 group-hover:text-primary">Windows</p>
+                        <span class="text-sm text-gray-500">v2.1.0</span>
+                    </div>
+                </a>
+
+                <!-- macOS -->
+                <a href="#" class="download-option group">
+                    <div class="p-6 rounded-xl border-2 border-gray-200 hover:border-primary hover:shadow-lg transition-all text-center">
+                        <i class="fab fa-apple text-[#555555] text-5xl mb-4"></i>
+                        <p class="font-medium text-gray-800 group-hover:text-primary">macOS</p>
+                        <span class="text-sm text-gray-500">v2.1.0</span>
+                    </div>
+                </a>
+
+                <!-- iOS -->
+                <a href="#" class="download-option group">
+                    <div class="p-6 rounded-xl border-2 border-gray-200 hover:border-primary hover:shadow-lg transition-all text-center">
+                        <i class="fab fa-app-store-ios text-[#A2AAAD] text-5xl mb-4"></i>
+                        <p class="font-medium text-gray-800 group-hover:text-primary">iOS</p>
+                        <span class="text-sm text-gray-500">v2.1.0</span>
+                    </div>
+                </a>
+
+                <!-- Android -->
+                <a href="#" class="download-option group">
+                    <div class="p-6 rounded-xl border-2 border-gray-200 hover:border-primary hover:shadow-lg transition-all text-center">
+                        <i class="fab fa-android text-[#3DDC84] text-5xl mb-4"></i>
+                        <p class="font-medium text-gray-800 group-hover:text-primary">Android</p>
+                        <span class="text-sm text-gray-500">v2.1.0</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <p class="text-sm text-gray-600 text-center">By downloading, you agree to our <a href="terms.html" class="text-primary hover:underline">Terms of Service</a> and <a href="privacy.html" class="text-primary hover:underline">Privacy Policy</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Request Modal -->
+    <div id="demoModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative">
+            <!-- Close Button -->
+            <button onclick="closeDemoModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <!-- Form Content -->
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold mb-2" style="font-family: 'Poppins', sans-serif;">Request a Demo</h3>
+                <p class="text-gray-600">Fill out the form below and we'll get back to you shortly</p>
+            </div>
+
+            <form id="demoForm" onsubmit="handleDemoSubmit(event)" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="name" name="name" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                    <input type="email" id="email" name="email" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                </div>
+
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                </div>
+
+                <div>
+                    <label for="restaurant" class="block text-sm font-medium text-gray-700 mb-1">Restaurant Name</label>
+                    <input type="text" id="restaurant" name="restaurant" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                </div>
+
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message (Optional)</label>
+                    <textarea id="message" name="message" rows="3"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"></textarea>
+                </div>
+
+                <button type="submit" class="w-full btn-primary py-3">Request Demo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- POS Demo Game Modal -->
+    <div id="posGameModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="tablet-mockup">
+            <div class="tablet-camera"></div>
+            <div class="tablet-frame">
+                <div class="tablet-screen">
+                    <div class="bg-white rounded-2xl relative transition-all duration-500" style="height: 80vh;" id="posInterface">
+                        <!-- Close Button -->
+                        <button onclick="closePosGame()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-50">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+
+                        <div class="h-full flex p-8">
+                            <!-- Left Side - POS Interface -->
+                            <div class="w-2/3 pr-8">
+                                <div class="bg-gray-100 rounded-xl p-6 h-full">
+                                    <div class="flex justify-between items-center mb-6">
+                                        <h3 class="text-2xl font-bold">POS Demo</h3>
+                                        <div class="text-sm text-gray-600">Table: #12</div>
+                                    </div>
+
+                                    <!-- Products Grid -->
+                                    <div class="grid grid-cols-3 gap-4 mb-6 h-[calc(100%-200px)] overflow-y-auto">
+                                        <div class="product-card bg-white p-4 rounded-lg cursor-pointer hover:shadow-lg transition-all" onclick="addToCart('Butter Chicken', 299)">
+                                            <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2023/04/butter-chicken-recipe.jpg" alt="Butter Chicken" class="w-full h-32 object-cover rounded-lg mb-2">
+                                            <h4 class="font-medium">Butter Chicken</h4>
+                                            <p class="text-primary">₹299</p>
+                                        </div>
+                                        <div class="product-card bg-white p-4 rounded-lg cursor-pointer hover:shadow-lg transition-all" onclick="addToCart('Paneer Tikka', 249)">
+                                            <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2022/06/paneer-tikka-recipe.jpg" alt="Paneer Tikka" class="w-full h-32 object-cover rounded-lg mb-2">
+                                            <h4 class="font-medium">Paneer Tikka</h4>
+                                            <p class="text-primary">₹249</p>
+                                        </div>
+                                        <div class="product-card bg-white p-4 rounded-lg cursor-pointer hover:shadow-lg transition-all" onclick="addToCart('Masala Dosa', 149)">
+                                            <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2021/06/masala-dosa-recipe.jpg" alt="Masala Dosa" class="w-full h-32 object-cover rounded-lg mb-2">
+                                            <h4 class="font-medium">Masala Dosa</h4>
+                                            <p class="text-primary">₹149</p>
+                                        </div>
+                                        <div class="product-card bg-white p-4 rounded-lg cursor-pointer hover:shadow-lg transition-all" onclick="addToCart('Biryani', 279)">
+                                            <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2019/02/hyderabadi-biryani-recipe.jpg" alt="Biryani" class="w-full h-32 object-cover rounded-lg mb-2">
+                                            <h4 class="font-medium">Biryani</h4>
+                                            <p class="text-primary">₹279</p>
+                                        </div>
+                                        <div class="product-card bg-white p-4 rounded-lg cursor-pointer hover:shadow-lg transition-all" onclick="addToCart('Samosa', 49)">
+                                            <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2019/11/samosa-recipe.jpg" alt="Samosa" class="w-full h-32 object-cover rounded-lg mb-2">
+                                            <h4 class="font-medium">Samosa</h4>
+                                            <p class="text-primary">₹49</p>
+                                        </div>
+                                        <div class="product-card bg-white p-4 rounded-lg cursor-pointer hover:shadow-lg transition-all" onclick="addToCart('Naan', 39)">
+                                            <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/naan-recipe.jpg" alt="Naan" class="w-full h-32 object-cover rounded-lg mb-2">
+                                            <h4 class="font-medium">Naan</h4>
+                                            <p class="text-primary">₹39</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Side - Cart -->
+                            <div class="w-1/3 bg-gray-50 rounded-xl p-6">
+                                <h3 class="text-xl font-bold mb-4">Cart</h3>
+                                <div id="cart-items" class="space-y-4 h-[calc(100%-280px)] overflow-y-auto">
+                                    <!-- Cart items will be added here dynamically -->
+                                </div>
+                                <div class="border-t border-gray-200 mt-4 pt-4">
+                                    <div class="flex justify-between mb-2">
+                                        <span>Subtotal</span>
+                                        <span id="subtotal">₹0</span>
+                                    </div>
+                                    <div class="flex justify-between mb-2">
+                                        <span>Tax (5%)</span>
+                                        <span id="tax">₹0</span>
+                                    </div>
+                                    <div class="flex justify-between font-bold mb-6">
+                                        <span>Total</span>
+                                        <span id="total">₹0</span>
+                                    </div>
+                                    <div class="print-button-container relative">
+                                        <button onclick="printBill()" class="w-full bg-green-500 text-white py-4 rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center space-x-2 print-button">
+                                            <svg class="w-6 h-6 printer-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                                            </svg>
+                                            <span class="font-medium text-lg">Print Bill</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tablet-home-button"></div>
+        </div>
+
+        <!-- Add back the printer animation container -->
+        <div id="printer-animation" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+            <div class="relative w-full max-w-xl mx-auto">
+                <div class="printer-body rounded-xl">
+                    <!-- Printer Status -->
+                    <div class="printer-status">
+                        <div class="printer-light rounded-full bg-green-500 animate-pulse"></div>
+                        <span class="printer-status-text">Printing...</span>
+                    </div>
+
+                    <!-- Printer Slot -->
+                    <div class="printer-slot"></div>
+
+                    <!-- Bill -->
+                    <div id="thermal-bill" class="rounded-lg bg-white">
+                        <!-- Bill content will be added dynamically -->
+                    </div>
+
+                    <!-- Printer Details -->
+                    <div class="printer-details">
+                        <span>isselo POS v2.1.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .usp-container:hover .usp-tooltip {
+            display: none; /* Changed from block to none - JS will handle the display */
+        }
+        
+        .usp-tooltip {
+            display: none;
+        }
+        
+        .usp-tooltip::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 20px;
+            width: 12px;
+            height: 12px;
+            background-color: white;
+            transform: rotate(45deg);
+            box-shadow: -2px -2px 5px rgba(0,0,0,0.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .usp-tooltip {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .usp-nav-btn {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .usp-nav-btn.active {
+            background-color: var(--primary-color, #dc2626);
+            transform: scale(1.2);
+        }
+
+        .usp-item {
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .usp-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .usp-item {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        @keyframes slideDown {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(80%); }
+        }
+
+        @keyframes printBill {
+            0% { 
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translate(-50%, 100%);
+                opacity: 1;
+            }
+        }
+
+        .sliding-down {
+            animation: slideDown 1s forwards;
+        }
+
+        .printing {
+            animation: printBill 3s ease-out forwards;
+        }
+
+        .printer-body {
+            width: 600px !important;
+            height: 700px !important;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #2d3748 0%, #1a202c 100%);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        #thermal-bill {
+            width: 120mm !important;
+            min-height: 400px;
+            font-size: 0.9rem;
+            position: absolute;
+            top: -410px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .printer-slot {
+            width: calc(120mm + 20px) !important;
+            height: 6px !important;
+            background: #1a1a1a;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 0 0 4px 4px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .printer-status {
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .printer-light {
+            width: 2rem !important;
+            height: 2rem !important;
+        }
+
+        .printer-status-text {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .printer-details {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 2.5rem;
+            color: #a0aec0;
+            font-size: 1.5rem;
+        }
+
+        .tablet-mockup {
+            position: relative;
+            z-index: 1;
+        }
+
+        #printer-animation {
+            z-index: 60;
+        }
+    </style>
+
+    <script>
+        // Demo Modal Functions
+        function openDemoModal() {
+            document.getElementById('demoModal').classList.remove('hidden');
+            document.getElementById('demoModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDemoModal() {
+            document.getElementById('demoModal').classList.add('hidden');
+            document.getElementById('demoModal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleDemoSubmit(event) {
+            event.preventDefault();
+            // Here you would typically handle the form submission
+            // For now, we'll just show a success message
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // You can add your form submission logic here
+            console.log('Form submitted:', Object.fromEntries(formData));
+            
+            // Show success message
+            form.innerHTML = `
+                <div class="text-center py-8">
+                    <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <h4 class="text-xl font-bold mb-2">Thank you!</h4>
+                    <p class="text-gray-600">We've received your demo request and will contact you shortly.</p>
+                </div>
+            `;
+
+            // Close modal after 3 seconds
+            setTimeout(closeDemoModal, 3000);
+        }
+
+        // Add click event listeners to demo buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoButtons = document.querySelectorAll('a[href="#demo"]');
+            demoButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openDemoModal();
+                });
+            });
+        });
+
+        // Download Modal Functions
+        function openDownloadModal() {
+            document.getElementById('downloadModal').classList.remove('hidden');
+            document.getElementById('downloadModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('downloadModal').classList.add('hidden');
+            document.getElementById('downloadModal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Add click event listeners to download buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadButtons = document.querySelectorAll('a[href="#download"]');
+            downloadButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openDownloadModal();
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const rotatingUsp = document.getElementById('rotating-usp');
+            const uspItems = document.querySelectorAll('.usp-item');
+            const navBtns = document.querySelectorAll('.usp-nav-btn');
+            let currentIndex = 0;
+            
+            function updateActiveButton(index) {
+                navBtns.forEach(btn => btn.classList.remove('active'));
+                navBtns[index].classList.add('active');
+            }
+
+            function updateUSP(index) {
+                const item = uspItems[index];
+                const newUsp = item.getAttribute('data-usp');
+                rotatingUsp.firstChild.textContent = newUsp;
+                
+                // Add a ripple effect
+                const ripple = document.createElement('span');
+                ripple.className = 'absolute inset-0 bg-primary/20 rounded-lg';
+                item.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove());
+                
+                updateActiveButton(index);
+            }
+
+            navBtns.forEach((btn, index) => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIndex = index;
+                    updateUSP(index);
+                });
+            });
+            
+            uspItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    currentIndex = index;
+                    updateUSP(index);
+                    
+                    // Scale animation
+                    rotatingUsp.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        rotatingUsp.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+
+            // Auto-rotate every 3 seconds
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % uspItems.length;
+                updateUSP(currentIndex);
+            }, 3000);
+        });
+
+        let tooltipTimeout;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const uspContainer = document.querySelector('.usp-container');
+            const uspTooltip = document.querySelector('.usp-tooltip');
+            
+            // Show tooltip on hover
+            uspContainer.addEventListener('mouseenter', function() {
+                clearTimeout(tooltipTimeout);
+                uspTooltip.style.display = 'block';
+            });
+            
+            // Hide tooltip with delay on mouse leave
+            uspContainer.addEventListener('mouseleave', function() {
+                tooltipTimeout = setTimeout(() => {
+                    uspTooltip.style.display = 'none';
+                }, 1000); // 1 second delay
+            });
+            
+            // Keep tooltip visible when hovering over it
+            uspTooltip.addEventListener('mouseenter', function() {
+                clearTimeout(tooltipTimeout);
+            });
+            
+            // Hide tooltip with delay when leaving it
+            uspTooltip.addEventListener('mouseleave', function() {
+                tooltipTimeout = setTimeout(() => {
+                    uspTooltip.style.display = 'none';
+                }, 1000); // 1 second delay
+            });
+        });
+
+        // POS Game Functions
+        let cart = [];
+        let subtotal = 0;
+
+        function openPosGame() {
+            document.getElementById('posGameModal').classList.remove('hidden');
+            document.getElementById('posGameModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePosGame() {
+            document.getElementById('posGameModal').classList.add('hidden');
+            document.getElementById('posGameModal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+            // Reset cart
+            cart = [];
+            updateCart();
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+            
+            // Add ripple effect to product card
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (card.querySelector('h4').textContent === name) {
+                    const ripple = document.createElement('div');
+                    ripple.className = 'absolute inset-0 bg-primary/20 rounded-lg';
+                    card.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 300);
+                }
+            });
+        }
+
+        function updateCart() {
+            const cartContainer = document.getElementById('cart-items');
+            cartContainer.innerHTML = '';
+            subtotal = 0;
+
+            cart.forEach((item, index) => {
+                subtotal += item.price;
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item flex justify-between items-center bg-white p-3 rounded-lg';
+                itemElement.innerHTML = `
+                    <div>
+                        <h4 class="font-medium">${item.name}</h4>
+                        <p class="text-primary">₹${item.price}</p>
+                    </div>
+                    <button onclick="removeFromCart(${index})" class="text-gray-500 hover:text-red-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                        </svg>
+                    </button>
+                `;
+                cartContainer.appendChild(itemElement);
+            });
+
+            const tax = subtotal * 0.05;
+            const total = subtotal + tax;
+
+            document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('tax').textContent = `₹${tax.toFixed(2)}`;
+            document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function printBill() {
+            if (cart.length === 0) return;
+
+            const posInterface = document.getElementById('posInterface');
+            const printerAnimation = document.getElementById('printer-animation');
+            const thermalBill = document.getElementById('thermal-bill');
+            const printerSound = document.getElementById('printerSound');
+            
+            // Hide the tablet interface
+            document.querySelector('.tablet-mockup').style.opacity = '0.3';
+            
+            // Show printer animation
+            printerAnimation.classList.remove('hidden');
+            
+            // Play printer sound
+            printerSound.currentTime = 0;
+            printerSound.play();
+            
+            // Generate bill content with new thermal printer style
+            let billContent = `
+                <div class="p-8 font-mono text-sm relative">
+                    <!-- Share Button -->
+                    <div class="absolute top-4 right-4">
+                        <button onclick="toggleShareOptions(event)" class="bg-primary text-white px-3 py-1.5 rounded-lg flex items-center gap-2 hover:bg-primary-dark transition-colors">
+                            <i class="fas fa-share-alt"></i>
+                            Share
+                        </button>
+                        <div class="share-options" id="shareOptions">
+                            <div class="share-option" onclick="downloadAsPDF()">
+                                <i class="fas fa-file-pdf"></i>
+                                Download PDF
+                            </div>
+                            <div class="share-option" onclick="copyBillToClipboard()">
+                                <i class="fas fa-copy"></i>
+                                Copy Text
+                            </div>
+                            <div class="share-option" onclick="shareViaWhatsApp()">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </div>
+                            <div class="share-option" onclick="shareViaEmail()">
+                                <i class="fas fa-envelope"></i>
+                                Email
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-6">
+                        <h2 class="text-xl font-bold mb-1">Sharma store</h2>
+                        <p class="text-xs mb-1">Rama Sagar, Mumbai</p>
+                        <p class="text-xs mb-1">Mobile: 9876543210</p>
+                        <p class="text-xs mb-3">Invoice No: ${Math.floor(Math.random() * 1000)}</p>
+                        <p class="text-xs mb-3">Date: ${new Date().toLocaleDateString()}</p>
+                        <p class="text-xs mb-4">Bill To: Customer</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex justify-between text-xs font-bold mb-2 border-b border-gray-300 pb-2">
+                            <span class="w-1/2">Item</span>
+                            <span class="w-1/6 text-right">Qty</span>
+                            <span class="w-1/6 text-right">Rate</span>
+                            <span class="w-1/6 text-right">Amount</span>
+                        </div>
+                        ${cart.map(item => `
+                            <div class="flex justify-between text-xs mb-2">
+                                <span class="w-1/2">${item.name}</span>
+                                <span class="w-1/6 text-right">1.0</span>
+                                <span class="w-1/6 text-right">${item.price}</span>
+                                <span class="w-1/6 text-right">${item.price}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="border-t border-gray-300 pt-4">
+                        <div class="flex justify-between text-xs mb-2">
+                            <span>Packing Charge</span>
+                            <span>25.0</span>
+                        </div>
+                        <div class="flex justify-between text-xs mb-2">
+                            <span>Door Delivery</span>
+                            <span>30.0</span>
+                        </div>
+                        <div class="flex justify-between text-xs mb-2">
+                            <span>Discount</span>
+                            <span>-19.0</span>
+                        </div>
+                        <div class="flex justify-between text-sm font-bold mt-4 pt-2 border-t border-gray-300">
+                            <span>Total</span>
+                            <span>₹${(subtotal + 36).toFixed(2)}</span>
+                        </div>
+                        <div class="flex justify-between text-xs mt-2">
+                            <span>Amount Paid</span>
+                            <span>₹${(subtotal + 36).toFixed(2)}</span>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-8">
+                        <p class="text-xs">Thank you for your business!</p>
+                        <p class="text-xs">Visit again</p>
+                    </div>
+                </div>
+            `;
+
+            thermalBill.innerHTML = billContent;
+            thermalBill.classList.add('printing');
+
+            // Reset after animation and sound
+            setTimeout(() => {
+                printerAnimation.classList.add('hidden');
+                document.querySelector('.tablet-mockup').style.opacity = '1';
+                thermalBill.classList.remove('printing');
+                cart = [];
+                updateCart();
+            }, Math.max(5000, printerSound.duration * 1000));
+        }
+
+        function toggleShareOptions(event) {
+            event.stopPropagation();
+            const shareOptions = document.getElementById('shareOptions');
+            shareOptions.classList.toggle('show');
+        }
+
+        // Close share options when clicking outside
+        document.addEventListener('click', function(event) {
+            const shareOptions = document.getElementById('shareOptions');
+            if (shareOptions && !event.target.closest('.share-options') && !event.target.closest('button')) {
+                shareOptions.classList.remove('show');
+            }
+        });
+
+        function getBillText() {
+            const items = cart.map(item => 
+                `${item.name}\t\t${item.price}`
+            ).join('\n');
+
+            return `
+Sharma store
+Rama Sagar, Mumbai
+Mobile: 9876543210
+
+${items}
+
+Subtotal: ₹${subtotal}
+Tax (5%): ₹${(subtotal * 0.05).toFixed(2)}
+Total: ₹${(subtotal * 1.05).toFixed(2)}
+
+Thank you for your business!
+            `.trim();
+        }
+
+        function downloadAsPDF() {
+            // Using html2pdf library
+            const element = document.getElementById('thermal-bill');
+            const opt = {
+                margin: 1,
+                filename: 'bill.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+
+        function copyBillToClipboard() {
+            const billText = getBillText();
+            navigator.clipboard.writeText(billText).then(() => {
+                alert('Bill copied to clipboard!');
+            });
+        }
+
+        function shareViaWhatsApp() {
+            const billText = encodeURIComponent(getBillText());
+            window.open(`https://wa.me/?text=${billText}`, '_blank');
+        }
+
+        function shareViaEmail() {
+            const billText = encodeURIComponent(getBillText());
+            window.location.href = `mailto:?subject=Bill from Sharma store&body=${billText}`;
+        }
+    </script>
+
+    <!-- Add html2pdf library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html> 
