@@ -18,15 +18,25 @@ function changeScreenshot(screenshotNum) {
     const descriptions = document.querySelectorAll('.screenshot-description');
     const mainContainer = document.querySelector('.main-screenshot-container');
 
+    // Color map for backgrounds
+    const colorMap = {
+        '1': '#6ac5a2',  // Dashboard
+        '2': '#e06e79',  // Menu Management
+        '3': '#4154d6',  // Order Processing
+        '4': '#4154d6',  // Inventory Control
+        '5': '#797b80',  // Analytics
+        '6': '#cd4b94'   // Customer Management
+    };
+
     // Update active thumb
     thumbs.forEach(thumb => thumb.classList.remove('active'));
     const activeThumb = document.querySelector(`.screenshot-thumb[data-screenshot="${screenshotNum}"]`);
     if (activeThumb) {
         activeThumb.classList.add('active');
 
-        // Update background color from the data attribute
-        if (mainContainer && activeThumb.hasAttribute('data-bg-color')) {
-            mainContainer.style.backgroundColor = activeThumb.getAttribute('data-bg-color');
+        // Update background color from the color map
+        if (mainContainer && colorMap[screenshotNum]) {
+            mainContainer.style.backgroundColor = colorMap[screenshotNum];
         }
     }
 
@@ -415,6 +425,17 @@ function initScreenshotsViewer() {
     const thumbs = document.querySelectorAll('.screenshot-thumb');
     const mainImage = document.getElementById('mainScreenshot');
     const descriptions = document.querySelectorAll('.screenshot-description');
+    const mainContainer = document.querySelector('.main-screenshot-container');
+
+    // Color map for backgrounds (same as in changeScreenshot function)
+    const colorMap = {
+        '1': '#6ac5a2',  // Dashboard
+        '2': '#e06e79',  // Menu Management
+        '3': '#4154d6',  // Order Processing
+        '4': '#4154d6',  // Inventory Control
+        '5': '#797b80',  // Analytics
+        '6': '#cd4b94'   // Customer Management
+    };
 
     if (!thumbs.length || !mainImage) return;
 
@@ -427,6 +448,11 @@ function initScreenshotsViewer() {
             // Update main image
             const screenshotNum = this.getAttribute('data-screenshot');
             mainImage.src = `assets/images/screenshots/${screenshotNum}.png`;
+
+            // Update background color
+            if (mainContainer && colorMap[screenshotNum]) {
+                mainContainer.style.backgroundColor = colorMap[screenshotNum];
+            }
 
             // Update description - fix display property
             descriptions.forEach(desc => desc.style.display = 'none');
