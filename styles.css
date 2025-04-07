@@ -197,3 +197,265 @@ h6 {
         display: none;
     }
 }
+
+/* Testimonials Section */
+.testimonial-card {
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Case Studies */
+.case-study {
+    transition: all 0.3s ease;
+}
+
+.case-study:hover {
+    transform: translateY(-5px);
+}
+
+/* Blog Posts */
+.blog-post {
+    transition: all 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Form */
+.form-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(196, 40, 60, 0.2);
+}
+
+/* Animation for CTA */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(196, 40, 60, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(196, 40, 60, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(196, 40, 60, 0);
+    }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+/* Floating button */
+.floating-button {
+    transition: all 0.3s ease;
+}
+
+.floating-button:hover {
+    transform: scale(1.05);
+}
+
+/* Integration logos */
+.integration-logo {
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.integration-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Animated background for CTA section */
+.cta-bg {
+    background: linear-gradient(-45deg, #C4283C, #ff4d6d, #C4283C, #ff4d6d);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Animated stat counters */
+.stat-counter {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    display: inline-block;
+}
+
+/* Hover effect for social media icons */
+.social-icon {
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .testimonial-grid,
+    .case-study-grid,
+    .blog-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+
+    .testimonial-card,
+    .case-study,
+    .blog-post {
+        scroll-snap-align: start;
+        min-width: 80%;
+        margin-right: 1rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --text-dark: #f5f5f5;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-dark);
+    }
+
+    .bg-white {
+        background-color: #1e1e1e;
+    }
+
+    .text-gray-600 {
+        color: #b0b0b0;
+    }
+
+    .border-gray-200 {
+        border-color: #333;
+    }
+}
+
+/* Screenshots and Product Tour Styles */
+.screenshot-thumb {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.screenshot-thumb.active img {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.screenshot-thumb:hover img {
+    transform: scale(1.05);
+}
+
+/* Set a max height for the main screenshot to ensure it fits on screen */
+#mainScreenshot {
+    max-height: 90%;
+    width: auto;
+    max-width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+/* Ensure the screenshot container isn't too tall */
+.product-tour-slider {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Add responsive adjustments for small screens */
+@media (max-width: 768px) {
+    #mainScreenshot {
+        max-height: 50vh;
+    }
+
+    .screenshot-thumb img {
+        max-height: 60px;
+    }
+}
+
+.screenshot-description {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-showcase {
+    position: relative;
+}
+
+.product-showcase .main-screenshot-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.product-showcase .main-screenshot-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.screenshots-preview img {
+    transition: all 0.3s ease;
+}
+
+.screenshots-preview img:hover {
+    transform: scale(1.05);
+}
+
+.main-screenshot-container {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    overflow: hidden;
+    transition: background-color 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    .main-screenshot-container {
+        height: 400px;
+    }
+}
