@@ -52,6 +52,14 @@
             overflow-x: hidden;
         }
         
+        /* Scale wrapper */
+        .scale-wrapper {
+            transform: scale(0.9);
+            transform-origin: top center;
+            width: 111.11%; /* 100/0.9 to maintain proper width after scaling */
+            margin-left: -5.55%; /* Half of the excess width (11.11/2) */
+        }
+        
         /* Typography Enhancements */
         h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-heading);
@@ -88,6 +96,7 @@
     </style>
 </head>
 <body class="bg-white">
+    <div class="scale-wrapper">
     <!-- Navigation -->
     <nav class="fixed w-full z-50 py-3 bg-white transition duration-300 ease-in-out" id="main-nav">
         <div class="container mx-auto px-4">
@@ -97,7 +106,6 @@
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <div class="group relative">
-                        <a href="#pos" class="nav-link font-medium hover:text-primary transition-colors py-2">POS</a>
                         <div class="hidden group-hover:block absolute top-full left-0 bg-white shadow-lg rounded-lg p-4 w-56 animate-fade-in border border-gray-100 mt-1">
                             <div class="absolute top-0 left-4 w-3 h-3 bg-white transform rotate-45 -mt-1.5 border-t border-l border-gray-100"></div>
                             <a href="#billing" class="block py-2 px-3 hover:text-primary hover:bg-gray-50 rounded-md transition-colors">Billing</a>
@@ -108,9 +116,11 @@
                             <a href="#crm" class="block py-2 px-3 hover:text-primary hover:bg-gray-50 rounded-md transition-colors">CRM</a>
                         </div>
                     </div>
-                    <a href="screenshots.html" class="nav-link font-medium hover:text-primary transition-colors py-2">Product Tour</a>
                     <a href="#pricing" class="nav-link font-medium hover:text-primary transition-colors py-2">Pricing</a>
                     <a href="#contact" class="nav-link font-medium hover:text-primary transition-colors py-2">Contact</a>
+                    <a href="#about-us" class="nav-link font-medium hover:text-primary transition-colors py-2">About us</a>
+                    <a href="#blog" class="nav-link font-medium hover:text-primary transition-colors py-2">Blog</a>
+                    <a href="#faq" class="nav-link font-medium hover:text-primary transition-colors py-2">FAQ</a>
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="#download" class="hidden sm:block px-4 py-2 rounded-lg text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-colors text-sm font-medium">Download Now</a>
@@ -169,9 +179,9 @@
                         <!-- Restaurant billing software that is  -->
                         Powerful POS for Restaurants
                         <div class="usp-container relative inline-block mt-2">
-                            <span class="">
+                            <span class="text-primary font-bold">
                                  Just ₹2999
-                                 <span class="text-gray-500 text-sm"> /Year</span>
+                                 <span class="text-sm font-medium text-gray-500"> /Year</span>
                             </span>
                         </div>
                     </h1>
@@ -193,11 +203,43 @@
                     
                     <!-- Migration process indicator -->
                     <div class="relative mt-4">
-                        <div class="bg-yellow-100 inline-flex items-center px-4 py-2 rounded-lg transform rotate-2">
-                            <span class="font-medium text-yellow-800">Scan menu → Start billing in 30 seconds</span>
-                            <svg class="w-6 h-6 ml-2 text-yellow-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
+                        <div class="bg-yellow-100 p-4 rounded-lg">
+                            <div class="flex flex-wrap items-center justify-center">
+                                <!-- Step 1: Download -->
+                                <div class="flex items-center mx-1">
+                                    <svg class="w-5 h-5 text-yellow-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                    </svg>
+                                    <span class="font-medium text-yellow-800 ml-1">Download</span>
+                                </div>
+                                
+                                <!-- Arrow -->
+                                <svg class="w-4 h-4 text-yellow-700 mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7"></path>
+                                </svg>
+                                
+                                <!-- Step 2: Scan Menu -->
+                                <div class="flex items-center mx-1">
+                                    <svg class="w-5 h-5 text-yellow-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
+                                    </svg>
+                                    <span class="font-medium text-yellow-800 ml-1">Scan Menu</span>
+                                </div>
+                                
+                                <!-- Arrow -->
+                                <svg class="w-4 h-4 text-yellow-700 mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7"></path>
+                                </svg>
+                                
+                                <!-- Step 3: Start Billing -->
+                                <div class="flex items-center mx-1">
+                                    <svg class="w-5 h-5 text-yellow-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span class="font-medium text-yellow-800 ml-1">Start Billing</span>
+                                </div>
+                            </div>
+                            <div class="text-center mt-1 text-xs text-yellow-800 font-medium">Just 60 seconds to set up! with AI-Powered Onboarding</div>
                         </div>
                         <div class="absolute -right-1 top-1/2 transform -translate-y-1/2 rotate-45">
                             <svg class="w-12 h-12 text-yellow-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -245,24 +287,19 @@
                 </div>  
                 
                 <!-- Right Illustration -->
-                <div class="md:w-1/2 relative">
-                    <div class="absolute inset-0 bg-red-50 rounded-full transform scale-125 blur-xl opacity-80"></div>
+                <div class="md:w-1/2 relative md:pl-8">
                     <img 
-                        src="assets/images/header_illustration/restaurant-worker-using-mobile-to-take-bill-printo.svg" 
+                        src="assets/images/header_illustration/hero_image.png" 
                         alt="Restaurant Management Illustration" 
-                        class="relative z-10 w-full max-w-xl mx-auto transform hover:-translate-y-2 transition-transform duration-500"
+                        class="w-3/4 mx-auto"
                     >
                     
-                    <!-- Floating elements -->
-                    <div class="absolute top-10 right-10 bg-white p-3 rounded-lg shadow-lg z-20 animate-bounce-slow">
-                        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                        </svg>
-                    </div>
-                    <div class="absolute bottom-20 left-10 bg-white p-2 rounded-lg shadow-lg z-20 transform -rotate-6">
-                        <div class="text-xs font-medium text-gray-800">Order #1342</div>
-                        <div class="text-xs text-gray-500">₹1,249.00</div>
-                    </div>
+                    <!-- Floating elements with improved positioning -->
+                    <img src="assets/images/header_illustration/send_kot.png" alt="Send KOT" class="absolute top-12 right-6 w-40 h-40 object-contain z-20 animate-bounce-slow filter drop-shadow-md">
+                    
+                    <img src="assets/images/header_illustration/payment_recieved.png" alt="Payment Received" class="absolute bottom-20 left-8 w-40 h-40 object-contain z-20 transform -rotate-6 filter drop-shadow-md">
+                    
+                    <img src="assets/images/header_illustration/top_creditor.png" alt="Top Creditor" class="absolute top-24 left-0 w-43 h-43 object-contain z-20 transform rotate-3 filter drop-shadow-md">
                 </div>
             </div>
         </div>
@@ -2103,5 +2140,6 @@
             }
         }
     </style>
+    </div> <!-- End of scale-wrapper -->
 </body>
 </html> 
