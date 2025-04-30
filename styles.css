@@ -406,7 +406,7 @@ h6 {
 #mainScreenshot {
     max-height: 90%;
     width: auto;
-    max-width: 95%;
+    max-width: 90%;
     box-shadow: none;
     object-fit: contain;
     transition: none;
@@ -472,9 +472,6 @@ h6 {
 /* Enhance main screenshot container */
 .main-screenshot-container {
     height: 500px;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
