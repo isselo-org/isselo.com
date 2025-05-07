@@ -8,10 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
     initForms();
     initCounters();
     initTestimonialSlider();
-    initScreenshotsViewer();
+    // initScreenshotsViewer();
 });
 
 // Function to change screenshots on the main page
+/*
 function changeScreenshot(screenshotNum) {
     const mainImage = document.getElementById('mainScreenshot');
     const thumbs = document.querySelectorAll('.screenshot-thumb');
@@ -54,6 +55,7 @@ function changeScreenshot(screenshotNum) {
 
     console.log('Changed to screenshot:', screenshotNum);
 }
+*/
 
 // Navigation functions
 function initNavigation() {
@@ -421,6 +423,7 @@ function handleDemoSubmit(event) {
 }
 
 // Initialize the screenshots viewer on the dedicated screenshots page
+/*
 function initScreenshotsViewer() {
     const thumbs = document.querySelectorAll('.screenshot-thumb');
     const mainImage = document.getElementById('mainScreenshot');
@@ -478,4 +481,5 @@ function initScreenshotsViewer() {
             });
         });
     }
-} 
+}
+*/ 

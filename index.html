@@ -93,9 +93,201 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
+        /* Floating animations for the screenshot section */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-15px) translateX(5px); }
+        }
+        
+        @keyframes float-medium {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-10px) translateX(-8px); }
+        }
+        
+        @keyframes float-fast {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-7px) translateX(3px); }
+        }
+        
+        .animate-float-slow {
+            animation: float-slow 8s ease-in-out infinite;
+        }
+        
+        .animate-float-medium {
+            animation: float-medium 6s ease-in-out infinite;
+        }
+        
+        .animate-float-fast {
+            animation: float-fast 4s ease-in-out infinite;
+        }
+        
+        /* 3D Perspective utility */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .usp-container:hover .usp-tooltip {
+            display: none; /* Changed from block to none - JS will handle the display */
+        }
+        
+        .usp-tooltip {
+            display: none;
+        }
+        
+        .usp-tooltip::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 20px;
+            width: 12px;
+            height: 12px;
+            background-color: white;
+            transform: rotate(45deg);
+            box-shadow: -2px -2px 5px rgba(0,0,0,0.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .usp-tooltip {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .usp-nav-btn {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .usp-nav-btn.active {
+            background-color: var(--primary-color, #dc2626);
+            transform: scale(1.2);
+        }
+
+        .usp-item {
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .usp-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .usp-item {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        @keyframes slideDown {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(80%); }
+        }
+
+        @keyframes printBill {
+            0% { 
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translate(-50%, 100%);
+                opacity: 1;
+            }
+        }
+
+        .sliding-down {
+            animation: slideDown 1s forwards;
+        }
+
+        .printing {
+            animation: printBill 3s ease-out forwards;
+        }
+        
+        /* Fix footer whitespace */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            min-height: 100%;
+        }
+        
+        .scale-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+        
+        footer {
+            margin-top: auto;
+            margin-bottom: 0;
+        }
+        
+        /* Remove any bottom margin on the last element in the page */
+        body > *:last-child {
+            margin-bottom: 0;
+        }
+        
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-bounce-slow {
+            animation: bounce-slow 3s ease-in-out infinite;
+        }
+        
+        @keyframes highlight {
+            0% { box-shadow: 0 0 0 0 rgba(196, 40, 60, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(196, 40, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(196, 40, 60, 0); }
+        }
+        
+        .highlight-section {
+            animation: highlight 2s ease-out;
+        }
+        
+        /* Add animation classes for elements */
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Prevent animation on page load */
+        .animate-on-scroll {
+            opacity: 0;
+        }
+        
+        /* Prefers reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-on-scroll {
+                opacity: 1;
+            }
+            .animate-fade-in, .animate-bounce-slow, .highlight-section {
+                animation: none !important;
+            }
+            html {
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
-<body class="bg-white">
+<body class="bg-white m-0 p-0">
     <div class="scale-wrapper">
     <!-- Navigation -->
     <nav class="fixed w-full z-50 py-3 bg-white transition duration-300 ease-in-out" id="main-nav">
@@ -321,1045 +513,25 @@
                 
                 <!-- Screenshots Carousel/Slider with enhanced UI -->
                 <div class="product-tour-slider relative">
-                    <!-- Main large screenshot with shadow and curved edges -->
-                    <div class="rounded-2xl overflow-hidden shadow-2xl mb-10 main-screenshot-container transition-all duration-500 transform hover:scale-[1.02]" style="height: 450px; background-color: #6ac5a2;">
-                        <img id="mainScreenshot" src="assets/images/screenshots/1.png" alt="isselo dashboard" class="w-full h-full object-contain p-4">
-                        
-                        <!-- Screenshot label -->
-                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-sm">
-                            <div class="text-sm font-medium" id="screenshot-label">Dashboard</div>
+                    <!-- Placeholder for screenshots (to be added later) -->
+                    <div class="bg-gray-100 rounded-lg p-12 text-center mb-16">
+                        <div class="flex flex-col items-center justify-center">
+                            <svg class="w-20 h-20 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <h3 class="text-xl font-medium text-gray-500 mb-2">Screenshots Coming Soon</h3>
+                            <p class="text-gray-500 max-w-md">Product screenshots and feature visuals will be added here later.</p>
                         </div>
                     </div>
                     
-                    <!-- Thumbnails navigation with active indicators -->
-                    <div class="grid grid-cols-3 md:grid-cols-6 gap-4 mb-12">
-                        <div class="screenshot-thumb active" data-screenshot="1" onclick="changeScreenshot('1')" data-bg-color="#8AD3C0" data-label="Dashboard">
-                            <div class="relative overflow-hidden rounded-lg group">
-                                <img src="assets/images/screenshots/1.png" alt="Dashboard" class="rounded-lg cursor-pointer border-2 border-transparent hover:border-primary transition-colors w-full h-16 md:h-20 object-cover">
-                                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <p class="text-xs font-medium text-center mt-2">Dashboard</p>
-                        </div>
-                        <div class="screenshot-thumb" data-screenshot="2" onclick="changeScreenshot('2')" data-bg-color="#FFE8E8" data-label="Menu Management">
-                            <div class="relative overflow-hidden rounded-lg group">
-                                <img src="assets/images/screenshots/2.png" alt="Menu Management" class="rounded-lg cursor-pointer border-2 border-transparent hover:border-primary transition-colors w-full h-16 md:h-20 object-cover">
-                                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <p class="text-xs font-medium text-center mt-2">Menu Management</p>
-                        </div>
-                        <div class="screenshot-thumb" data-screenshot="3" onclick="changeScreenshot('3')" data-bg-color="#E6F7FF" data-label="Order Processing">
-                            <div class="relative overflow-hidden rounded-lg group">
-                                <img src="assets/images/screenshots/3.png" alt="Order Processing" class="rounded-lg cursor-pointer border-2 border-transparent hover:border-primary transition-colors w-full h-16 md:h-20 object-cover">
-                                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <p class="text-xs font-medium text-center mt-2">Order Processing</p>
-                        </div>
-                        <div class="screenshot-thumb" data-screenshot="4" onclick="changeScreenshot('4')" data-bg-color="#FFF4E6" data-label="Inventory Control">
-                            <div class="relative overflow-hidden rounded-lg group">
-                                <img src="assets/images/screenshots/4.png" alt="Inventory Control" class="rounded-lg cursor-pointer border-2 border-transparent hover:border-primary transition-colors w-full h-16 md:h-20 object-cover">
-                                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <p class="text-xs font-medium text-center mt-2">Inventory Control</p>
-                        </div>
-                        <div class="screenshot-thumb" data-screenshot="5" onclick="changeScreenshot('5')" data-bg-color="#EBF8FF" data-label="Analytics">
-                            <div class="relative overflow-hidden rounded-lg group">
-                                <img src="assets/images/screenshots/5.png" alt="Analytics" class="rounded-lg cursor-pointer border-2 border-transparent hover:border-primary transition-colors w-full h-16 md:h-20 object-cover">
-                                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <p class="text-xs font-medium text-center mt-2">Analytics</p>
-                        </div>
-                        <div class="screenshot-thumb" data-screenshot="6" onclick="changeScreenshot('6')" data-bg-color="#F3F4F6" data-label="Customer Management">
-                            <div class="relative overflow-hidden rounded-lg group">
-                                <img src="assets/images/screenshots/6.png" alt="Customer Management" class="rounded-lg cursor-pointer border-2 border-transparent hover:border-primary transition-colors w-full h-16 md:h-20 object-cover">
-                                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <p class="text-xs font-medium text-center mt-2">Customer Management</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Feature Description with enhanced design -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg transform transition-all duration-500">
-                        <div class="screenshot-description" id="description-1" style="display: block;">
-                            <div class="flex items-start">
-                                <div class="hidden md:block mr-6 p-3 bg-green-50 rounded-full">
-                                    <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-2xl font-bold mb-4">Dashboard Overview</h3>
-                                    <p class="text-gray-700 mb-6 leading-relaxed">Get a comprehensive view of your restaurant's performance with our intuitive dashboard. Monitor daily sales, track inventory levels, and view upcoming reservations all in one place.</p>
-                                    <div class="bg-gray-50 p-4 rounded-lg">
-                                        <h4 class="font-semibold mb-3 text-gray-800">Key Benefits</h4>
-                                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-2 gap-x-4">
-                                            <li class="flex items-center">
-                                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                                <span>Real-time sales tracking</span>
-                                            </li>
-                                            <li class="flex items-center">
-                                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                                <span>Daily revenue summaries</span>
-                                            </li>
-                                            <li class="flex items-center">
-                                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                                <span>Inventory alerts</span>
-                                            </li>
-                                            <li class="flex items-center">
-                                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                                <span>Staff performance metrics</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Other descriptions remain hidden, similar to the existing code -->
-                        <div class="screenshot-description" id="description-2" style="display: none;">
-                            <!-- Similar structure as above, but with different content for Menu Management -->
-                        </div>
-                        
-                        <div class="screenshot-description" id="description-3" style="display: none;">
-                            <!-- Similar structure for Order Processing -->
-                        </div>
-                        
-                        <div class="screenshot-description" id="description-4" style="display: none;">
-                            <!-- Similar structure for Inventory Control -->
-                        </div>
-                        
-                        <div class="screenshot-description" id="description-5" style="display: none;">
-                            <!-- Similar structure for Analytics & Reporting -->
-                        </div>
-                        
-                        <div class="screenshot-description" id="description-6" style="display: none;">
-                            <!-- Similar structure for Customer Management -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Call to action with improved design -->
-                <div class="mt-16 text-center">
-                    <a href="#demo" class="inline-flex items-center justify-center bg-primary text-white font-medium py-3 px-8 rounded-lg shadow-lg hover:bg-primary-dark transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
-                        <span>Schedule a Live Demo</span>
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Javascript for the screenshots section -->
-    <script>
-        // Update the main screenshot change function
-        function changeScreenshot(screenshotNum) {
-            const mainImage = document.getElementById('mainScreenshot');
-            const thumbs = document.querySelectorAll('.screenshot-thumb');
-            const descriptions = document.querySelectorAll('.screenshot-description');
-            const mainContainer = document.querySelector('.main-screenshot-container');
-            const screenshotLabel = document.getElementById('screenshot-label');
-            
-            // Apply transition effect
-            mainImage.style.opacity = '0';
-            mainContainer.style.transform = 'scale(0.98)';
-            
-            setTimeout(() => {
-                // Color map for backgrounds
-                const colorMap = {
-                    '1': '#6ac5a2',  // Dashboard
-                    '2': '#e06e79',  // Menu Management
-                    '3': '#4154d6',  // Order Processing
-                    '4': '#f59e0b',  // Inventory Control
-                    '5': '#3b82f6',  // Analytics
-                    '6': '#8b5cf6'   // Customer Management
-                };
-                
-                // Update active thumb
-                thumbs.forEach(thumb => thumb.classList.remove('active'));
-                const activeThumb = document.querySelector(`.screenshot-thumb[data-screenshot="${screenshotNum}"]`);
-                if (activeThumb) {
-                    activeThumb.classList.add('active');
-                    
-                    // Update label
-                    if (screenshotLabel) {
-                        screenshotLabel.textContent = activeThumb.getAttribute('data-label');
-                    }
-                    
-                    // Update background color from the color map
-                    if (mainContainer && colorMap[screenshotNum]) {
-                        mainContainer.style.backgroundColor = colorMap[screenshotNum];
-                    }
-                }
-                
-                // Update main image
-                if (mainImage) {
-                    mainImage.src = `assets/images/screenshots/${screenshotNum}.png`;
-                }
-                
-                // Update description
-                descriptions.forEach(desc => desc.style.display = 'none');
-                const descriptionElement = document.getElementById(`description-${screenshotNum}`);
-                if (descriptionElement) {
-                    descriptionElement.style.display = 'block';
-                }
-                
-                // Restore transition
-                mainImage.style.opacity = '1';
-                mainContainer.style.transform = 'scale(1)';
-            }, 200);
-        }
-    </script>
-
-    <!-- Features Grid -->
-    <section class="py-24 bg-gradient-to-b from-gray-50 to-white" id="features">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">An all-rounder restaurant billing software</h2>
-            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-16 text-lg">Everything you need to streamline your restaurant operations in one powerful solution</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Customizable bill format -->
-                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-                    <div class="mb-6 flex justify-center">
-                        <div class="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center">
-                            <i class="fas fa-receipt text-primary text-3xl"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-center">Customizable bill format</h3>
-                    <p class="text-gray-600 text-center">Print your restaurant logo, create bill break-ups, edit customer details or add a dynamic QR code for payments right at the billing counter</p>
-                    
-                    <div class="mt-6 pt-4 border-t border-gray-100">
-                        <a href="#" class="text-primary font-medium flex items-center justify-center hover:underline">
-                            <span>Learn more</span>
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    <!-- Call to action -->
+                    <div class="text-center mt-8">
+                        <a href="#demo" class="inline-flex items-center justify-center text-white font-medium py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl" style="font-size: 1.125rem; background-color: #C4283C; border: 2px solid #C4283C;">
+                            <span>Schedule a Live Demo</span>
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                             </svg>
                         </a>
-                    </div>
-                </div>
-
-                <!-- Multi-terminal billing -->
-                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-                    <div class="mb-6 flex justify-center">
-                        <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center">
-                            <i class="fas fa-desktop text-blue-500 text-3xl"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-center">Multi-terminal billing</h3>
-                    <p class="text-gray-600 text-center">Create multiple billing counters and sync them with one master station so your staff can generate KOTs and settle bills from any station</p>
-                    
-                    <div class="mt-6 pt-4 border-t border-gray-100">
-                        <a href="#" class="text-primary font-medium flex items-center justify-center hover:underline">
-                            <span>Learn more</span>
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Station-wise KOT printing -->
-                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-                    <div class="mb-6 flex justify-center">
-                        <div class="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center">
-                            <i class="fas fa-print text-green-500 text-3xl"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-center">Station-wise KOT printing</h3>
-                    <p class="text-gray-600 text-center">Assign unique printers to every station and send KOTs to respective stations automatically</p>
-                    
-                    <div class="mt-6 pt-4 border-t border-gray-100">
-                        <a href="#" class="text-primary font-medium flex items-center justify-center hover:underline">
-                            <span>Learn more</span>
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Table and area management -->
-                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-                    <div class="mb-6 flex justify-center">
-                        <div class="w-16 h-16 rounded-full bg-yellow-50 flex items-center justify-center">
-                            <i class="fas fa-th text-yellow-500 text-3xl"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-center">Table & area management</h3>
-                    <p class="text-gray-600 text-center">Efficiently manage your restaurant's tables and different areas with our intuitive table management system</p>
-                    
-                    <div class="mt-6 pt-4 border-t border-gray-100">
-                        <a href="#" class="text-primary font-medium flex items-center justify-center hover:underline">
-                            <span>Learn more</span>
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Configure taxes & discounts -->
-                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-                    <div class="mb-6 flex justify-center">
-                        <div class="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center">
-                            <i class="fas fa-percentage text-purple-500 text-3xl"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-center">Taxes & discounts</h3>
-                    <p class="text-gray-600 text-center">Easily set up multiple tax rates, service charges, and flexible discount schemes for happy hours and special occasions</p>
-                    
-                    <div class="mt-6 pt-4 border-t border-gray-100">
-                        <a href="#" class="text-primary font-medium flex items-center justify-center hover:underline">
-                            <span>Learn more</span>
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Reports -->
-                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
-                    <div class="mb-6 flex justify-center">
-                        <div class="w-16 h-16 rounded-full bg-indigo-50 flex items-center justify-center">
-                            <i class="fas fa-chart-line text-indigo-500 text-3xl"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-center">Comprehensive Reports</h3>
-                    <p class="text-gray-600 text-center">Access comprehensive sales, inventory, and performance reports to make data-driven decisions for your restaurant business</p>
-                    
-                    <div class="mt-6 pt-4 border-t border-gray-100">
-                        <a href="#" class="text-primary font-medium flex items-center justify-center hover:underline">
-                            <span>Learn more</span>
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- All Features Button -->
-            <div class="text-center mt-12">
-                <a href="#" class="inline-flex items-center bg-white text-primary border border-primary rounded-lg px-6 py-3 font-medium hover:bg-primary hover:text-white transition-colors duration-300">
-                    <span>View All Features</span>
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-24 bg-gradient-to-br from-red-50 to-white relative overflow-hidden">
-        <!-- Background decoration elements -->
-        <div class="absolute -top-10 -right-10 w-40 h-40 bg-red-100 rounded-full opacity-50"></div>
-        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-red-100 rounded-full opacity-50"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-100 rounded-full opacity-30"></div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center max-w-4xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Quick & Simple</h2>
-                <p class="text-gray-600 text-lg mb-16">isselo restaurant billing software works easily with any existing infrastructure</p>
-                
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
-                    <!-- Works offline -->
-                    <div class="feature-stat text-center bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-red-50 rounded-full">
-                            <i class="fas fa-cloud-download-alt text-primary text-2xl"></i>
-                        </div>
-                        <p class="text-sm font-medium">Works offline with cloud backup</p>
-                    </div>
-
-                    <!-- Works on any hardware -->
-                    <div class="feature-stat text-center bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-50 rounded-full">
-                            <i class="fas fa-laptop text-blue-500 text-2xl"></i>
-                        </div>
-                        <p class="text-sm font-medium">Works on any hardware</p>
-                    </div>
-
-                    <!-- Works on major OS -->
-                    <div class="feature-stat text-center bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-green-50 rounded-full">
-                            <i class="fab fa-windows text-green-500 text-2xl"></i>
-                        </div>
-                        <p class="text-sm font-medium">Works on major Operating systems</p>
-                    </div>
-
-                    <!-- Keyboard/touchscreen view -->
-                    <div class="feature-stat text-center bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-yellow-50 rounded-full">
-                            <i class="fas fa-keyboard text-yellow-500 text-2xl"></i>
-                        </div>
-                        <p class="text-sm font-medium">Keyboard / touchscreen view</p>
-                    </div>
-
-                    <!-- 24x7 Support -->
-                    <div class="feature-stat text-center bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-purple-50 rounded-full">
-                            <i class="fas fa-headset text-purple-500 text-2xl"></i>
-                        </div>
-                        <p class="text-sm font-medium">24x7 Support</p>
-                    </div>
-
-                    <!-- Customizable Reports -->
-                    <div class="feature-stat text-center bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-indigo-50 rounded-full">
-                            <i class="fas fa-chart-bar text-indigo-500 text-2xl"></i>
-                        </div>
-                        <p class="text-sm font-medium">Customizable Reports</p>
-                    </div>
-                </div>
-                
-                <!-- Stats counters -->
-                <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-                    <div class="stat-block text-center">
-                        <div class="stat-counter text-4xl font-bold text-primary mb-2" data-target="10000">0</div>
-                        <p class="text-gray-600">Happy Customers</p>
-                    </div>
-                    <div class="stat-block text-center">
-                        <div class="stat-counter text-4xl font-bold text-primary mb-2" data-target="200">0</div>
-                        <p class="text-gray-600">Integration Partners</p>
-                    </div>
-                    <div class="stat-block text-center">
-                        <div class="stat-counter text-4xl font-bold text-primary mb-2" data-target="24">0</div>
-                        <p class="text-gray-600">Hours Support</p>
-                    </div>
-                </div>
-                
-                <!-- Customer success callout -->
-                <div class="mt-20 bg-white rounded-xl shadow-lg p-8 max-w-3xl mx-auto">
-                    <div class="flex flex-col md:flex-row items-center text-left">
-                        <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
-                            <div class="relative">
-                                <div class="w-24 h-24 bg-primary/20 rounded-full absolute -top-2 -left-2"></div>
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Happy customer" class="w-24 h-24 rounded-full border-4 border-white shadow-md relative z-10">
-                            </div>
-                        </div>
-                        <div class="md:w-2/3 md:pl-8">
-                            <div class="text-primary mb-2">
-                                <i class="fas fa-quote-left text-xl opacity-50"></i>
-                            </div>
-                            <p class="text-gray-700 italic mb-4">"We've increased our serving capacity by 35% simply by streamlining our billing process with isselo. The 3-click system is a game-changer!"</p>
-                            <div class="font-medium">Ahmed Khan, Café Owner</div>
-                            <div class="text-sm text-gray-500">Using isselo for 2+ years</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Animation script for stat counters -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animated counter function
-            const counters = document.querySelectorAll('.stat-counter');
-            
-            // Intersection Observer to trigger counting animation when visible
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counter = entry.target;
-                        const target = parseInt(counter.getAttribute('data-target'), 10);
-                        const duration = 2000; // 2 seconds
-                        const increment = target / (duration / 16); // 16ms is roughly one frame at 60fps
-                        let current = 0;
-                        
-                        const updateCounter = () => {
-                            current += increment;
-                            if (current < target) {
-                                counter.textContent = Math.floor(current);
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                counter.textContent = target.toLocaleString();
-                            }
-                        };
-                        
-                        updateCounter();
-                        observer.unobserve(counter);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            counters.forEach(counter => {
-                observer.observe(counter);
-            });
-            
-            // Animation for feature stats
-            const featureStats = document.querySelectorAll('.feature-stat');
-            
-            featureStats.forEach((stat, index) => {
-                // Add staggered animation delay
-                stat.style.animationDelay = `${index * 0.1}s`;
-                stat.classList.add('animate-fade-in');
-            });
-        });
-    </script>
-
-    <!-- Pricing Section -->
-    <section class="py-24 bg-white" id="pricing">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple & Transparent Pricing</h2>
-                <p class="text-gray-600 text-lg">Get started with our affordable plans designed for restaurants of all sizes</p>
-            </div>
-
-            <div class="max-w-5xl mx-auto">
-                <!-- Basic Plan -->
-                <div class="bg-white rounded-2xl p-8 border-2 border-primary relative overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <!-- Popular Badge -->
-                    <div class="absolute -right-12 top-8 bg-primary text-white py-1 px-10 transform rotate-45 shadow-md">
-                        <span class="text-sm font-medium">Most Popular</span>
-                    </div>
-
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-                        <div class="w-full md:w-7/12">
-                            <div class="flex items-center mb-4">
-                                <h3 class="text-2xl font-bold">Basic Plan</h3>
-                                <span class="ml-4 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Best Value</span>
-                            </div>
-                            
-                            <p class="text-gray-600 mb-6">Perfect for small to medium restaurants looking for an all-in-one solution</p>
-                            
-                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 text-gray-600">
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span>Cloud billing</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span>Inventory module</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span>80+ reports</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span>200+ integrations</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span>Unlimited-user rights</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span>Unlimited cash register</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    Central kitchen module
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    Multi-terminal billing
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    Scan & order app
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    Captain ordering app
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    Order reconciliation
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    24x7 support
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    Free training
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="text-center md:text-right md:w-5/12">
-                            <div class="mb-4">
-                                <span class="text-4xl font-bold">₹2,999</span>
-                                <span class="text-gray-600">/year</span>
-                            </div>
-                            <p class="text-sm text-gray-600 mb-6">+ ₹499/year for each additional device</p>
-                            <div class="space-y-3">
-                                <a href="#demo" class="btn-primary block text-center">Start 3-Day Free Trial</a>
-                                <p class="text-sm text-gray-500">No credit card required</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Coming Soon Plan -->
-                <div class="mt-8 bg-gray-50 rounded-2xl p-8 border-2 border-dashed border-gray-300">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2" style="font-family: 'Poppins', sans-serif;">Pro Plan</h3>
-                            <p class="text-gray-600">Perfect for growing restaurants with advanced needs</p>
-                        </div>
-                        <div class="mt-4 md:mt-0">
-                            <span class="inline-block px-4 py-2 bg-gray-200 rounded-full text-gray-600 font-medium">Coming Soon</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQs Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16" style="font-family: 'Poppins', sans-serif;">FAQs</h2>
-                
-                <div class="space-y-4">
-                    <div class="border-b border-gray-200 pb-4">
-                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
-                            <h3 class="text-lg font-medium text-primary">What is the importance of restaurant billing software?</h3>
-                            <span class="text-gray-400">▼</span>
-                        </div>
-                        <div class="answer mt-4 text-gray-600 hidden">
-                            A restaurant billing system helps businesses manage everyday operations like billing, inventory consumption, online orders, CRM, etc.
-                        </div>
-                    </div>
-
-                    <div class="border-b border-gray-200 pb-4">
-                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
-                            <h3 class="text-lg font-medium">Is the restaurant billing process complex?</h3>
-                            <span class="text-gray-400">▼</span>
-                        </div>
-                        <div class="answer mt-4 text-gray-600 hidden">
-                            No, isselo makes the billing process simple with its intuitive interface and 3-click billing process.
-                        </div>
-                    </div>
-
-                    <div class="border-b border-gray-200 pb-4">
-                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
-                            <h3 class="text-lg font-medium">How much time does it take to set up a restaurant pos?</h3>
-                            <span class="text-gray-400">▼</span>
-                        </div>
-                        <div class="answer mt-4 text-gray-600 hidden">
-                            With isselo, you can set up your restaurant POS in less than a day. Our team helps you with the entire setup process.
-                        </div>
-                    </div>
-
-                    <div class="border-b border-gray-200 pb-4">
-                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
-                            <h3 class="text-lg font-medium">How can I track my Orders in real time?</h3>
-                            <span class="text-gray-400">▼</span>
-                        </div>
-                        <div class="answer mt-4 text-gray-600 hidden">
-                            isselo provides real-time order tracking through its dashboard and mobile app, allowing you to monitor orders as they happen.
-                        </div>
-                    </div>
-
-                    <div class="border-b border-gray-200 pb-4">
-                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
-                            <h3 class="text-lg font-medium">Do I need to keep my internet connection ON every time I create an order?</h3>
-                            <span class="text-gray-400">▼</span>
-                        </div>
-                        <div class="answer mt-4 text-gray-600 hidden">
-                            No, isselo works offline. You can create orders without an internet connection, and they will sync automatically when you're back online.
-                        </div>
-                    </div>
-
-                    <div class="border-b border-gray-200 pb-4">
-                        <div class="flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
-                            <h3 class="text-lg font-medium">Can I operate and print my bills in my regional language?</h3>
-                            <span class="text-gray-400">▼</span>
-                        </div>
-                        <div class="answer mt-4 text-gray-600 hidden">
-                            Yes, isselo supports multiple languages including regional languages for both operation and bill printing.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-24 bg-gradient-to-b from-gray-50 to-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Customers Say</h2>
-                    <p class="text-gray-600 text-lg">Don't just take our word for it - see what restaurant owners like you have achieved with isselo</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Testimonial 1 -->
-                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 relative">
-                        <!-- Quote decoration -->
-                        <div class="absolute top-4 right-4 text-primary opacity-10">
-                            <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                            </svg>
-                        </div>
-                        
-                        <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 rounded-full overflow-hidden mr-4 ring-2 ring-primary ring-offset-2">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Rajesh Kumar</h4>
-                                <p class="text-gray-600">Spice Garden, Mumbai</p>
-                            </div>
-                        </div>
-                        
-                        <p class="text-gray-700 mb-6 relative z-10">"isselo has completely transformed how we handle billing. The 3-click process is a game-changer during rush hours. We've reduced our billing time by 70% and customer wait times are practically non-existent now."</p>
-                        
-                        <div class="flex items-center justify-between">
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-sm text-gray-500">April 2024</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 relative md:mt-8">
-                        <!-- Quote decoration -->
-                        <div class="absolute top-4 right-4 text-primary opacity-10">
-                            <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                            </svg>
-                        </div>
-                        
-                        <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 rounded-full overflow-hidden mr-4 ring-2 ring-primary ring-offset-2">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Priya Sharma</h4>
-                                <p class="text-gray-600">Cloud Kitchen Owner</p>
-                            </div>
-                        </div>
-                        
-                        <p class="text-gray-700 mb-6 relative z-10">"As someone managing multiple cloud kitchens, I needed a solution that works offline but syncs data when online. isselo does exactly that! The inventory management features have helped us reduce wastage by 25%."</p>
-                        
-                        <div class="flex items-center justify-between">
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-sm text-gray-500">March 2024</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 relative">
-                        <!-- Quote decoration -->
-                        <div class="absolute top-4 right-4 text-primary opacity-10">
-                            <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                            </svg>
-                        </div>
-                        
-                        <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 rounded-full overflow-hidden mr-4 ring-2 ring-primary ring-offset-2">
-                                <img src="https://randomuser.me/api/portraits/men/66.jpg" alt="Customer" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Ahmed Khan</h4>
-                                <p class="text-gray-600">Café Chain Owner</p>
-                            </div>
-                        </div>
-                        
-                        <p class="text-gray-700 mb-6 relative z-10">"With 5 cafe locations, I needed a centralized system. isselo's multi-terminal setup is perfect. The reports give me insights I never had before, and we've increased our profit margins by optimizing our menu based on the data."</p>
-                        
-                        <div class="flex items-center justify-between">
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <span class="text-sm text-gray-500">February 2024</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial metrics -->
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                    <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                        <div class="text-primary text-4xl font-bold mb-2">97%</div>
-                        <p class="text-gray-600">Customer satisfaction rating</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                        <div class="text-primary text-4xl font-bold mb-2">4.9/5</div>
-                        <p class="text-gray-600">Average rating across platforms</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                        <div class="text-primary text-4xl font-bold mb-2">25min</div>
-                        <p class="text-gray-600">Average support response time</p>
-                    </div>
-                </div>
-                
-                <div class="mt-12 text-center">
-                    <a href="#case-studies" class="inline-flex items-center text-primary font-medium hover:underline group">
-                        <span>See all customer success stories</span>
-                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Studies Section -->
-    <section class="py-20 bg-white" id="case-studies">
-        <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">Success Stories</h2>
-                    <p class="text-gray-600">See how restaurants are transforming their operations with isselo</p>
-                </div>
-                
-                <!-- Case Study 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg mb-12">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/2">
-                            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Restaurant case study" class="w-full h-full object-cover">
-                        </div>
-                        <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                            <div class="mb-4">
-                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Fine Dining</span>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">How Royal Spice Increased Revenue by 32% in 6 Months</h3>
-                            <p class="text-gray-700 mb-6">Royal Spice, a high-end restaurant in Mumbai, struggled with slow billing processes and inventory management. After implementing isselo, they streamlined operations, reduced food wastage, and significantly improved customer satisfaction.</p>
-                            <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div class="bg-gray-50 p-4 rounded-lg">
-                                    <p class="text-2xl font-bold text-primary">32%</p>
-                                    <p class="text-sm text-gray-600">Revenue Increase</p>
-                                </div>
-                                <div class="bg-gray-50 p-4 rounded-lg">
-                                    <p class="text-2xl font-bold text-primary">68%</p>
-                                    <p class="text-sm text-gray-600">Faster Billing</p>
-                                </div>
-                            </div>
-                            <a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
-                                Read full case study
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Case Study 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
-                    <div class="flex flex-col md:flex-row-reverse">
-                        <div class="md:w-1/2">
-                            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cafe case study" class="w-full h-full object-cover">
-                        </div>
-                        <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                            <div class="mb-4">
-                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Cafe Chain</span>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">How Coffee Culture Expanded to 12 Locations with One System</h3>
-                            <p class="text-gray-700 mb-6">Coffee Culture started with 3 locations and struggled with managing inventory and reconciling sales across branches. With isselo's multi-terminal capabilities and centralized reporting, they efficiently scaled to 12 locations in just 18 months.</p>
-                            <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div class="bg-gray-50 p-4 rounded-lg">
-                                    <p class="text-2xl font-bold text-primary">300%</p>
-                                    <p class="text-sm text-gray-600">Location Growth</p>
-                                </div>
-                                <div class="bg-gray-50 p-4 rounded-lg">
-                                    <p class="text-2xl font-bold text-primary">45%</p>
-                                    <p class="text-sm text-gray-600">Cost Reduction</p>
-                                </div>
-                            </div>
-                            <a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
-                                Read full case study
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-12 text-center">
-                    <a href="#" class="btn-primary inline-flex items-center">
-                        View All Success Stories
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Integration Partners Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold mb-4" style="font-family: 'Poppins', sans-serif;">Seamless Integrations</h2>
-                    <p class="text-gray-600 max-w-3xl mx-auto">isselo works perfectly with your favorite tools and platforms</p>
-                </div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-6 gap-8">
-                    <!-- Integration logos - Using placeholder gray boxes with text for now -->
-                    <div class="flex items-center justify-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Paytm_Logo_%28standalone%29.svg/2560px-Paytm_Logo_%28standalone%29.svg.png" alt="Paytm" class="h-8 opacity-70 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex items-center justify-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Patreon_logo.svg/2560px-Patreon_logo.svg.png" alt="Razor Pay" class="h-8 opacity-70 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex items-center justify-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/1280px-Google_Pay_Logo.svg.png" alt="Google Pay" class="h-8 opacity-70 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex items-center justify-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Swiggy_logo.svg/1200px-Swiggy_logo.svg.png" alt="Swiggy" class="h-8 opacity-70 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex items-center justify-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Zomato_logo.png/1200px-Zomato_logo.png" alt="Zomato" class="h-8 opacity-70 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex items-center justify-center bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/PhonePe_Logo.svg/1200px-PhonePe_Logo.svg.png" alt="PhonePe" class="h-8 opacity-70 hover:opacity-100 transition-opacity">
-                    </div>
-                </div>
-                
-                <div class="text-center mt-10">
-                    <p class="text-gray-600">...and 200+ more integrations available</p>
-                    <a href="#" class="inline-flex items-center text-primary font-medium hover:underline mt-4">
-                        View all integrations
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section class="py-24 relative overflow-hidden" id="cta">
-        <!-- Gradient background -->
-        <div class="absolute inset-0 bg-gradient-to-br from-primary to-pink-600"></div>
-        
-        <!-- Decorative elements -->
-        <div class="absolute top-0 left-0 right-0 h-24 bg-white" style="border-radius: 0 0 100% 100% / 0 0 48px 48px;"></div>
-        <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-primary-light opacity-20"></div>
-        <div class="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-primary-light opacity-20"></div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-4xl mx-auto text-center text-white">
-                <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">Ready to transform your restaurant operations?</h2>
-                <p class="text-xl opacity-90 mb-12 leading-relaxed">Join thousands of restaurant owners who've already made the switch to isselo's smart billing solution</p>
-                
-                <div class="flex flex-col sm:flex-row sm:justify-center gap-6 mb-12">
-                    <a href="#demo" class="bg-white text-primary px-8 py-4 rounded-lg font-medium text-lg hover:bg-gray-100 transition-colors shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
-                        Book a Free Demo
-                    </a>
-                    <a href="#download" class="bg-transparent border-2 border-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-white hover:text-primary transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        Start 3-Day Free Trial
-                    </a>
-                </div>
-                
-                <p class="mb-12 text-sm opacity-80">No credit card required. Cancel anytime.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-white rounded-full p-2 mr-4">
-                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <h3 class="font-bold text-xl">24/7 Support</h3>
-                        </div>
-                        <p class="text-white/80">Our dedicated support team is available around the clock to help you with any issues or questions.</p>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-white rounded-full p-2 mr-4">
-                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <h3 class="font-bold text-xl">Free Onboarding</h3>
-                        </div>
-                        <p class="text-white/80">We'll help you set up your menu, inventory, and other key features to ensure a smooth transition.</p>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-white rounded-full p-2 mr-4">
-                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <h3 class="font-bold text-xl">Staff Training</h3>
-                        </div>
-                        <p class="text-white/80">We provide comprehensive training for your staff to ensure they can make the most of isselo's features.</p>
-                    </div>
-                </div>
-                
-                <!-- Trust badges -->
-                <div class="mt-16 pt-10 border-t border-white/20">
-                    <p class="text-sm text-white/70 mb-6">Trusted by restaurants across India</p>
-                    <div class="flex flex-wrap justify-center items-center gap-8">
-                        <div class="bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Paytm_Logo_%28standalone%29.svg/2560px-Paytm_Logo_%28standalone%29.svg.png" alt="Paytm" class="h-8 opacity-70">
-                        </div>
-                        <div class="bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Swiggy_logo.svg/1200px-Swiggy_logo.svg.png" alt="Swiggy" class="h-8 opacity-70">
-                        </div>
-                        <div class="bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Zomato_logo.png/1200px-Zomato_logo.png" alt="Zomato" class="h-8 opacity-70">
-                        </div>
-                        <div class="bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/PhonePe_Logo.svg/1200px-PhonePe_Logo.svg.png" alt="PhonePe" class="h-8 opacity-70">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1580,9 +752,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-20 pb-10">
+    <footer class="bg-gray-900 text-white pt-16">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 pb-12 border-b border-gray-800">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 pb-10 border-b border-gray-800">
                 <div class="md:col-span-2">
                     <div class="h-10 mb-6">
                         <img src="assets/icons/isselo_icons/white_logo_with_name.png" alt="isselo" class="h-full">
@@ -1620,361 +792,54 @@
                     <ul class="space-y-3">
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Knowledge Base</a></li>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                    <input type="email" id="email" name="email" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Reference</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Community Forum</a></li>
+                        <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
                 </div>
-
+                
                 <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                    <h4 class="text-lg font-bold mb-4 text-white">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about-us" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
                 </div>
-
+                
                 <div>
-                    <label for="restaurant" class="block text-sm font-medium text-gray-700 mb-1">Restaurant Name</label>
-                    <input type="text" id="restaurant" name="restaurant" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                    <h4 class="text-lg font-bold mb-4 text-white">Get in Touch</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-3 text-primary"></i>
+                            <a href="mailto:info@isselo.com" class="hover:text-white transition-colors">info@isselo.com</a>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone-alt mr-3 text-primary"></i>
+                            <a href="tel:+919876543210" class="hover:text-white transition-colors">+91 98765 43210</a>
+                        </li>
+                        <li class="flex items-start text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-3 mt-1 text-primary"></i>
+                            <span>123 Tech Park, Silicon Valley<br>Bangalore, Karnataka 560001</span>
+                        </li>
+                    </ul>
                 </div>
-
-                <div>
-                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message (Optional)</label>
-                    <textarea id="message" name="message" rows="3"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"></textarea>
+            </div>
+            
+            <!-- Copyright Section -->
+            <div class="py-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2024 isselo. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="privacy.html" class="text-gray-500 text-sm hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="text-gray-500 text-sm hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-500 text-sm hover:text-white transition-colors">Sitemap</a>
                 </div>
-
-                <button type="submit" class="w-full btn-primary py-3">Request Demo</button>
-            </form>
+            </div>
         </div>
-    </div>
-
-    <style>
-        .usp-container:hover .usp-tooltip {
-            display: none; /* Changed from block to none - JS will handle the display */
-        }
-        
-        .usp-tooltip {
-            display: none;
-        }
-        
-        .usp-tooltip::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: 20px;
-            width: 12px;
-            height: 12px;
-            background-color: white;
-            transform: rotate(45deg);
-            box-shadow: -2px -2px 5px rgba(0,0,0,0.05);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .usp-tooltip {
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .usp-nav-btn {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #e5e7eb;
-            transition: all 0.3s ease;
-        }
-
-        .usp-nav-btn.active {
-            background-color: var(--primary-color, #dc2626);
-            transform: scale(1.2);
-        }
-
-        .usp-item {
-            padding: 12px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .usp-item:hover {
-            background-color: #f8f9fa;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(-20px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .usp-item {
-            animation: slideIn 0.3s ease-out forwards;
-        }
-
-        @keyframes slideDown {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(80%); }
-        }
-
-        @keyframes printBill {
-            0% { 
-                transform: translate(-50%, -100%);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            100% { 
-                transform: translate(-50%, 100%);
-                opacity: 1;
-            }
-        }
-
-        .sliding-down {
-            animation: slideDown 1s forwards;
-        }
-
-        .printing {
-            animation: printBill 3s ease-out forwards;
-        }
-
-        .printer-body {
-            width: 600px !important;
-            height: 700px !important;
-            margin: 0 auto;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(145deg, #2d3748 0%, #1a202c 100%);
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.4),
-                inset 0 2px 10px rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-        }
-
-        #thermal-bill {
-            width: 120mm !important;
-            min-height: 400px;
-            font-size: 0.9rem;
-            position: absolute;
-            top: -410px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            padding: 1.5rem;
-            border-radius: 4px;
-        }
-
-        .printer-slot {
-            width: calc(120mm + 20px) !important;
-            height: 6px !important;
-            background: #1a1a1a;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 0 0 4px 4px;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .printer-status {
-            position: absolute;
-            top: 2.5rem;
-            right: 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .printer-light {
-            width: 2rem !important;
-            height: 2rem !important;
-        }
-
-        .printer-status-text {
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .printer-details {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 2.5rem;
-            color: #a0aec0;
-            font-size: 1.5rem;
-        }
-
-        .tablet-mockup {
-            position: relative;
-            z-index: 1;
-        }
-
-        #printer-animation {
-            z-index: 60;
-        }
-    </style>
-
-    <script>
-        // Demo Modal Functions
-        function openDemoModal() {
-            document.getElementById('demoModal').classList.remove('hidden');
-            document.getElementById('demoModal').classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDemoModal() {
-            document.getElementById('demoModal').classList.add('hidden');
-            document.getElementById('demoModal').classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        function handleDemoSubmit(event) {
-            event.preventDefault();
-            // Here you would typically handle the form submission
-            // For now, we'll just show a success message
-            const form = event.target;
-            const formData = new FormData(form);
-            
-            // You can add your form submission logic here
-            console.log('Form submitted:', Object.fromEntries(formData));
-            
-            // Show success message
-            form.innerHTML = `
-                <div class="text-center py-8">
-                    <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <h4 class="text-xl font-bold mb-2">Thank you!</h4>
-                    <p class="text-gray-600">We've received your demo request and will contact you shortly.</p>
-                </div>
-            `;
-
-            // Close modal after 3 seconds
-            setTimeout(closeDemoModal, 3000);
-        }
-
-        // Add click event listeners to demo buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            const demoButtons = document.querySelectorAll('a[href="#demo"]');
-            demoButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openDemoModal();
-                });
-            });
-        });
-
-        // Download Modal Functions
-        function openDownloadModal() {
-            document.getElementById('downloadModal').classList.remove('hidden');
-            document.getElementById('downloadModal').classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDownloadModal() {
-            document.getElementById('downloadModal').classList.add('hidden');
-            document.getElementById('downloadModal').classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Add click event listeners to download buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            const downloadButtons = document.querySelectorAll('a[href="#download"]');
-            downloadButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openDownloadModal();
-                });
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const rotatingUsp = document.getElementById('rotating-usp');
-            const uspItems = document.querySelectorAll('.usp-item');
-            const navBtns = document.querySelectorAll('.usp-nav-btn');
-            let currentIndex = 0;
-            
-            function updateActiveButton(index) {
-                navBtns.forEach(btn => btn.classList.remove('active'));
-                navBtns[index].classList.add('active');
-            }
-
-            function updateUSP(index) {
-                const item = uspItems[index];
-                const newUsp = item.getAttribute('data-usp');
-                rotatingUsp.firstChild.textContent = newUsp;
-                
-                // Add a ripple effect
-                const ripple = document.createElement('span');
-                ripple.className = 'absolute inset-0 bg-primary/20 rounded-lg';
-                item.appendChild(ripple);
-                ripple.addEventListener('animationend', () => ripple.remove());
-                
-                updateActiveButton(index);
-            }
-
-            navBtns.forEach((btn, index) => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    currentIndex = index;
-                    updateUSP(index);
-                });
-            });
-            
-            uspItems.forEach((item, index) => {
-                item.addEventListener('click', function() {
-                    currentIndex = index;
-                    updateUSP(index);
-                    
-                    // Scale animation
-                    rotatingUsp.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        rotatingUsp.style.transform = 'scale(1)';
-                    }, 200);
-                });
-            });
-
-            // Auto-rotate every 3 seconds
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % uspItems.length;
-                updateUSP(currentIndex);
-            }, 3000);
-        });
-
-        let tooltipTimeout;
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const uspContainer = document.querySelector('.usp-container');
-            const uspTooltip = document.querySelector('.usp-tooltip');
-            
-            // Show tooltip on hover
-            uspContainer.addEventListener('mouseenter', function() {
-                clearTimeout(tooltipTimeout);
-                uspTooltip.style.display = 'block';
-            });
-            
-            // Hide tooltip with delay on mouse leave
-            uspContainer.addEventListener('mouseleave', function() {
-                tooltipTimeout = setTimeout(() => {
-                    uspTooltip.style.display = 'none';
-                }, 1000); // 1 second delay
-            });
-            
-            // Keep tooltip visible when hovering over it
-            uspTooltip.addEventListener('mouseenter', function() {
-                clearTimeout(tooltipTimeout);
-            });
-            
-            // Hide tooltip with delay when leaving it
-            uspTooltip.addEventListener('mouseleave', function() {
-                tooltipTimeout = setTimeout(() => {
-                    uspTooltip.style.display = 'none';
-                }, 1000); // 1 second delay
-            });
-        });
-    </script>
+    </footer>
+    </div> <!-- End of scale-wrapper -->
 
     <!-- Add html2pdf library for PDF generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -1987,6 +852,7 @@
         <button 
             onclick="openDemoModal()" 
             class="bg-primary text-white rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary group transition-all duration-300 hover:shadow-xl"
+            style="background-color: #C4283C; border: 2px solid #C4283C;"
         >
             <div class="relative">
                 <div class="flex items-center justify-center h-14 w-14 group-hover:w-auto group-hover:px-5 transition-all duration-300 overflow-hidden">
@@ -1994,7 +860,7 @@
                     <span class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">Get a Demo</span>
                 </div>
                 <!-- Pulsing effect -->
-                <div class="absolute inset-0 rounded-full bg-primary animate-ping opacity-25"></div>
+                <div class="absolute inset-0 rounded-full bg-primary animate-ping opacity-25" style="background-color: #C4283C;"></div>
             </div>
         </button>
     </div>
@@ -2011,37 +877,7 @@
         </button>
     </div>
 
-    <!-- Add script for smooth scrolling and other animations -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize animation for elements when they scroll into view
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
-            
-            const animateObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-in');
-                        animateObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            animateElements.forEach(el => {
-                animateObserver.observe(el);
-            });
-            
-            // Back to top button
-            const backToTopButton = document.getElementById('back-to-top');
-            
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 500) {
-                    backToTopButton.style.opacity = '1';
-                } else {
-                    backToTopButton.style.opacity = '0';
-                }
-            });
-        });
-        
         // Smooth scroll to top function
         function scrollToTop() {
             window.scrollTo({
@@ -2050,96 +886,50 @@
             });
         }
         
-        // Add staggered animation class to all feature cards
-        document.addEventListener('DOMContentLoaded', function() {
-            const featureCards = document.querySelectorAll('.feature-card');
-            
-            featureCards.forEach((card, index) => {
-                card.classList.add('animate-on-scroll');
-                card.style.animationDelay = `${index * 0.1}s`;
-            });
-        });
-        
-        // Enhanced smooth scrolling function
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#demo' || this.getAttribute('href') === '#download') {
-                    return; // Let the modal handling take care of these
-                }
-                
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Add some animation to the scroll
-                    targetElement.classList.add('highlight-section');
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100, // Offset for fixed header
-                        behavior: 'smooth'
-                    });
-                    
-                    // Remove highlight after animation
-                    setTimeout(() => {
-                        targetElement.classList.remove('highlight-section');
-                    }, 2000);
-                }
-            });
-        });
-    </script>
+        // Demo Modal Functions
+        function openDemoModal() {
+            document.getElementById('demoModal').classList.remove('hidden');
+            document.getElementById('demoModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
 
-    <!-- Additional animation styles -->
+        function closeDemoModal() {
+            document.getElementById('demoModal').classList.add('hidden');
+            document.getElementById('demoModal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Download Modal Functions
+        function openDownloadModal() {
+            document.getElementById('downloadModal').classList.remove('hidden');
+            document.getElementById('downloadModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('downloadModal').classList.add('hidden');
+            document.getElementById('downloadModal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+    
+    <!-- Final fixes for footer whitespace -->
     <style>
-        @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        html, body {
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
         
-        .animate-bounce-slow {
-            animation: bounce-slow 3s ease-in-out infinite;
+        .scale-wrapper {
+            min-height: 100vh;
         }
         
-        @keyframes highlight {
-            0% { box-shadow: 0 0 0 0 rgba(196, 40, 60, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(196, 40, 60, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(196, 40, 60, 0); }
-        }
-        
-        .highlight-section {
-            animation: highlight 2s ease-out;
-        }
-        
-        /* Add animation classes for elements */
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Prevent animation on page load */
-        .animate-on-scroll {
-            opacity: 0;
-        }
-        
-        /* Prefers reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            .animate-on-scroll {
-                opacity: 1;
-            }
-            .animate-fade-in, .animate-bounce-slow, .highlight-section {
-                animation: none !important;
-            }
-            html {
-                scroll-behavior: auto !important;
-            }
+        footer {
+            padding-bottom: 0 !important;
+            margin-bottom: 0 !important;
         }
     </style>
-    </div> <!-- End of scale-wrapper -->
 </body>
-</html> 
+</html>

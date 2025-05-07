@@ -30,6 +30,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: normal;
+    flex-direction: column;
 }
 
 h1,
@@ -487,4 +488,35 @@ h6 {
     .main-screenshot-container {
         height: 400px;
     }
+}
+
+/* Footer specific fixes */
+.scale-wrapper {
+    min-height: 100vh;
+    position: relative;
+}
+
+footer {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    width: 100%;
+}
+
+/* Remove any bottom margin/padding that might be causing the whitespace */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+/* Ensure no padding or margin at the bottom of the page */
+html {
+    overflow-x: hidden;
+}
+
+/* Remove the problematic flex properties */
+body>*:last-child {
+    margin-bottom: 0 !important;
 }
