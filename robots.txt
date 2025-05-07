@@ -1,4 +1,19 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://isselo.com/sitemap.xml 
+Sitemap: https://isselo.com/sitemap.xml
+
+# Disallow specific paths if needed
+# Disallow: /temporary/
+# Disallow: /admin/
+
+# Allow all image files
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Crawl delay for bots
+Crawl-delay: 5 

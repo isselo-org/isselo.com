@@ -7,23 +7,95 @@
     <meta name="keywords" content="restaurant POS, restaurant management, billing software, restaurant billing, inventory management">
     <meta name="author" content="isselo">
     <meta name="theme-color" content="#C4283C">
+    <meta property="og:title" content="isselo - Smart Restaurant Management & POS Software">
+    <meta property="og:description" content="Run billing, KOTs, and GST reports—without internet. Isselo is the all you need to run your restaurant.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://isselo.com">
+    <meta property="og:image" content="assets/icons/isselo_icons/apple-touch-icon.png">
+    <meta name="twitter:card" content="summary_large_image">
     <title>isselo - Smart Restaurant Management & POS Software</title>
     
     <!-- Favicon -->
     <link rel="icon" href="assets/icons/isselo_icons/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/icons/isselo_icons/apple-touch-icon.png">
     
-    <!-- Stylesheets -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Critical CSS inlined for fast rendering -->
+    <style>
+        :root {
+            --primary-color: #C4283C;
+            --primary-dark: #A51E30;
+            --primary-light: #E5394E;
+            --primary-bg: #FFF5F5;
+            --text-dark: #2D3748;
+            --text-light: #718096;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            line-height: 1.2;
+        }
+        
+        .text-primary {
+            color: var(--primary-color);
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+    </style>
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"></noscript>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     
     <!-- Google Fonts - Optimized Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Load CSS fallback script -->
+    <script>
+        // CSS load fallback
+        (function(h){
+            h.loadCSS=function(c,d,e){var f=window.document.createElement("link");var g=d||window.document.getElementsByTagName("script")[0];
+            f.rel="stylesheet";f.href=c;f.media="only x";g.parentNode.insertBefore(f,g);setTimeout(function(){f.media="all";},0);
+            return f;};})(this);
+    </script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "isselo",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Windows, macOS, Android, iOS",
+        "offers": {
+            "@type": "Offer",
+            "price": "2999",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock"
+        },
+        "description": "Restaurant management and POS software that's 10x faster, simple, and 100% reliable."
+    }
+    </script>
     
     <style>
         :root {
@@ -315,7 +387,7 @@
                     <a href="#faq" class="nav-link font-medium hover:text-primary transition-colors py-2">FAQ</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="#download" class="hidden sm:block px-4 py-2 rounded-lg text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-colors text-sm font-medium">Download Now</a>
+                    <a href="javascript:void(0);" onclick="openDownloadModal()" class="hidden sm:block px-4 py-2 rounded-lg text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-colors text-sm font-medium">Download Now</a>
                     <a href="#demo" class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors text-sm font-medium shadow-sm hover:shadow-md">Book A Demo</a>
                     
                     <!-- Mobile menu toggle -->
@@ -333,7 +405,7 @@
                 <a href="screenshots.html" class="block py-2 px-4 font-medium hover:bg-gray-50 hover:text-primary rounded-md">Product Tour</a>
                 <a href="#pricing" class="block py-2 px-4 font-medium hover:bg-gray-50 hover:text-primary rounded-md">Pricing</a>
                 <a href="#contact" class="block py-2 px-4 font-medium hover:bg-gray-50 hover:text-primary rounded-md">Contact</a>
-                <a href="#download" class="block py-2 px-4 font-medium hover:bg-gray-50 hover:text-primary rounded-md">Download Now</a>
+                <a href="javascript:void(0);" onclick="openDownloadModal()" class="block py-2 px-4 font-medium hover:bg-gray-50 hover:text-primary rounded-md">Download Now</a>
             </div>
         </div>
     </nav>
@@ -362,8 +434,11 @@
     </script>
 
     <!-- Hero Section -->
-    <section class="pt-36 pb-20 overflow-hidden bg-gradient-to-br from-white to-red-50">
-        <div class="container mx-auto px-4">
+    <section class="pt-36 pb-20 overflow-hidden relative">
+        <!-- Grid Background Pattern -->
+        <div class="absolute inset-0 z-0" style="background-image: linear-gradient(to right, rgba(232, 234, 252, 0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(232, 234, 252, 0.3) 1px, transparent 1px); background-size: 75px 75px; background-color: #f8f9ff;"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
             <div class="flex flex-col md:flex-row items-center">
                 <!-- Left Content -->
                 <div class="md:w-1/2 md:pr-12 mb-12 md:mb-0">
@@ -387,7 +462,7 @@
                         <a href="#demo" class="btn-primary text-center py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform transition hover:-translate-y-0.5">
                             Book A Demo
                         </a>
-                        <a href="#download" class="bg-white text-gray-800 border border-gray-200 py-3 px-6 rounded-lg shadow-sm hover:shadow-md hover:border-gray-300 transform transition hover:-translate-y-0.5 text-center">
+                        <a href="javascript:void(0);" onclick="openDownloadModal()" class="bg-white text-gray-800 border border-gray-200 py-3 px-6 rounded-lg shadow-sm hover:shadow-md hover:border-gray-300 transform transition hover:-translate-y-0.5 text-center">
                             Download Now
                         </a>
                     </div>
@@ -443,55 +518,56 @@
                     <!-- Trust badges -->
                     <div class="mt-15 pt-10 border-t border-gray-100">
                         <p class="text-sm text-gray-500 mb-4">Trusted by restaurants worldwide</p>
-                        <div class="flex items-center space-x-6">
+                        <div class="flex flex-wrap items-center gap-4 md:gap-6">
                             <div class="text-sm flex items-center">
-                                <svg class="w-5 h-5 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-yellow-400 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <span class="font-medium">4.9/5 rating</span>
+                                <span class="font-medium whitespace-nowrap">4.9/5 rating</span>
                             </div>
                             <div class="text-sm flex items-center">
-                                <svg class="w-5 h-5 text-green-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-green-500 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                                 </svg>
-                                <span class="font-medium">Secure & Reliable</span>
+                                <span class="font-medium whitespace-nowrap">Secure & Reliable</span>
                             </div>
                             <div class="text-sm flex items-center">
-                                <svg class="w-5 h-5 text-blue-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-blue-500 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                 </svg>
-                                <span class="font-medium">24/7 Support</span>
+                                <span class="font-medium whitespace-nowrap">24/7 Support</span>
                             </div>
                             <div class="text-sm flex items-center">
-                                <svg class="w-5 h-5 text-indigo-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"></path>
-                                </svg>
-                                <span class="font-medium">GST Ready</span>
-                            </div>
-                            <div class="text-sm flex items-center">
-                                <svg class="w-5 h-5 text-purple-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-purple-500 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                                 </svg>
-                                <span class="font-medium">Works Offline</span>
+                                <span class="font-medium whitespace-nowrap">Works Offline</span>
                             </div>
                         </div>
                     </div>
                 </div>  
                 
                 <!-- Right Illustration -->
-                <div class="md:w-1/2 relative md:pl-8">
+                <div class="md:w-1/2 relative">
+                    <div class="relative flex items-center justify-end h-full">
+                        <div class="relative w-4/5 ml-auto mr-0">
                     <img 
                         src="assets/images/header_illustration/indian-man-taking-order-at-restaurant-using-pos-in-Photoroom.png" 
                         alt="Restaurant Management Illustration" 
-                        class="w-2/4 mx-auto"
+                                class="w-full filter drop-shadow-md"
                     >
                     
-                    <!-- Floating elements with improved positioning -->
-                    <img src="assets/images/header_illustration/send_kot.png" alt="Send KOT" class="absolute top-12 right-6 w-40 h-40 object-contain z-20 animate-bounce-slow filter drop-shadow-md">
+                            <!-- Floating elements close to main image -->
+                            <img src="assets/images/header_illustration/send_kot.png" alt="Send KOT" 
+                                class="absolute -top-4 -right-8 w-36 h-36 object-contain z-20 animate-bounce-slow filter drop-shadow-md">
                     
-                    <img src="assets/images/header_illustration/payment_recieved.png" alt="Payment Received" class="absolute bottom-20 left-8 w-40 h-40 object-contain z-20 transform -rotate-6 filter drop-shadow-md">
+                            <img src="assets/images/header_illustration/payment_recieved.png" alt="Payment Received" 
+                                class="absolute -bottom-4 -left-8 w-36 h-36 object-contain z-20 transform -rotate-6 filter drop-shadow-md">
                     
-                    <img src="assets/images/header_illustration/top_creditor.png" alt="Top Creditor" class="absolute top-24 left-0 w-43 h-43 object-contain z-20 transform rotate-3 filter drop-shadow-md">
+                            <img src="assets/images/header_illustration/top_creditor.png" alt="Top Creditor" 
+                                class="absolute top-10 -left-12 w-40 h-40 object-contain z-20 transform rotate-3 filter drop-shadow-md">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -511,29 +587,202 @@
                     <p class="text-gray-600 max-w-3xl mx-auto text-lg">See how our intuitive interface makes restaurant management simple and efficient</p>
                 </div>
                 
-                <!-- Screenshots Carousel/Slider with enhanced UI -->
-                <div class="product-tour-slider relative">
-                    <!-- Placeholder for screenshots (to be added later) -->
-                    <div class="bg-gray-100 rounded-lg p-12 text-center mb-16">
-                        <div class="flex flex-col items-center justify-center">
-                            <svg class="w-20 h-20 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            <h3 class="text-xl font-medium text-gray-500 mb-2">Screenshots Coming Soon</h3>
-                            <p class="text-gray-500 max-w-md">Product screenshots and feature visuals will be added here later.</p>
+                <!-- Product Screenshots Showcase -->
+                <div class="mb-16 py-16 px-8 sm:px-12 rounded-2xl relative" style="background: radial-gradient(circle at center, #e1f0ff 0%, rgba(240, 247, 255, 0.5) 60%, rgba(255, 255, 255, 0) 100%);">
+                    <!-- Main Content with 2-column layout -->
+                    <div class="flex flex-col lg:flex-row gap-12 items-center">
+                        <!-- Phone Screenshot (Left) - Made Larger -->
+                        <div class="lg:w-1/2 flex items-center justify-center relative">
+                            <!-- Phone mockup frame with improved shadow -->
+                            <div class="relative mx-auto border-[#1f2937] bg-[#1f2937] border-[14px] rounded-[2.5rem] h-[700px] w-[350px]">
+                                <div class="h-[32px] w-[3px] bg-[#1f2937] absolute -left-[17px] top-[72px] rounded-l-lg"></div>
+                                <div class="h-[46px] w-[3px] bg-[#1f2937] absolute -left-[17px] top-[124px] rounded-l-lg"></div>
+                                <div class="h-[46px] w-[3px] bg-[#1f2937] absolute -left-[17px] top-[178px] rounded-l-lg"></div>
+                                <div class="h-[64px] w-[3px] bg-[#1f2937] absolute -right-[17px] top-[142px] rounded-r-lg"></div>
+                                <div class="rounded-[2rem] overflow-hidden w-[322px] h-[672px] bg-transparent">
+                                    <img id="mainScreenshot" src="assets/images/screenshots/Home.png" alt="Isselo POS Dashboard" class="w-full h-full object-cover" loading="lazy">
                         </div>
                     </div>
                     
-                    <!-- Call to action -->
-                    <div class="text-center mt-8">
-                        <a href="#demo" class="inline-flex items-center justify-center text-white font-medium py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl" style="font-size: 1.125rem; background-color: #C4283C; border: 2px solid #C4283C;">
-                            <span>Schedule a Live Demo</span>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                        </a>
+                            <!-- Navigation Arrows -->
+                            <button class="absolute left-0 bg-white rounded-full p-3 shadow-md z-10 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" id="prevScreen" aria-label="Previous screenshot">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                    </svg>
+                            </button>
+                            <button class="absolute right-0 bg-white rounded-full p-3 shadow-md z-10 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" id="nextScreen" aria-label="Next screenshot">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Feature Description (Right) -->
+                        <div class="lg:w-1/2">
+                            <h3 class="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600" id="feature-title">Complete Dashboard Overview</h3>
+                            <p class="text-gray-600 mb-8 text-lg leading-relaxed" id="feature-description">
+                                Get a comprehensive view of your restaurant's performance with our intuitive dashboard. 
+                                Monitor sales, track popular items, and get real-time insights to make informed decisions.
+                            </p>
+                            
+                            <!-- Learn More Button -->
+                            <a href="#" class="inline-flex items-center justify-center bg-white text-primary border border-gray-200 py-3 px-8 rounded-lg shadow-sm hover:shadow-md transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 group">
+                                <span class="mr-2 font-medium">Learn More</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            
+                            <!-- Indicator dots with improved styling -->
+                            <div class="flex space-x-2 mt-10">
+                                <span class="active-dot h-2 w-8 rounded-full bg-primary transition-all duration-300"></span>
+                                <span class="inactive-dot h-2 w-2 rounded-full bg-gray-300 transition-all duration-300"></span>
+                                <span class="inactive-dot h-2 w-2 rounded-full bg-gray-300 transition-all duration-300"></span>
+                                <span class="inactive-dot h-2 w-2 rounded-full bg-gray-300 transition-all duration-300"></span>
+                                <span class="inactive-dot h-2 w-2 rounded-full bg-gray-300 transition-all duration-300"></span>
+                                <span class="inactive-dot h-2 w-2 rounded-full bg-gray-300 transition-all duration-300"></span>
+                        </div>
+                        </div>
                     </div>
                 </div>
+                
+                <!-- JavaScript for Screenshots Navigation -->
+    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const mainScreenshot = document.getElementById('mainScreenshot');
+                        const featureTitle = document.getElementById('feature-title');
+                        const featureDescription = document.getElementById('feature-description');
+                        const prevButton = document.getElementById('prevScreen');
+                        const nextButton = document.getElementById('nextScreen');
+                        const activeDot = document.querySelector('.active-dot');
+                        const inactiveDots = document.querySelectorAll('.inactive-dot');
+                        
+                        // Screenshots and their descriptions
+                        const screens = [
+                            {
+                                src: "assets/images/screenshots/Home.png",
+                                title: "Complete Dashboard Overview",
+                                description: "Get a comprehensive view of your restaurant's performance with our intuitive dashboard. Monitor sales, track popular items, and get real-time insights to make informed decisions."
+                            },
+                            {
+                                src: "assets/images/screenshots/New Order.png",
+                                title: "Simple Order Management",
+                                description: "Create and manage orders effortlessly with our streamlined interface. Add items, apply discounts, and complete transactions quickly to serve customers faster."
+                            },
+                            {
+                                src: "assets/images/screenshots/Item Details.png",
+                                title: "Detailed Item Management",
+                                description: "Easily view and edit item details including price, ingredients, and modifiers. Keep your menu up-to-date with just a few clicks."
+                            },
+                            {
+                                src: "assets/images/screenshots/Select Variant.png",
+                                title: "Flexible Item Variants",
+                                description: "Offer multiple sizes, flavors, or options for your menu items. Our variant system makes it easy to customize products to customer preferences."
+                            },
+                            {
+                                src: "assets/images/screenshots/Sales.png",
+                                title: "Comprehensive Sales Reports",
+                                description: "Track your business performance with detailed sales reports. Analyze revenue trends, bestselling items, and peak hours to optimize your operations."
+                            },
+                            {
+                                src: "assets/images/screenshots/Accounts.png",
+                                title: "Simplified Accounting",
+                                description: "Manage your restaurant's finances with our integrated accounting features. Track expenses, monitor balance sheets, and keep your financial records in order."
+                            }
+                        ];
+                        
+                        let currentIndex = 0;
+                        
+                        // Preload images
+                        function preloadImages() {
+                            screens.forEach(screen => {
+                                const img = new Image();
+                                img.src = screen.src;
+                            });
+                        }
+                        preloadImages();
+                        
+                        // Update content function with enhanced animation
+                        function updateContent() {
+                            // Fade out
+                            mainScreenshot.style.opacity = '0';
+                            featureTitle.style.opacity = '0';
+                            featureDescription.style.opacity = '0';
+                            
+                            // Update indicator dots
+                            updateDots();
+                            
+                            setTimeout(() => {
+                                // Update content
+                                mainScreenshot.src = screens[currentIndex].src;
+                                featureTitle.textContent = screens[currentIndex].title;
+                                featureDescription.textContent = screens[currentIndex].description;
+                                
+                                // Add small delay before fade in for smoother transition
+                                setTimeout(() => {
+                                    // Fade in
+                                    mainScreenshot.style.opacity = '1';
+                                    featureTitle.style.opacity = '1';
+                                    featureDescription.style.opacity = '1';
+                                }, 50);
+                            }, 300);
+                        }
+                        
+                        // Update indicator dots with enhanced animation
+                        function updateDots() {
+                            const dots = [activeDot, ...inactiveDots];
+                            dots.forEach((dot, index) => {
+                                if (index === 0) {
+                                    // Active dot styling
+                                    dot.style.width = index === currentIndex ? '32px' : '8px';
+                                    dot.style.backgroundColor = index === currentIndex ? 'var(--primary-color)' : '#cbd5e0';
+                                    dot.style.opacity = index === currentIndex ? '1' : '0.6';
+                                } else {
+                                    // Inactive dots styling
+                                    dot.style.width = (index - 1) === currentIndex ? '32px' : '8px';
+                                    dot.style.backgroundColor = (index - 1) === currentIndex ? 'var(--primary-color)' : '#cbd5e0';
+                                    dot.style.opacity = (index - 1) === currentIndex ? '1' : '0.6';
+                                }
+                            });
+                        }
+                        
+                        // Previous button click with enhanced animation
+                        prevButton.addEventListener('click', function() {
+                            // Add active state to button
+                            this.classList.add('bg-gray-100');
+                            setTimeout(() => this.classList.remove('bg-gray-100'), 150);
+                            
+                            currentIndex = (currentIndex - 1 + screens.length) % screens.length;
+                            updateContent();
+                        });
+                        
+                        // Next button click with enhanced animation
+                        nextButton.addEventListener('click', function() {
+                            // Add active state to button
+                            this.classList.add('bg-gray-100');
+                            setTimeout(() => this.classList.remove('bg-gray-100'), 150);
+                            
+                            currentIndex = (currentIndex + 1) % screens.length;
+                            updateContent();
+                        });
+                        
+                        // Add keyboard navigation
+                        document.addEventListener('keydown', function(e) {
+                            if (e.key === 'ArrowLeft') {
+                                prevButton.click();
+                            } else if (e.key === 'ArrowRight') {
+                                nextButton.click();
+                            }
+                        });
+                        
+                        // Auto-rotate functionality removed
+                        
+                        // Add enhanced smooth transition to images and text
+                        mainScreenshot.style.transition = 'opacity 0.4s ease';
+                        featureTitle.style.transition = 'opacity 0.4s ease 0.1s'; // Slight delay for staggered effect
+                        featureDescription.style.transition = 'opacity 0.4s ease 0.2s'; // Slight delay for staggered effect
+                    });
+                </script>
             </div>
         </div>
     </section>
@@ -551,31 +800,35 @@
                         <div class="space-y-6">
                             <div class="flex items-start">
                                 <div class="bg-primary/10 p-3 rounded-full mr-4">
-                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                    <i class="fas fa-map-marker-alt text-primary" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold mb-1">Visit Us</h4>
-                                    <p class="text-gray-600">123 Tech Park, Silicon Valley<br>Bangalore, Karnataka 560001</p>
+                                    <address class="text-gray-600 not-italic">123 Tech Park, Silicon Valley<br>Bangalore, Karnataka 560001</address>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
                                 <div class="bg-primary/10 p-3 rounded-full mr-4">
-                                    <i class="fas fa-phone-alt text-primary"></i>
+                                    <i class="fas fa-phone-alt text-primary" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold mb-1">Call Us</h4>
-                                    <p class="text-gray-600">+91 98765 43210<br>+91 80 1234 5678</p>
+                                    <p class="text-gray-600"><a href="tel:+919876543210" class="hover:text-primary transition-colors">+91 98765 43210</a><br>
+                                    <a href="tel:+918012345678" class="hover:text-primary transition-colors">+91 80 1234 5678</a></p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
                                 <div class="bg-primary/10 p-3 rounded-full mr-4">
-                                    <i class="fas fa-envelope text-primary"></i>
+                                    <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold mb-1">Email Us</h4>
-                                    <p class="text-gray-600">info@isselo.com<br>support@isselo.com</p>
+                                    <p class="text-gray-600">
+                                        <a href="mailto:info@isselo.com" class="hover:text-primary transition-colors">info@isselo.com</a><br>
+                                        <a href="mailto:support@isselo.com" class="hover:text-primary transition-colors">support@isselo.com</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -583,17 +836,17 @@
                         <div class="mt-12">
                             <h4 class="font-bold mb-4">Follow Us</h4>
                             <div class="flex space-x-4">
-                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
-                                    <i class="fab fa-facebook-f"></i>
+                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors" aria-label="Facebook">
+                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                 </a>
-                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
-                                    <i class="fab fa-twitter"></i>
+                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors" aria-label="Twitter">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
                                 </a>
-                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
-                                    <i class="fab fa-instagram"></i>
+                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors" aria-label="Instagram">
+                                    <i class="fab fa-instagram" aria-hidden="true"></i>
                                 </a>
-                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
-                                    <i class="fab fa-linkedin-in"></i>
+                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -606,21 +859,24 @@
                         <form id="contactForm" class="space-y-4">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label for="contactName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                    <label for="contactName" class="block text-sm font-medium text-gray-700 mb-1">Full Name <span class="text-red-500">*</span></label>
                                     <input type="text" id="contactName" name="name" required
-                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                                        aria-required="true">
                                 </div>
                                 <div>
-                                    <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                    <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-1">Email Address <span class="text-red-500">*</span></label>
                                     <input type="email" id="contactEmail" name="email" required
-                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                                        aria-required="true">
                                 </div>
                             </div>
                             
                             <div>
                                 <label for="contactPhone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                                 <input type="tel" id="contactPhone" name="phone" 
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                                    pattern="[0-9]{10,12}" title="Please enter a valid phone number (10-12 digits)">
                             </div>
                             
                             <div>
@@ -636,21 +892,94 @@
                             </div>
                             
                             <div>
-                                <label for="contactMessage" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <label for="contactMessage" class="block text-sm font-medium text-gray-700 mb-1">Message <span class="text-red-500">*</span></label>
                                 <textarea id="contactMessage" name="message" rows="4" required
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"></textarea>
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                                    aria-required="true"></textarea>
                             </div>
                             
                             <div class="flex items-start">
                                 <input type="checkbox" id="contactConsent" name="consent" required
-                                    class="mt-1 mr-2">
+                                    class="mt-1 mr-2" aria-required="true">
                                 <label for="contactConsent" class="text-sm text-gray-600">
                                     I agree to the <a href="privacy.html" class="text-primary hover:underline">Privacy Policy</a> and consent to being contacted by isselo.
                                 </label>
                             </div>
                             
-                            <button type="submit" class="w-full btn-primary py-3">Send Message</button>
+                            <div id="formStatus" class="hidden" role="alert"></div>
+                            
+                            <button type="submit" class="w-full btn-primary py-3 flex items-center justify-center">
+                                <span>Send Message</span>
+                                <svg id="submitSpinner" class="w-5 h-5 ml-3 hidden animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </button>
                         </form>
+                        
+                        <script>
+                            // Form validation and submission
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const contactForm = document.getElementById('contactForm');
+                                const formStatus = document.getElementById('formStatus');
+                                const submitSpinner = document.getElementById('submitSpinner');
+                                
+                                if (contactForm) {
+                                    contactForm.addEventListener('submit', function(e) {
+                                        e.preventDefault();
+                                        
+                                        // Show loading spinner
+                                        submitSpinner.classList.remove('hidden');
+                                        
+                                        // Form validation
+                                        const formData = new FormData(this);
+                                        let isValid = true;
+                                        
+                                        // Validate required fields
+                                        for (const [key, value] of formData.entries()) {
+                                            const field = document.querySelector(`[name="${key}"]`);
+                                            if (field && field.hasAttribute('required') && !value.trim()) {
+                                                field.classList.add('border-red-500');
+                                                isValid = false;
+                                            } else if (field) {
+                                                field.classList.remove('border-red-500');
+                                            }
+                                        }
+                                        
+                                        // Validate email format
+                                        const email = formData.get('email');
+                                        const emailField = document.querySelector('[name="email"]');
+                                        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                                            emailField.classList.add('border-red-500');
+                                            isValid = false;
+                                        }
+                                        
+                                        if (!isValid) {
+                                            // Show error message
+                                            formStatus.textContent = 'Please check the form for errors';
+                                            formStatus.className = 'bg-red-100 text-red-700 p-4 rounded-lg mt-4';
+                                            formStatus.classList.remove('hidden');
+                                            submitSpinner.classList.add('hidden');
+                                            return;
+                                        }
+                                        
+                                        // Simulate form submission (replace with actual AJAX submission)
+                                        setTimeout(() => {
+                                            // Success message
+                                            contactForm.innerHTML = `
+                                                <div class="text-center py-8" role="status">
+                                                    <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                    <h4 class="text-xl font-bold mb-2">Message Sent!</h4>
+                                                    <p class="text-gray-600">Thank you for reaching out. We'll get back to you shortly.</p>
+                                                </div>
+                                            `;
+                                        }, 1500);
+                                    });
+                                }
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -761,17 +1090,17 @@
                     </div>
                     <p class="text-gray-400 mb-6 max-w-md">Simple and cost-effective restaurant management solution that transforms the way you run your business.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all">
-                            <i class="fab fa-facebook-f"></i>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all" aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all">
-                            <i class="fab fa-twitter"></i>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all" aria-label="Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all">
-                            <i class="fab fa-instagram"></i>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all" aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -779,105 +1108,181 @@
                 <div>
                     <h4 class="text-lg font-bold mb-4 text-white">Product</h4>
                     <ul class="space-y-3">
-                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
-                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
-                        <li><a href="screenshots.html" class="text-gray-400 hover:text-white transition-colors">Product Tour</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Updates</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Roadmap</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Features</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Pricing</a></li>
+                        <li><a href="screenshots.html" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Product Tour</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Updates</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Roadmap</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="text-lg font-bold mb-4 text-white">Resources</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Knowledge Base</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Reference</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Community Forum</a></li>
-                        <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Knowledge Base</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">API Reference</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Community Forum</a></li>
+                        <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Blog</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-bold mb-4 text-white">Company</h4>
                     <ul class="space-y-3">
-                        <li><a href="#about-us" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#about-us" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Careers</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Contact</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Terms of Service</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="text-lg font-bold mb-4 text-white">Get in Touch</h4>
                     <ul class="space-y-3">
                         <li class="flex items-center text-gray-400">
-                            <i class="fas fa-envelope mr-3 text-primary"></i>
-                            <a href="mailto:info@isselo.com" class="hover:text-white transition-colors">info@isselo.com</a>
+                            <i class="fas fa-envelope mr-3 text-primary" aria-hidden="true"></i>
+                            <a href="mailto:info@isselo.com" class="hover:text-white transition-colors focus:outline-none focus:text-white">info@isselo.com</a>
                         </li>
                         <li class="flex items-center text-gray-400">
-                            <i class="fas fa-phone-alt mr-3 text-primary"></i>
-                            <a href="tel:+919876543210" class="hover:text-white transition-colors">+91 98765 43210</a>
+                            <i class="fas fa-phone-alt mr-3 text-primary" aria-hidden="true"></i>
+                            <a href="tel:+919876543210" class="hover:text-white transition-colors focus:outline-none focus:text-white">+91 98765 43210</a>
                         </li>
                         <li class="flex items-start text-gray-400">
-                            <i class="fas fa-map-marker-alt mr-3 mt-1 text-primary"></i>
-                            <span>123 Tech Park, Silicon Valley<br>Bangalore, Karnataka 560001</span>
+                            <i class="fas fa-map-marker-alt mr-3 mt-1 text-primary" aria-hidden="true"></i>
+                            <address class="not-italic">123 Tech Park, Silicon Valley<br>Bangalore, Karnataka 560001</address>
                         </li>
                     </ul>
                 </div>
-            </div>
-            
+                </div>
+
             <!-- Copyright Section -->
             <div class="py-6 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2024 isselo. All rights reserved.</p>
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© <span id="currentYear">2024</span> isselo. All rights reserved.</p>
                 <div class="flex space-x-6">
-                    <a href="privacy.html" class="text-gray-500 text-sm hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="terms.html" class="text-gray-500 text-sm hover:text-white transition-colors">Terms of Service</a>
-                    <a href="#" class="text-gray-500 text-sm hover:text-white transition-colors">Sitemap</a>
-                </div>
-            </div>
+                    <a href="privacy.html" class="text-gray-500 text-sm hover:text-white transition-colors focus:outline-none focus:text-white">Privacy Policy</a>
+                    <a href="terms.html" class="text-gray-500 text-sm hover:text-white transition-colors focus:outline-none focus:text-white">Terms of Service</a>
+                    <a href="#" class="text-gray-500 text-sm hover:text-white transition-colors focus:outline-none focus:text-white">Sitemap</a>
         </div>
+    </div>
+                </div>
     </footer>
     </div> <!-- End of scale-wrapper -->
 
+    <!-- Download Modal -->
+    <div id="downloadModal" class="fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto bg-black bg-opacity-60">
+        <div class="relative mx-auto max-w-lg w-full p-6 bg-white rounded-xl shadow-2xl">
+            <button onclick="closeDownloadModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none hover:bg-gray-100 p-2 rounded-full transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold" style="font-family: 'Poppins', sans-serif;">Download isselo POS</h3>
+                <p class="text-gray-600 mt-2">Select your operating system to download the latest version of isselo POS software.</p>
+            </div>
+            
+            <form id="downloadForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Select Operating System</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <label class="relative flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="os" value="windows" class="sr-only peer" required checked>
+                            <div class="peer-checked:border-primary peer-checked:ring-2 peer-checked:ring-primary absolute inset-0 rounded-lg pointer-events-none"></div>
+                            <div class="flex flex-col items-center w-full">
+                                <svg class="w-10 h-10 text-blue-500 mb-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z"/>
+                                </svg>
+                                <span class="font-medium">Windows</span>
+                                <span class="text-xs text-gray-500">64-bit (Installer)</span>
+                            </div>
+                        </label>
+                        
+                        <label class="relative flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="os" value="mac" class="sr-only peer" required>
+                            <div class="peer-checked:border-primary peer-checked:ring-2 peer-checked:ring-primary absolute inset-0 rounded-lg pointer-events-none"></div>
+                            <div class="flex flex-col items-center w-full">
+                                <svg class="w-10 h-10 text-gray-800 mb-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M8,9H9.5V15H8M11,9H12.5V15H11M14.5,9H16V15H14.5Z" />
+                                </svg>
+                                <span class="font-medium">macOS</span>
+                                <span class="text-xs text-gray-500">Apple Silicon/Intel</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <label class="relative flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="os" value="android" class="sr-only peer" required>
+                            <div class="peer-checked:border-primary peer-checked:ring-2 peer-checked:ring-primary absolute inset-0 rounded-lg pointer-events-none"></div>
+                            <div class="flex flex-col items-center w-full">
+                                <svg class="w-10 h-10 text-green-600 mb-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M7.2,16.8a.8.8,0,0,0,.8.8h.8v2.8a1.2,1.2,0,0,0,2.4,0V17.6h1.6v2.8a1.2,1.2,0,0,0,2.4,0V17.6H16a.8.8,0,0,0,.8-.8V8H7.2ZM4.8,8a1.2,1.2,0,0,0-1.2,1.2v6.4A1.2,1.2,0,0,0,4.8,16.8,1.2,1.2,0,0,0,6,15.6V9.2A1.2,1.2,0,0,0,4.8,8Zm14.4,0a1.2,1.2,0,0,0-1.2,1.2v6.4a1.2,1.2,0,0,0,1.2,1.2,1.2,1.2,0,0,0,1.2-1.2V9.2A1.2,1.2,0,0,0,19.2,8ZM14.4,2.8l1.1-1.1A.39.39,0,0,0,15,1.1.39.39,0,0,0,14.4,1.7l-1.2,1.2a5.11,5.11,0,0,0-2.4-.6,5.11,5.11,0,0,0-2.4.6L7.2,1.7A.39.39,0,0,0,6.6,1.1.39.39,0,0,0,6,1.7L7.1,2.8A4.8,4.8,0,0,0,12,8,4.8,4.8,0,0,0,14.4,2.8ZM10,4.8A.8.8,0,1,1,9.2,4,.8.8,0,0,1,10,4.8Zm4,0a.8.8,0,1,1-.8-.8A.8.8,0,0,1,14,4.8Z"/>
+                                </svg>
+                                <span class="font-medium">Android</span>
+                                <span class="text-xs text-gray-500">Google Play Store</span>
+                            </div>
+                        </label>
+                        
+                        <label class="relative flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                            <input type="radio" name="os" value="ios" class="sr-only peer" required>
+                            <div class="peer-checked:border-primary peer-checked:ring-2 peer-checked:ring-primary absolute inset-0 rounded-lg pointer-events-none"></div>
+                            <div class="flex flex-col items-center w-full">
+                                <svg class="w-10 h-10 text-gray-800 mb-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M17.05,20.28c-.98,1.38-2.03,1.36-3.12.62s-1.75-.74-3.22-.74-2.26.74-3.32.78-2.13-.8-3.12-2.17C1.93,15.44,1.89,11.13,3.1,9c.89-1.54,2.49-2.49,4.23-2.52,1.36,0,2.51.9,3.25.9s2.14-.9,3.73-.9c1.36,0,2.63.52,3.61,1.43-3.14,1.83-2.63,6.6.47,7.98-.53,1.46-1.36,2.96-2.33,4.4M12.46,4.1c-.18-1.4.5-2.85,1.52-3.76,1.17.06,2.55.79,3.32,1.76,1.03,1.11.86,2.61.72,2.92-.15.1-1.11.31-2.34.31-1.2.01-2.43-.41-3.22-1.23"/></svg>
+                                <span class="font-medium">iOS</span>
+                                <span class="text-xs text-gray-500">App Store</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <input type="checkbox" id="termsAgree" name="terms" required
+                        class="mt-1 mr-2 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary">
+                    <label for="termsAgree" class="text-sm text-gray-600">
+                        I agree to the <a href="terms.html" class="text-primary hover:underline" target="_blank">Terms of Service</a> and <a href="privacy.html" class="text-primary hover:underline" target="_blank">Privacy Policy</a>.
+                    </label>
+                </div>
+                
+                <div id="downloadFormStatus" class="hidden" role="alert"></div>
+                
+                <button type="submit" class="w-full bg-primary py-3 px-4 flex items-center justify-center text-white rounded-lg font-medium shadow-lg hover:bg-primary-dark transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                    <span>Download Now</span>
+                    <svg id="downloadSpinner" class="w-5 h-5 ml-3 hidden animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- Add html2pdf library for PDF generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
     
     <!-- Custom Scripts -->
-    <script src="scripts.js"></script>
-
-    <!-- Floating Feedback/Demo Button -->
-    <div class="fixed bottom-8 right-8 z-50 animate-bounce-slow">
-        <button 
-            onclick="openDemoModal()" 
-            class="bg-primary text-white rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary group transition-all duration-300 hover:shadow-xl"
-            style="background-color: #C4283C; border: 2px solid #C4283C;"
-        >
-            <div class="relative">
-                <div class="flex items-center justify-center h-14 w-14 group-hover:w-auto group-hover:px-5 transition-all duration-300 overflow-hidden">
-                    <i class="fas fa-headset text-xl group-hover:mr-2"></i>
-                    <span class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">Get a Demo</span>
-                </div>
-                <!-- Pulsing effect -->
-                <div class="absolute inset-0 rounded-full bg-primary animate-ping opacity-25" style="background-color: #C4283C;"></div>
-            </div>
-        </button>
-    </div>
+    <script src="scripts.js" defer></script>
 
     <!-- Back to top button -->
     <div class="fixed bottom-8 left-8 z-50 opacity-0 transition-opacity duration-300" id="back-to-top">
         <button 
             onclick="scrollToTop()" 
             class="bg-gray-700 text-white rounded-full shadow-lg p-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 hover:bg-gray-600 transition-colors"
+            aria-label="Back to top"
         >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
             </svg>
         </button>
     </div>
 
     <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
         // Smooth scroll to top function
         function scrollToTop() {
             window.scrollTo({
@@ -885,6 +1290,19 @@
                 behavior: 'smooth'
             });
         }
+        
+        // Show/hide back to top button on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.opacity = '1';
+                } else {
+                    backToTopButton.style.opacity = '0';
+                }
+            });
+        });
         
         // Demo Modal Functions
         function openDemoModal() {
@@ -912,7 +1330,7 @@
             document.body.style.overflow = 'auto';
         }
     </script>
-    
+
     <!-- Final fixes for footer whitespace -->
     <style>
         html, body {
@@ -932,4 +1350,4 @@
         }
     </style>
 </body>
-</html>
+</html> 

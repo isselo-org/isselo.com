@@ -215,46 +215,14 @@ function initForms() {
     const demoForm = document.getElementById('demoForm');
 
     if (demoForm) {
-        demoForm.addEventListener('submit', function (e) {
-            e.preventDefault();
+        demoForm.addEventListener('submit', handleDemoSubmit);
+    }
 
-            // Form validation (similar to contact form)
-            const formData = new FormData(this);
-            let isValid = true;
+    // Download form
+    const downloadForm = document.getElementById('downloadForm');
 
-            for (const [key, value] of formData.entries()) {
-                const field = document.querySelector(`[name="${key}"]`);
-                if (field && field.hasAttribute('required') && !value.trim()) {
-                    field.classList.add('border-red-500');
-                    isValid = false;
-                } else if (field) {
-                    field.classList.remove('border-red-500');
-                }
-            }
-
-            if (isValid) {
-                // Show success message
-                demoForm.innerHTML = `
-                    <div class="text-center py-8">
-                        <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <h4 class="text-xl font-bold mb-2">Demo Requested!</h4>
-                        <p class="text-gray-600">We've received your demo request and will contact you shortly.</p>
-                    </div>
-                `;
-
-                // Close modal after 3 seconds
-                setTimeout(function () {
-                    const modal = demoForm.closest('.modal');
-                    if (modal) {
-                        modal.classList.add('hidden');
-                        modal.classList.remove('flex');
-                        document.body.classList.remove('overflow-hidden');
-                    }
-                }, 3000);
-            }
-        });
+    if (downloadForm) {
+        downloadForm.addEventListener('submit', handleDownloadSubmit);
     }
 }
 
@@ -398,9 +366,10 @@ function closeDownloadModal() {
     document.body.style.overflow = 'auto';
 }
 
-// Form submission handlers
+// Function to handle demo form submission
 function handleDemoSubmit(event) {
     event.preventDefault();
+
     const form = event.target;
     const formData = new FormData(form);
 
@@ -420,6 +389,97 @@ function handleDemoSubmit(event) {
 
     // Close modal after 3 seconds
     setTimeout(closeDemoModal, 3000);
+}
+
+// Handle download form submission
+function handleDownloadSubmit(event) {
+    event.preventDefault();
+
+    // Show loading spinner
+    const downloadSpinner = document.getElementById('downloadSpinner');
+    downloadSpinner.classList.remove('hidden');
+
+    // Get form data
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Form validation
+    let isValid = true;
+    const formStatus = document.getElementById('downloadFormStatus');
+
+    // Reset previous validation errors
+    form.querySelectorAll('.border-red-500').forEach(field => {
+        field.classList.remove('border-red-500');
+    });
+
+    // Validate required fields
+    for (const [key, value] of formData.entries()) {
+        const field = form.querySelector(`[name="${key}"]`);
+        if (field && field.hasAttribute('required') && !value.trim()) {
+            if (field.type === 'checkbox') {
+                field.nextElementSibling.classList.add('text-red-500');
+            } else {
+                field.classList.add('border-red-500');
+            }
+            isValid = false;
+        }
+    }
+
+    // Validate email format
+    const email = formData.get('email');
+    const emailField = form.querySelector('[name="email"]');
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailField.classList.add('border-red-500');
+        isValid = false;
+    }
+
+    if (!isValid) {
+        // Show error message
+        formStatus.textContent = 'Please fill in all required fields correctly';
+        formStatus.className = 'bg-red-100 text-red-700 p-3 rounded-lg text-sm';
+        formStatus.classList.remove('hidden');
+        downloadSpinner.classList.add('hidden');
+        return;
+    }
+
+    // Get selected OS
+    const selectedOS = formData.get('os');
+
+    // Simulate download process (normally this would redirect to actual download URL)
+    setTimeout(() => {
+        // Download links for different OS (for demonstration - in production these would be actual download URLs)
+        const downloadLinks = {
+            'windows': 'https://isselo.com/downloads/isselo-windows-installer.exe',
+            'mac': 'https://isselo.com/downloads/isselo-macos.dmg',
+            'android': 'https://play.google.com/store/apps/details?id=com.isselo.pos',
+            'ios': 'https://apps.apple.com/app/isselo-pos/id1234567890'
+        };
+
+        // Success message
+        form.innerHTML = `
+            <div class="text-center py-8">
+                <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h4 class="text-xl font-bold mb-2">Download Started!</h4>
+                <p class="text-gray-600 mb-6">Thank you for downloading isselo POS for ${selectedOS.charAt(0).toUpperCase() + selectedOS.slice(1)}.</p>
+                <p class="text-sm text-gray-500 mb-4">If your download doesn't start automatically, <a href="${downloadLinks[selectedOS]}" class="text-primary font-medium">click here</a>.</p>
+                <button type="button" onclick="closeDownloadModal()" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors">Close</button>
+            </div>
+        `;
+
+        // Start the download
+        const downloadIframe = document.createElement('iframe');
+        downloadIframe.style.display = 'none';
+        downloadIframe.src = downloadLinks[selectedOS];
+        document.body.appendChild(downloadIframe);
+
+        // Remove iframe after download starts
+        setTimeout(() => {
+            document.body.removeChild(downloadIframe);
+        }, 2000);
+
+    }, 1500);
 }
 
 // Initialize the screenshots viewer on the dedicated screenshots page
