@@ -560,3 +560,34 @@ a {
         min-width: 120px;
     }
 }
+
+/* Development Badge */
+.dev-badge {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ff4747;
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+    font-weight: 600;
+    z-index: 1000;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.has-dev-badge {
+    padding-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .dev-badge {
+        padding: 6px 0;
+        font-size: 14px;
+    }
+
+    body.has-dev-badge {
+        padding-top: 30px;
+    }
+}

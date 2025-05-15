@@ -145,3 +145,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Download popup functionality
+    const downloadLinks = document.querySelectorAll('a[href="#download"]');
+    const downloadPopup = document.getElementById('downloadPopup');
+    const closePopup = document.getElementById('closePopup');
+
+    if (downloadLinks && downloadPopup && closePopup) {
+        downloadLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                downloadPopup.style.display = 'flex';
+            });
+        });
+
+        closePopup.addEventListener('click', function () {
+            downloadPopup.style.display = 'none';
+        });
+
+        // Close popup when clicking outside
+        window.addEventListener('click', function (e) {
+            if (e.target === downloadPopup) {
+                downloadPopup.style.display = 'none';
+            }
+        });
+    }
+
+    // Development badge functionality
+    const devBadge = document.querySelector('.dev-badge');
+    if (devBadge) {
+        // Add close button to dev badge
+        const closeButton = document.createElement('span');
+        closeButton.innerHTML = '&times;';
+        closeButton.style.position = 'absolute';
+        closeButton.style.right = '15px';
+        closeButton.style.top = '50%';
+        closeButton.style.transform = 'translateY(-50%)';
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.fontSize = '18px';
+        closeButton.style.fontWeight = 'bold';
+
+        devBadge.style.position = 'relative';
+        devBadge.appendChild(closeButton);
+
+        // Close dev badge when clicking the close button
+        closeButton.addEventListener('click', function () {
+            devBadge.style.display = 'none';
+            document.body.classList.remove('has-dev-badge');
+        });
+    }
+});
