@@ -1992,3 +1992,10 @@ textarea {
 .demo-link:hover {
     border-bottom-color: var(--highlight-color);
 }
+
+.drag-icon-image {
+    max-width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
