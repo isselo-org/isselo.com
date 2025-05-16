@@ -48,134 +48,127 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Download Popup Functionality
-document.addEventListener('DOMContentLoaded', () => {
-    const downloadPopup = document.getElementById('downloadPopup');
-    const closePopupBtn = document.getElementById('closePopup');
-    const downloadButtons = document.querySelectorAll('.btn-secondary');
-
-    const androidOption = document.getElementById('androidOption');
-    const windowsOption = document.getElementById('windowsOption');
-    const macOption = document.getElementById('macOption');
-    const iosOption = document.getElementById('iosOption');
-
-    const ANDROID_DOWNLOAD_URL = 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/android/app-release.apk';
-    const WINDOWS_DOWNLOAD_URL = 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/windows/isselo_windows.zip';
-
-    // Detect user's OS and highlight the appropriate option
-    function detectOS() {
-        const userAgent = window.navigator.userAgent.toLowerCase();
-        let detectedOS = '';
-
-        // Hide all badges first
-        document.querySelectorAll('.badge-recommended').forEach(badge => badge.style.display = 'none');
-
-        if (/android/i.test(userAgent)) {
-            detectedOS = 'android';
-            androidOption.classList.add('recommended');
-            androidOption.querySelector('.badge-recommended').style.display = 'inline-block';
-        } else if (/windows/i.test(userAgent)) {
-            detectedOS = 'windows';
-            windowsOption.classList.add('recommended');
-            windowsOption.querySelector('.badge-recommended').style.display = 'inline-block';
-        } else if (/macintosh|mac os x/i.test(userAgent)) {
-            detectedOS = 'mac';
-            // Mac is coming soon, so we don't add a download link
-        } else if (/iphone|ipad|ipod/i.test(userAgent)) {
-            detectedOS = 'ios';
-            // iOS is coming soon, so we don't add a download link
-        }
-
-        return detectedOS;
-    }
-
-    // Show download popup
-    function showDownloadPopup() {
-        downloadPopup.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
-        detectOS();
-    }
-
-    // Hide download popup
-    function hideDownloadPopup() {
-        downloadPopup.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // Start download based on OS
-    function startDownload(os) {
-        if (os === 'android') {
-            window.location.href = ANDROID_DOWNLOAD_URL;
-        } else if (os === 'windows') {
-            window.location.href = WINDOWS_DOWNLOAD_URL;
-        }
-
-        // Close popup after starting download
-        setTimeout(hideDownloadPopup, 1000);
-    }
-
-    // Add click event listeners to download buttons
-    downloadButtons.forEach(button => {
-        if (button.textContent.trim() === 'Download Now') {
-            button.addEventListener('click', (e) => {
+// Wait for DOM to fully load
+document.addEventListener('DOMContentLoaded', function () {
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if (this.getAttribute('href') === '#download') {
                 e.preventDefault();
                 showDownloadPopup();
-            });
-        }
-    });
+                return;
+            }
 
-    // Close popup when clicking the close button
-    closePopupBtn.addEventListener('click', hideDownloadPopup);
-
-    // Close popup when clicking outside the popup content
-    downloadPopup.addEventListener('click', (e) => {
-        if (e.target === downloadPopup) {
-            hideDownloadPopup();
-        }
-    });
-
-    // Add click event listeners to OS options
-    androidOption.addEventListener('click', () => {
-        startDownload('android');
-    });
-
-    windowsOption.addEventListener('click', () => {
-        startDownload('windows');
-    });
-
-    // Escape key to close popup
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && downloadPopup.classList.contains('active')) {
-            hideDownloadPopup();
-        }
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Download popup functionality
-    const downloadLinks = document.querySelectorAll('a[href="#download"]');
-    const downloadPopup = document.getElementById('downloadPopup');
-    const closePopup = document.getElementById('closePopup');
-
-    if (downloadLinks && downloadPopup && closePopup) {
-        downloadLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
+            if (this.getAttribute('href') !== '#' && this.getAttribute('href') !== '') {
                 e.preventDefault();
-                downloadPopup.style.display = 'flex';
-            });
-        });
 
-        closePopup.addEventListener('click', function () {
-            downloadPopup.style.display = 'none';
-        });
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
 
-        // Close popup when clicking outside
-        window.addEventListener('click', function (e) {
-            if (e.target === downloadPopup) {
-                downloadPopup.style.display = 'none';
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
+    });
+
+    // Mouse tracking gradient effect for bento cards
+    const bentoItems = document.querySelectorAll('.bento-item');
+
+    bentoItems.forEach(item => {
+        item.addEventListener('mousemove', e => {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            item.style.setProperty('--mouse-x', `${x}px`);
+            item.style.setProperty('--mouse-y', `${y}px`);
+        });
+
+        // Add shimmering effect that moves even without mouse movement
+        let shimmerX = 0;
+        let shimmerY = 0;
+        let direction = 1;
+        let active = false;
+
+        item.addEventListener('mouseenter', () => {
+            active = true;
+            animateShimmer();
+        });
+
+        item.addEventListener('mouseleave', () => {
+            active = false;
+        });
+
+        function animateShimmer() {
+            if (!active) return;
+
+            const width = item.offsetWidth;
+            const height = item.offsetHeight;
+
+            shimmerX += 2 * direction;
+            shimmerY += 1 * direction;
+
+            if (shimmerX > width || shimmerX < 0) {
+                direction *= -1;
+            }
+
+            if (shimmerY > height || shimmerY < 0) {
+                shimmerY = height / 2;
+            }
+
+            item.style.setProperty('--mouse-x', `${shimmerX}px`);
+            item.style.setProperty('--mouse-y', `${shimmerY}px`);
+
+            requestAnimationFrame(animateShimmer);
+        }
+    });
+
+    // Download popup functionality
+    const downloadPopup = document.getElementById('downloadPopup');
+    const closePopupBtn = document.getElementById('closePopup');
+
+    if (closePopupBtn) {
+        closePopupBtn.addEventListener('click', function () {
+            hideDownloadPopup();
+        });
     }
+
+    // Close popup when clicking outside
+    window.addEventListener('click', function (e) {
+        if (downloadPopup && e.target === downloadPopup) {
+            hideDownloadPopup();
+        }
+    });
+
+    // For download options in popup
+    const androidOption = document.getElementById('androidOption');
+    const windowsOption = document.getElementById('windowsOption');
+
+    if (androidOption) {
+        androidOption.addEventListener('click', function () {
+            // Logic for Android download
+            window.location.href = 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/android/app-release.apk';
+            hideDownloadPopup();
+        });
+    }
+
+    if (windowsOption) {
+        windowsOption.addEventListener('click', function () {
+            // Logic for Windows download
+            window.location.href = 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/windows/isselo_windows.zip';
+            hideDownloadPopup();
+        });
+    }
+
+    // Detect OS for showing recommended download option
+    detectUserOS();
+
+    // Animate elements when scrolling into view
+    setupScrollAnimations();
 
     // Development badge functionality
     const devBadge = document.querySelector('.dev-badge');
@@ -201,3 +194,130 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// Show download popup
+function showDownloadPopup() {
+    const downloadPopup = document.getElementById('downloadPopup');
+    if (downloadPopup) {
+        downloadPopup.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+// Hide download popup
+function hideDownloadPopup() {
+    const downloadPopup = document.getElementById('downloadPopup');
+    if (downloadPopup) {
+        downloadPopup.classList.remove('active');
+        document.body.style.overflow = ''; // Re-enable scrolling
+    }
+}
+
+// Detect user's OS and highlight the recommended option
+function detectUserOS() {
+    const userAgent = window.navigator.userAgent;
+    const platform = window.navigator.platform;
+    const androidBadge = document.querySelector('#androidOption .badge-recommended');
+    const windowsBadge = document.querySelector('#windowsOption .badge-recommended');
+    const macBadge = document.querySelector('#macOption .badge-recommended');
+    const iosBadge = document.querySelector('#iosOption .badge-recommended');
+
+    // Update badge text to "Current OS" instead of "Recommended"
+    if (androidBadge) androidBadge.textContent = 'Current OS';
+    if (windowsBadge) windowsBadge.textContent = 'Current OS';
+    if (macBadge) macBadge.textContent = 'Current OS';
+    if (iosBadge) iosBadge.textContent = 'Current OS';
+
+    // Hide all badges first
+    if (androidBadge) androidBadge.style.display = 'none';
+    if (windowsBadge) windowsBadge.style.display = 'none';
+    if (macBadge) macBadge.style.display = 'none';
+    if (iosBadge) iosBadge.style.display = 'none';
+
+    // Determine OS
+    if (userAgent.indexOf("Android") !== -1) {
+        if (androidBadge) androidBadge.style.display = 'block';
+    } else if (userAgent.indexOf("Win") !== -1 || platform.indexOf("Win") !== -1) {
+        if (windowsBadge) windowsBadge.style.display = 'block';
+    } else if (userAgent.indexOf("Mac") !== -1 || platform.indexOf("Mac") !== -1) {
+        // For Mac users, show macOS as current OS even if it's coming soon
+        if (macBadge) macBadge.style.display = 'block';
+    } else if (userAgent.indexOf("iPhone") !== -1 || userAgent.indexOf("iPad") !== -1 ||
+        platform.indexOf("iPhone") !== -1 || platform.indexOf("iPad") !== -1) {
+        // For iOS users, show iOS as current OS even if it's coming soon
+        if (iosBadge) iosBadge.style.display = 'block';
+    } else {
+        // Default to Windows for unknown platforms
+        if (windowsBadge) windowsBadge.style.display = 'block';
+    }
+}
+
+// Add animations to elements when they scroll into view
+function setupScrollAnimations() {
+    // Add animated class to bento items when they come into view
+    const bentoItems = document.querySelectorAll('.bento-item');
+    const featuresHeading = document.querySelector('.smaller-heading');
+
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    // Observer for feature heading
+    if (featuresHeading) {
+        const headingObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add a clean animation to the heading
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+
+                    // Animate the highlight separately with a slight delay
+                    const highlight = entry.target.querySelector('.highlight');
+                    if (highlight) {
+                        setTimeout(() => {
+                            highlight.style.opacity = '1';
+                            highlight.style.transform = 'translateY(0)';
+                        }, 400);
+                    }
+
+                    headingObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Set initial styles
+        featuresHeading.style.opacity = '0';
+        featuresHeading.style.transform = 'translateY(20px)';
+        featuresHeading.style.transition = 'all 0.8s ease';
+
+        const highlight = featuresHeading.querySelector('.highlight');
+        if (highlight) {
+            highlight.style.opacity = '0';
+            highlight.style.transform = 'translateY(10px)';
+            highlight.style.transition = 'all 0.5s ease';
+        }
+
+        headingObserver.observe(featuresHeading);
+    }
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    bentoItems.forEach((item, index) => {
+        // Set initial styles
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = `all 0.5s ease ${index * 0.1}s`;
+
+        // Observe the item
+        observer.observe(item);
+    });
+}
