@@ -60,19 +60,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const iosOption = document.getElementById('iosOption');
 
     const ANDROID_DOWNLOAD_URL = 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/android/app-release.apk';
-    const WINDOWS_DOWNLOAD_URL = 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/windows/Isselo_2_artifacts.zip';
+    const WINDOWS_DOWNLOAD_URL = 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/windows/isselo_windows.zip';
 
     // Detect user's OS and highlight the appropriate option
     function detectOS() {
         const userAgent = window.navigator.userAgent.toLowerCase();
         let detectedOS = '';
 
+        // Hide all badges first
+        document.querySelectorAll('.badge-recommended').forEach(badge => badge.style.display = 'none');
+
         if (/android/i.test(userAgent)) {
             detectedOS = 'android';
             androidOption.classList.add('recommended');
+            androidOption.querySelector('.badge-recommended').style.display = 'inline-block';
         } else if (/windows/i.test(userAgent)) {
             detectedOS = 'windows';
             windowsOption.classList.add('recommended');
+            windowsOption.querySelector('.badge-recommended').style.display = 'inline-block';
         } else if (/macintosh|mac os x/i.test(userAgent)) {
             detectedOS = 'mac';
             // Mac is coming soon, so we don't add a download link

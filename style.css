@@ -149,8 +149,8 @@ a {
 
 /* Hero Section Styles */
 .hero {
-    height: calc(100vh - 200px);
-    padding: 3rem 0 5rem;
+    /* height: calc(100vh - 200px); */
+    padding: 5rem 0 5rem;
     overflow: hidden;
     background: transparent;
 }
@@ -415,6 +415,69 @@ a {
     }
 }
 
+/* Bento Grid Styles */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.bento-item {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(230, 230, 240, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.bento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-color: rgba(196, 40, 60, 0.2);
+}
+
+.bento-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(196, 40, 60, 0.1);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.bento-icon img {
+    width: 32px;
+    height: 32px;
+}
+
+.bento-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--secondary-color);
+}
+
+.bento-item p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* Make bento grid responsive */
+@media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -426,6 +489,12 @@ a {
 
     .floating-element {
         display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -510,6 +579,7 @@ a {
     cursor: pointer;
     transition: all 0.2s ease;
     flex: 1;
+    position: relative;
 }
 
 .os-option:hover {
@@ -543,11 +613,41 @@ a {
     text-align: center;
 }
 
-.os-option .coming-soon {
+.os-option .badge-recommended {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #4CAF50;
+    color: #fff;
     font-size: 0.7rem;
-    color: var(--highlight-color);
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.03em;
+    z-index: 2;
+    box-shadow: 0 1px 4px rgba(76, 175, 80, 0.08);
+}
+
+.os-option .type-label {
+    margin-top: 0.2rem;
+    font-size: 0.7rem;
+    color: #888;
     font-weight: 600;
-    margin-top: 0.35rem;
+    background: #f3f3f3;
+    border-radius: 6px;
+    padding: 2px 7px;
+    display: inline-block;
+}
+
+.os-option .coming-soon {
+    font-size: 0.65rem;
+    color: #d1bebe;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    background: #f8f8f8;
+    border-radius: 6px;
+    padding: 2px 7px;
+    display: inline-block;
 }
 
 @media (max-width: 480px) {
