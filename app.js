@@ -321,3 +321,234 @@ function setupScrollAnimations() {
         observer.observe(item);
     });
 }
+
+// Handle demo form submission
+document.addEventListener('DOMContentLoaded', function () {
+    const demoForm = document.getElementById('demoForm');
+
+    if (demoForm) {
+        demoForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(demoForm);
+            const formValues = Object.fromEntries(formData.entries());
+
+            // For now, we'll just log the form data and show a success message
+            console.log('Form submitted with values:', formValues);
+
+            // Show success message
+            showFormSuccess(demoForm);
+
+            // In a real implementation, you would send this data to your server
+            // using fetch or another AJAX method
+            // fetch('/api/submit-demo-form', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(formValues),
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     showFormSuccess(demoForm);
+            // })
+            // .catch(error => {
+            //     console.error('Error submitting form:', error);
+            //     showFormError(demoForm);
+            // });
+        });
+    }
+});
+
+function showFormSuccess(form) {
+    // Create success message
+    const successMessage = document.createElement('div');
+    successMessage.className = 'form-success-message';
+    successMessage.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="#4CAF50">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <h3>Thank You!</h3>
+        <p>We've received your demo request and will contact you shortly to schedule your personalized walkthrough.</p>
+        <button class="btn btn-secondary" id="returnToForm"><span>Back to Form</span></button>
+    `;
+
+    // Hide the form and show success message
+    form.style.display = 'none';
+    form.parentNode.appendChild(successMessage);
+
+    // Add click event to return button
+    document.getElementById('returnToForm').addEventListener('click', function () {
+        // Reset and show the form
+        form.reset();
+        form.style.display = 'block';
+
+        // Remove success message
+        form.parentNode.removeChild(successMessage);
+    });
+}
+
+function showFormError(form) {
+    // For error handling if needed
+    const errorMessage = document.createElement('div');
+    errorMessage.className = 'form-error-message';
+    errorMessage.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="#F44336">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+        </svg>
+        <h3>Something went wrong</h3>
+        <p>We couldn't process your request. Please try again or contact us directly.</p>
+        <button class="btn btn-secondary" id="dismissError"><span>Try Again</span></button>
+    `;
+
+    // Show error message
+    form.insertAdjacentElement('beforebegin', errorMessage);
+
+    // Add click event to dismiss button
+    document.getElementById('dismissError').addEventListener('click', function () {
+        errorMessage.parentNode.removeChild(errorMessage);
+    });
+}
+
+// Handle FAQ accordion functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        if (question) {
+            question.addEventListener('click', () => {
+                // Check if this item is already active
+                const isActive = item.classList.contains('active');
+
+                // Close all items
+                faqItems.forEach(faqItem => {
+                    faqItem.classList.remove('active');
+                });
+
+                // If the clicked item wasn't active, open it
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        }
+    });
+
+    // Open the first FAQ item by default
+    if (faqItems.length > 0) {
+        faqItems[0].classList.add('active');
+    }
+
+    // Setup drag and drop functionality
+    setupDragAndDrop();
+});
+
+// Setup drag and drop for menu uploads
+function setupDragAndDrop() {
+    const dragZone = document.querySelector('.drag-zone');
+    const fileInput = document.getElementById('menu-upload');
+    const progressBar = document.querySelector('.progress-fill');
+    const progressText = document.querySelector('.progress-text');
+
+    if (!dragZone || !fileInput) return;
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dragZone.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+    });
+
+    // Highlight drop zone when item is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dragZone.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dragZone.addEventListener(eventName, unhighlight, false);
+    });
+
+    // Handle dropped files
+    dragZone.addEventListener('drop', handleDrop, false);
+
+    // Handle manually selected files
+    fileInput.addEventListener('change', handleFiles, false);
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    function highlight() {
+        dragZone.classList.add('drag-over');
+    }
+
+    function unhighlight() {
+        dragZone.classList.remove('drag-over');
+    }
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles({ target: { files: files } });
+    }
+
+    function handleFiles(e) {
+        const files = e.target.files;
+        if (files.length === 0) return;
+
+        // Update upload status
+        progressText.textContent = `Processing ${files.length} file${files.length > 1 ? 's' : ''}...`;
+
+        // Simulate upload progress
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 5;
+            progressBar.style.width = `${progress}%`;
+
+            if (progress >= 100) {
+                clearInterval(interval);
+                progressText.textContent = 'Upload complete! Setting up your menu...';
+
+                // Simulate processing delay
+                setTimeout(() => {
+                    // Here you would normally handle the actual processing
+                    // and redirect to the next step
+                    progressText.textContent = 'Menu processed successfully!';
+
+                    // Show success message
+                    showUploadSuccess();
+                }, 1500);
+            }
+        }, 150);
+
+        // Here you would actually upload the files to a server
+        // Using FormData and fetch or XMLHttpRequest
+        console.log('Files to upload:', files);
+    }
+
+    function showUploadSuccess() {
+        // Create success overlay
+        const successOverlay = document.createElement('div');
+        successOverlay.className = 'upload-success';
+        successOverlay.innerHTML = `
+            <div class="success-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="#4CAF50">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </div>
+            <h3>Menu Processed!</h3>
+            <p>Your menu has been processed successfully. You can now start billing in minutes.</p>
+            <a href="#download" class="btn btn-primary"><span>Download Isselo</span></a>
+        `;
+
+        // Add to drag zone
+        dragZone.appendChild(successOverlay);
+
+        // Add active class with delay for animation
+        setTimeout(() => {
+            successOverlay.classList.add('active');
+        }, 100);
+    }
+}
