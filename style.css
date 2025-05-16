@@ -497,13 +497,11 @@ a {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Features Section */
+/* Features Section Styles */
 .features {
-    padding: 5rem 0;
-    text-align: center;
-    background-color: var(--white);
-    margin-top: 2rem;
+    padding: 6rem 0;
     position: relative;
+    overflow: hidden;
 }
 
 .features::before {
@@ -513,7 +511,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 30% 70%, rgba(196, 40, 60, 0.05) 0%, rgba(196, 40, 60, 0) 70%);
+    background: radial-gradient(circle at 30% 70%, rgba(196, 40, 60, 0.08) 0%, rgba(196, 40, 60, 0) 70%);
     z-index: 0;
 }
 
@@ -1042,4 +1040,191 @@ body.has-dev-badge {
 
 .learn-more:hover .arrow {
     transform: translateX(5px);
+}
+
+/* Pricing Section Styles */
+.pricing {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+    background-color: #f9f9fb;
+}
+
+.pricing::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 70%, rgba(196, 40, 60, 0.08) 0%, rgba(196, 40, 60, 0) 70%);
+    z-index: 0;
+}
+
+.pricing .container {
+    position: relative;
+    z-index: 1;
+}
+
+.pricing-plans {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pricing-plan {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    flex: 1;
+    min-width: 320px;
+    max-width: 450px;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-plan:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.pricing-plan.pro-plan {
+    background: linear-gradient(145deg, #2a2c3e, #3A3D56);
+    color: var(--white);
+}
+
+.pricing-plan.coming-soon {
+    position: relative;
+}
+
+.coming-soon-badge {
+    position: absolute;
+    top: -12px;
+    right: 30px;
+    background: var(--highlight-color);
+    color: white;
+    border-radius: 20px;
+    padding: 0.25rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(196, 40, 60, 0.25);
+}
+
+.plan-header {
+    margin-bottom: 2rem;
+}
+
+.plan-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.plan-subtitle {
+    opacity: 0.8;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.plan-price {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.plan-price h4 {
+    font-size: 2.5rem;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.plan-price span {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.plan-features {
+    margin-bottom: 2rem;
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+    padding-right: 5px;
+}
+
+.plan-features::-webkit-scrollbar {
+    width: 6px;
+}
+
+.plan-features::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.plan-features::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.pro-plan .plan-features::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.includes-all {
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.plan-features ul {
+    list-style: none;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.plan-features svg {
+    flex-shrink: 0;
+}
+
+.pro-plan .plan-features svg {
+    fill: #6ee7b7;
+}
+
+.addon {
+    background: rgba(0, 0, 0, 0.03);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.pro-plan .addon {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.full-width {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .pricing-plans {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pricing-plan {
+        width: 100%;
+        max-width: 100%;
+    }
 }
