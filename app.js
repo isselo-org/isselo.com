@@ -50,6 +50,34 @@ window.addEventListener('scroll', () => {
 
 // Wait for DOM to fully load
 document.addEventListener('DOMContentLoaded', function () {
+    // Mobile menu toggle functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    if (mobileMenuToggle && mobileNav) {
+        mobileMenuToggle.addEventListener('click', function () {
+            this.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+
+            // Prevent scrolling when menu is open
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu when clicking a nav link
+        const mobileNavLinks = mobileNav.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -164,9 +192,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Detect OS for showing recommended download option
-    detectUserOS();
-
     // Animate elements when scrolling into view
     setupScrollAnimations();
 
@@ -210,45 +235,6 @@ function hideDownloadPopup() {
     if (downloadPopup) {
         downloadPopup.classList.remove('active');
         document.body.style.overflow = ''; // Re-enable scrolling
-    }
-}
-
-// Detect user's OS and highlight the recommended option
-function detectUserOS() {
-    const userAgent = window.navigator.userAgent;
-    const platform = window.navigator.platform;
-    const androidBadge = document.querySelector('#androidOption .badge-recommended');
-    const windowsBadge = document.querySelector('#windowsOption .badge-recommended');
-    const macBadge = document.querySelector('#macOption .badge-recommended');
-    const iosBadge = document.querySelector('#iosOption .badge-recommended');
-
-    // Update badge text to "Current OS" instead of "Recommended"
-    if (androidBadge) androidBadge.textContent = 'Current OS';
-    if (windowsBadge) windowsBadge.textContent = 'Current OS';
-    if (macBadge) macBadge.textContent = 'Current OS';
-    if (iosBadge) iosBadge.textContent = 'Current OS';
-
-    // Hide all badges first
-    if (androidBadge) androidBadge.style.display = 'none';
-    if (windowsBadge) windowsBadge.style.display = 'none';
-    if (macBadge) macBadge.style.display = 'none';
-    if (iosBadge) iosBadge.style.display = 'none';
-
-    // Determine OS
-    if (userAgent.indexOf("Android") !== -1) {
-        if (androidBadge) androidBadge.style.display = 'block';
-    } else if (userAgent.indexOf("Win") !== -1 || platform.indexOf("Win") !== -1) {
-        if (windowsBadge) windowsBadge.style.display = 'block';
-    } else if (userAgent.indexOf("Mac") !== -1 || platform.indexOf("Mac") !== -1) {
-        // For Mac users, show macOS as current OS even if it's coming soon
-        if (macBadge) macBadge.style.display = 'block';
-    } else if (userAgent.indexOf("iPhone") !== -1 || userAgent.indexOf("iPad") !== -1 ||
-        platform.indexOf("iPhone") !== -1 || platform.indexOf("iPad") !== -1) {
-        // For iOS users, show iOS as current OS even if it's coming soon
-        if (iosBadge) iosBadge.style.display = 'block';
-    } else {
-        // Default to Windows for unknown platforms
-        if (windowsBadge) windowsBadge.style.display = 'block';
     }
 }
 
