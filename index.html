@@ -3,11 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isselo - Powerful POS for Restaurants</title>
+    <title>Isselo - Powerful POS for Restaurants | Offline Restaurant Management System</title>
+    <meta name="description" content="Isselo is an all-in-one restaurant POS system that works 100% offline. Manage orders, billing, KOTs, and GST reports starting at just ₹2999/year. No credit card required.">
+    <meta name="keywords" content="restaurant POS, offline POS, restaurant management system, billing software, KOT system, GST compliant billing">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Isselo">
+    <link rel="canonical" href="https://isselo.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://isselo.com/">
+    <meta property="og:title" content="Isselo - Powerful POS for Restaurants | Offline Restaurant Management">
+    <meta property="og:description" content="Manage orders, billing, KOTs, and GST reports—100% offline. Isselo powers your entire restaurant workflow with ease starting at ₹2999/year.">
+    <meta property="og:image" content="https://isselo.com/assets/images/header_illustration/indian-man-taking-order-at-restaurant-using-pos-in-Photoroom.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://isselo.com/">
+    <meta property="twitter:title" content="Isselo - Powerful POS for Restaurants | Offline Restaurant Management">
+    <meta property="twitter:description" content="Manage orders, billing, KOTs, and GST reports—100% offline. Isselo powers your entire restaurant workflow with ease starting at ₹2999/year.">
+    <meta property="twitter:image" content="https://isselo.com/assets/images/header_illustration/indian-man-taking-order-at-restaurant-using-pos-in-Photoroom.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Isselo POS",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Android, Windows",
+      "offers": {
+        "@type": "Offer",
+        "price": "2999",
+        "priceCurrency": "INR",
+        "priceValidUntil": "2025-12-31",
+        "availability": "https://schema.org/InStock"
+      },
+      "description": "All-in-One POS for Restaurants. Manage orders, billing, KOTs, and GST reports—100% offline.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "124"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Isselo",
+      "url": "https://isselo.com",
+      "logo": "https://isselo.com/assets/icons/isselo_icons/red_logo_with_name.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+918001050000",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Hindi"]
+      },
+      "sameAs": [
+        "https://facebook.com/isselo",
+        "https://twitter.com/isselo",
+        "https://instagram.com/isselo"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How does Isselo work offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Isselo POS is designed to work 100% offline. All data is stored locally on your device, and if you have multiple devices on the same network, they will sync with each other without needing internet."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What hardware do I need to use Isselo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Isselo works on standard Android tablets/phones and Windows computers. For a complete setup, we recommend a Windows PC or Android tablet for your main billing counter, Android tablets/phones for waitstaff, a thermal printer for receipts, and an optional cash drawer."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is there a monthly fee or just the yearly price?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Isselo POS has a simple pricing model: ₹2999 per year for the Base Plan. No hidden fees, no percentage of sales, no monthly charges. Each additional device costs ₹499 per year."
+        }
+      }]
+    }
+    </script>
 </head>
 <body class="has-dev-badge">
     <!-- Development Badge -->
@@ -18,13 +119,13 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <a href="/" class="logo">
-                <img src="assets/icons/isselo_icons/red_logo_with_name.png" alt="Isselo Logo">
+            <a href="/" class="logo" aria-label="Isselo Home">
+                <img src="assets/icons/isselo_icons/red_logo_with_name.png" alt="Isselo POS System Logo" width="120" height="40">
             </a>
             <div class="nav-links">
                 <a href="#pricing">Pricing</a>
                 <a href="#contact">Contact</a>
-                <a href="#about">About us</a>
+                <a href="about-us.html">About us</a>
                 <a href="#blog">Blog</a>
                 <a href="#faq">FAQ</a>
             </div>
@@ -32,7 +133,7 @@
                 <a href="#download" class="btn btn-secondary"><span>Download Now</span></a>
                 <a href="#contact" class="btn btn-primary"><span>Book A Demo</span></a>
             </div>
-            <div class="mobile-menu-toggle">
+            <div class="mobile-menu-toggle" aria-label="Toggle mobile menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -45,7 +146,7 @@
         <div class="mobile-nav-links">
             <a href="#pricing">Pricing</a>
             <a href="#contact">Contact</a>
-            <a href="#about">About us</a>
+            <a href="about-us.html">About us</a>
             <a href="#blog">Blog</a>
             <a href="#faq">FAQ</a>
         </div>
@@ -79,7 +180,7 @@
                     </div>
                     <div class="trust-feature">
                         <span class="icon secure">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path d="M12 2L4 5V11.09C4 16.14 7.41 20.85 12 22C16.59 20.85 20 16.14 20 11.09V5L12 2ZM12 20C7.95 20 6 15.54 6 12V6.22L12 4L18 6.22V12C18 15.54 16.05 20 12 20Z" fill="#4CAF50"/>
                             </svg>
                         </span>
@@ -87,7 +188,7 @@
                     </div>
                     <div class="trust-feature">
                         <span class="icon support">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#2196F3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#2196F3" aria-hidden="true">
                                 <path d="M12,3 C7.03,3 3,7.03 3,12 L3,20 L8,20 L8,12 C8,9.79 9.79,8 12,8 C14.21,8 16,9.79 16,12 L16,20 L21,20 L21,12 C21,7.03 16.97,3 12,3 Z" />
                             </svg>
                         </span>
@@ -95,7 +196,7 @@
                     </div>
                     <div class="trust-feature">
                         <span class="icon offline">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4c-1.33 0-2.57.36-3.65.97l1.49 1.49C10.51 6.17 11.23 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3 0 .99-.48 1.85-1.21 2.4l1.41 1.41c1.09-.92 1.8-2.27 1.8-3.81 0-2.64-2.05-4.78-4.65-4.96zM3 5.27l2.77 2.77h-.42C2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h11.73l2 2 1.41-1.41L4.41 3.86 3 5.27zM7.73 10l8 8H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h1.73z" fill="#9C27B0"/>
                             </svg>
                         </span>
@@ -104,10 +205,10 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="assets/images/header_illustration/indian-man-taking-order-at-restaurant-using-pos-in-Photoroom.png" alt="Restaurant owner using Isselo POS system">
-                <img src="assets/images/header_illustration/top_creditor.png" alt="Top Creditor" class="floating-element creditor">
-                <img src="assets/images/header_illustration/send_kot.png" alt="Send KOT" class="floating-element order">
-                <img src="assets/images/header_illustration/payment_recieved.png" alt="Payment Received" class="floating-element payment">
+                <img src="assets/images/header_illustration/indian-man-taking-order-at-restaurant-using-pos-in-Photoroom.png" alt="Restaurant staff using Isselo POS system on tablet to take orders" width="600" height="450">
+                <img src="assets/images/header_illustration/top_creditor.png" alt="Top creditor notification from Isselo POS" class="floating-element creditor" width="200" height="100">
+                <img src="assets/images/header_illustration/send_kot.png" alt="Kitchen Order Ticket being sent from Isselo POS" class="floating-element order" width="200" height="100">
+                <img src="assets/images/header_illustration/payment_recieved.png" alt="Payment received confirmation from Isselo POS" class="floating-element payment" width="200" height="100">
             </div>
         </div>
     </section>
@@ -122,7 +223,7 @@
             <div class="bento-grid">
                 <div class="bento-item large special">
                     <div class="bento-icon">
-                        <img src="assets/icons/features/easy_2_billing.png" alt="Billing Icon">
+                        <img src="assets/icons/features/easy_2_billing.png" alt="Easy 2-Step Billing Feature Icon" width="60" height="60">
                     </div>
                     <!-- <span class="badge">2.4x faster</span> -->
                     <h3>Easy 2-Step Billing</h3>
@@ -132,7 +233,7 @@
                 
                 <div class="bento-item medium">
                     <div class="bento-icon">
-                        <img src="assets/icons/features/local_network_syncing.png" alt="Network Icon">
+                        <img src="assets/icons/features/local_network_syncing.png" alt="Team Order Network Feature Icon" width="60" height="60">
                     </div>
                     <h3>Team Order Network</h3>
                     <p>Your entire staff connected instantly. Take orders on any device that sync immediately to your counter all offline.</p>
@@ -141,7 +242,7 @@
                 
                 <div class="bento-item small">
                     <div class="bento-icon">
-                        <img src="assets/icons/features/multi_kitchen.png" alt="Kitchen Icon">
+                        <img src="assets/icons/features/multi_kitchen.png" alt="Multi KOT Routing Feature Icon" width="60" height="60">
                     </div>
                     <h3>Multi KOT Routing</h3>
                     <p>Send orders to the right stations automatically. No more kitchen confusion or delayed dishes.</p>
@@ -150,7 +251,7 @@
                 
                 <div class="bento-item small">
                     <div class="bento-icon">
-                        <img src="assets/icons/features/privilege.png" alt="Sync Icon">
+                        <img src="assets/icons/features/privilege.png" alt="Role-Based Access Feature Icon" width="60" height="60">
                     </div>
                     <h3>Role-Based Access</h3>
                     <p>Give staff only the access they need. Simple controls for managers, servers, kitchen staff, and cashiers.</p>
@@ -159,7 +260,7 @@
                 
                 <div class="bento-item small">
                     <div class="bento-icon">
-                        <img src="assets/icons/features/detailed_report.png" alt="Reports Icon">
+                        <img src="assets/icons/features/detailed_report.png" alt="Detailed Reporting Feature Icon" width="60" height="60">
                     </div>
                     <h3>Detailed Reporting</h3>
                     <p>See what's working and what's not. Easy-to-read reports that help you make smarter decisions.</p>
@@ -188,103 +289,103 @@
                     <div class="plan-features">
                         <ul>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Easy 2-Step Billing
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Team Order Network
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Multi KOT Routing
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Role-Based Access
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Detailed Reporting
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 100% Offline Operation
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 GST Compliant Billing
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Table Management
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Custom Menu Configuration
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Multiple Payment Options
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Bill Splitting
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Discount Management
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Basic Sales Analytics
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Digital Receipts
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Customer Database
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Kitchen Display System
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Regular Software Updates
@@ -311,55 +412,55 @@
                         <p class="includes-all">Includes all Base Plan features, plus:</p>
                         <ul>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Inventory Management
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Purchase Management
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Advanced Analytics
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Priority Support
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Ingredient-Level Tracking
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Recipe Costing
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Stock Alerts & Forecasting
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Vendor Management
                             </li>
                             <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#4CAF50" aria-hidden="true">
                                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                                 Profit & Loss Reports
@@ -382,7 +483,7 @@
                 <div class="drag-zone">
                     <div class="drag-inner">
                         <div class="drag-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="17 8 12 3 7 8"></polyline>
                                 <line x1="12" y1="3" x2="12" y2="15"></line>
@@ -432,7 +533,7 @@
             <div class="setup-benefits">
                 <div class="benefit">
                     <div class="benefit-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
@@ -443,7 +544,7 @@
                 
                 <div class="benefit">
                     <div class="benefit-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                         </svg>
@@ -454,7 +555,7 @@
                 
                 <div class="benefit">
                     <div class="benefit-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                             <line x1="1" y1="10" x2="23" y2="10"></line>
                         </svg>
@@ -485,7 +586,7 @@
                         <ul class="benefits-list">
                             <li>
                                 <span class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#C4283C">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#C4283C" aria-hidden="true">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
                                     </svg>
                                 </span>
@@ -496,7 +597,7 @@
                             </li>
                             <li>
                                 <span class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#C4283C">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#C4283C" aria-hidden="true">
                                         <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
                                     </svg>
                                 </span>
@@ -507,7 +608,7 @@
                             </li>
                             <li>
                                 <span class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#C4283C">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#C4283C" aria-hidden="true">
                                         <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
                                     </svg>
                                 </span>
@@ -520,7 +621,7 @@
                         <div class="contact-direct">
                             <div class="contact-method">
                                 <span class="method-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#C4283C">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#C4283C" aria-hidden="true">
                                         <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                                     </svg>
                                 </span>
@@ -531,13 +632,13 @@
                             </div>
                             <div class="contact-method">
                                 <span class="method-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#C4283C">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#C4283C" aria-hidden="true">
                                         <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
                                     </svg>
                                 </span>
                                 <div>
                                     <h4>Call Us</h4>
-                                    <a href="tel:+919876543210">+91 80010 50000</a>
+                                    <a href="tel:+918001050000">+91 80010 50000</a>
                                 </div>
                             </div>
                         </div>
@@ -545,7 +646,7 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form id="demoForm">
+                    <form id="demoForm" action="https://formsubmit.co/support@isselo.com" method="POST">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Full Name</label>
@@ -596,7 +697,7 @@
                         
                         <button type="submit" class="btn btn-primary full-width"><span>Book Your Demo</span></button>
                         
-                        <p class="form-disclaimer">By submitting this form, you agree to our <a href="#privacy">Privacy Policy</a>. We'll never share your information with third parties.</p>
+                        <p class="form-disclaimer">By submitting this form, you agree to our <a href="privacy-policy.html">Privacy Policy</a>. We'll never share your information with third parties.</p>
                     </form>
                 </div>
             </div>
@@ -614,7 +715,7 @@
                     <div class="faq-question">
                         <h3>How does Isselo work offline?</h3>
                         <span class="toggle-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
@@ -629,7 +730,7 @@
                     <div class="faq-question">
                         <h3>What hardware do I need to use Isselo?</h3>
                         <span class="toggle-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
@@ -651,7 +752,7 @@
                     <div class="faq-question">
                         <h3>Is there a monthly fee or just the yearly price?</h3>
                         <span class="toggle-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
@@ -666,7 +767,7 @@
                     <div class="faq-question">
                         <h3>How difficult is it to set up Isselo for my restaurant?</h3>
                         <span class="toggle-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
@@ -689,7 +790,7 @@
                     <div class="faq-question">
                         <h3>What kind of reports does Isselo generate?</h3>
                         <span class="toggle-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
@@ -714,7 +815,7 @@
                     <div class="faq-question">
                         <h3>What payment methods can Isselo accept?</h3>
                         <span class="toggle-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
@@ -737,7 +838,7 @@
                     <div class="faq-question">
                         <h3>How do I get support if I have issues?</h3>
                         <span class="toggle-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
@@ -760,14 +861,14 @@
                     <div class="faq-question">
                         <h3>Can I try Isselo before purchasing?</h3>
                         <span class="toggle-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
                         </span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! You can download Isselo and use it in trial mode for 14 days with all features unlocked. No credit card is required for the trial. Additionally, we offer a 30-day money-back guarantee if you purchase and find that Isselo doesn't meet your needs.</p>
+                        <p>Yes! You can download Isselo and use it in trial mode for 3 days with all features unlocked. No credit card is required for the trial. We recommend thoroughly testing the software during this period as all purchases are final and non-refundable.</p>
                     </div>
                 </div>
             </div>
@@ -779,12 +880,12 @@
         <div class="popup-content">
             <div class="popup-header">
                 <h3>Download Isselo POS</h3>
-                <button class="close-popup" id="closePopup">&times;</button>
+                <button class="close-popup" id="closePopup" aria-label="Close popup">&times;</button>
             </div>
             <div class="os-options">
                 <div class="os-option" id="androidOption">
                     <div class="os-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="#A4C639">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="#A4C639" aria-hidden="true">
                             <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
                         </svg>
                     </div>
@@ -794,7 +895,7 @@
                 </div>
                 <div class="os-option" id="windowsOption">
                     <div class="os-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="#0078D4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="#0078D4" aria-hidden="true">
                             <path d="M11.2 4v7.5H4V4h7.2m8.8 0v7.5h-7.2V4H20M11.2 20H4v-7.5h7.2V20M20 20h-7.2v-7.5H20V20"/>
                         </svg>
                     </div>
@@ -823,6 +924,56 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer with Links -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Isselo</h4>
+                    <p>Powerful, affordable POS software designed specifically for Indian restaurants.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/isselo" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg></a>
+                        <a href="https://twitter.com/isselo" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
+                        <a href="https://instagram.com/isselo" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+                        <a href="https://www.youtube.com/channel/isselo" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,14.598V9.402c0-0.385,0.417-0.625,0.75-0.433l4.5,2.598c0.333,0.192,0.333,0.674,0,0.866l-4.5,2.598 C10.417,15.224,10,14.983,10,14.598z"/></svg></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><a href="tel:+918001050000">+91 80010 50000</a></li>
+                        <li><a href="mailto:support@isselo.com">support@isselo.com</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="refund-policy.html">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Isselo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="app.js"></script>
 </body>

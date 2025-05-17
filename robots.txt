@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://isselo.com/sitemap.xml
+
+# Block any future admin directories that might be added
+Disallow: /admin/
+Disallow: /wp-admin/ 
