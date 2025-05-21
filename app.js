@@ -426,115 +426,81 @@ document.addEventListener('DOMContentLoaded', function () {
     if (faqItems.length > 0) {
         faqItems[0].classList.add('active');
     }
-
-    // Setup drag and drop functionality
-    setupDragAndDrop();
 });
 
-// Setup drag and drop for menu uploads
-function setupDragAndDrop() {
-    const dragZone = document.querySelector('.drag-zone');
-    const fileInput = document.getElementById('menu-upload');
-    const progressBar = document.querySelector('.progress-fill');
-    const progressText = document.querySelector('.progress-text');
+// Lead Capture Popup
+document.addEventListener('DOMContentLoaded', function () {
+    const leadPopup = document.getElementById('leadCapturePopup');
+    const closeLeadPopup = document.getElementById('closeLeadPopup');
+    const leadForm = document.getElementById('leadForm');
+    let hasShownPopup = false;
 
-    if (!dragZone || !fileInput) return;
+    // Show popup when user scrolls down 30% of the page
+    function checkScroll() {
+        if (!hasShownPopup) {
+            const scrollHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+            const scrolled = window.scrollY;
+            const scrollPercent = (scrolled / (scrollHeight - windowHeight)) * 100;
 
-    // Prevent default drag behaviors
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dragZone.addEventListener(eventName, preventDefaults, false);
-        document.body.addEventListener(eventName, preventDefaults, false);
-    });
-
-    // Highlight drop zone when item is dragged over it
-    ['dragenter', 'dragover'].forEach(eventName => {
-        dragZone.addEventListener(eventName, highlight, false);
-    });
-
-    ['dragleave', 'drop'].forEach(eventName => {
-        dragZone.addEventListener(eventName, unhighlight, false);
-    });
-
-    // Handle dropped files
-    dragZone.addEventListener('drop', handleDrop, false);
-
-    // Handle manually selected files
-    fileInput.addEventListener('change', handleFiles, false);
-
-    function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
-
-    function highlight() {
-        dragZone.classList.add('drag-over');
-    }
-
-    function unhighlight() {
-        dragZone.classList.remove('drag-over');
-    }
-
-    function handleDrop(e) {
-        const dt = e.dataTransfer;
-        const files = dt.files;
-        handleFiles({ target: { files: files } });
-    }
-
-    function handleFiles(e) {
-        const files = e.target.files;
-        if (files.length === 0) return;
-
-        // Update upload status
-        progressText.textContent = `Processing ${files.length} file${files.length > 1 ? 's' : ''}...`;
-
-        // Simulate upload progress
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += 5;
-            progressBar.style.width = `${progress}%`;
-
-            if (progress >= 100) {
-                clearInterval(interval);
-                progressText.textContent = 'Upload complete! Setting up your menu...';
-
-                // Simulate processing delay
+            if (scrollPercent > 12) {
                 setTimeout(() => {
-                    // Here you would normally handle the actual processing
-                    // and redirect to the next step
-                    progressText.textContent = 'Menu processed successfully!';
-
-                    // Show success message
-                    showUploadSuccess();
-                }, 1500);
+                    leadPopup.classList.add('show');
+                }, 500);
+                hasShownPopup = true;
             }
-        }, 150);
-
-        // Here you would actually upload the files to a server
-        // Using FormData and fetch or XMLHttpRequest
-        console.log('Files to upload:', files);
+        }
     }
 
-    function showUploadSuccess() {
-        // Create success overlay
-        const successOverlay = document.createElement('div');
-        successOverlay.className = 'upload-success';
-        successOverlay.innerHTML = `
-            <div class="success-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="#4CAF50">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-            </div>
-            <h3>Menu Processed!</h3>
-            <p>Your menu has been processed successfully. You can now start billing in minutes.</p>
-            <a href="#download" class="btn btn-primary"><span>Download Isselo</span></a>
-        `;
+    // Add scroll event listener
+    window.addEventListener('scroll', checkScroll);
 
-        // Add to drag zone
-        dragZone.appendChild(successOverlay);
-
-        // Add active class with delay for animation
-        setTimeout(() => {
-            successOverlay.classList.add('active');
-        }, 100);
+    // Close popup when clicking the close button
+    if (closeLeadPopup) {
+        closeLeadPopup.addEventListener('click', () => {
+            leadPopup.classList.remove('show');
+            // Reset hasShownPopup so it can show again on next scroll
+            hasShownPopup = false;
+        });
     }
-}
+
+    // Close popup when clicking outside
+    leadPopup.addEventListener('click', (e) => {
+        if (e.target === leadPopup) {
+            leadPopup.classList.remove('show');
+            // Reset hasShownPopup so it can show again on next scroll
+            hasShownPopup = false;
+        }
+    });
+
+    // Handle form submission
+    if (leadForm) {
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('leadName').value;
+            const phone = document.getElementById('leadPhone').value;
+
+            // Here you would typically send the data to your server
+            console.log('Lead captured:', { name, phone });
+
+            // Show success message
+            leadForm.innerHTML = `
+                <div class="success-message">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#22C55E"/>
+                        <path d="M22 4L12 14.01l-3-3" stroke="#22C55E"/>
+                    </svg>
+                    <h4>Thank You!</h4>
+                    <p>We'll contact you shortly to get you started.</p>
+                </div>
+            `;
+
+            // Hide popup after 3 seconds
+            setTimeout(() => {
+                leadPopup.classList.remove('show');
+                // Reset hasShownPopup so it can show again on next scroll
+                hasShownPopup = false;
+            }, 3000);
+        });
+    }
+});
