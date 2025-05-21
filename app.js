@@ -429,78 +429,46 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Lead Capture Popup
+let hasShownPopupThisSession = false; // Global variable to track popup state
+
 document.addEventListener('DOMContentLoaded', function () {
     const leadPopup = document.getElementById('leadCapturePopup');
     const closeLeadPopup = document.getElementById('closeLeadPopup');
     const leadForm = document.getElementById('leadForm');
-    let hasShownPopup = false;
 
     // Show popup when user scrolls down 30% of the page
     function checkScroll() {
-        if (!hasShownPopup) {
+        if (!hasShownPopupThisSession) {
             const scrollHeight = document.documentElement.scrollHeight;
             const windowHeight = window.innerHeight;
             const scrolled = window.scrollY;
             const scrollPercent = (scrolled / (scrollHeight - windowHeight)) * 100;
 
-            if (scrollPercent > 12) {
+            if (scrollPercent > 28) {
                 setTimeout(() => {
                     leadPopup.classList.add('show');
                 }, 500);
-                hasShownPopup = true;
+                hasShownPopupThisSession = true; // Mark as shown for this session
             }
         }
     }
 
-    // Add scroll event listener
-    window.addEventListener('scroll', checkScroll);
-
     // Close popup when clicking the close button
     if (closeLeadPopup) {
-        closeLeadPopup.addEventListener('click', () => {
+        closeLeadPopup.addEventListener('click', function () {
             leadPopup.classList.remove('show');
-            // Reset hasShownPopup so it can show again on next scroll
-            hasShownPopup = false;
         });
     }
-
-    // Close popup when clicking outside
-    leadPopup.addEventListener('click', (e) => {
-        if (e.target === leadPopup) {
-            leadPopup.classList.remove('show');
-            // Reset hasShownPopup so it can show again on next scroll
-            hasShownPopup = false;
-        }
-    });
 
     // Handle form submission
     if (leadForm) {
-        leadForm.addEventListener('submit', (e) => {
+        leadForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            const name = document.getElementById('leadName').value;
-            const phone = document.getElementById('leadPhone').value;
-
-            // Here you would typically send the data to your server
-            console.log('Lead captured:', { name, phone });
-
-            // Show success message
-            leadForm.innerHTML = `
-                <div class="success-message">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#22C55E"/>
-                        <path d="M22 4L12 14.01l-3-3" stroke="#22C55E"/>
-                    </svg>
-                    <h4>Thank You!</h4>
-                    <p>We'll contact you shortly to get you started.</p>
-                </div>
-            `;
-
-            // Hide popup after 3 seconds
-            setTimeout(() => {
-                leadPopup.classList.remove('show');
-                // Reset hasShownPopup so it can show again on next scroll
-                hasShownPopup = false;
-            }, 3000);
+            // Handle form submission logic here
+            leadPopup.classList.remove('show');
         });
     }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', checkScroll);
 });
