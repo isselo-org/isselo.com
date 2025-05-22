@@ -83,6 +83,14 @@
     z-index: 1;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
 .landing-hero {
     padding: 80px 0;
     background: linear-gradient(160deg,
@@ -292,5 +300,168 @@
 
     .feature-tag {
         font-size: 0.8rem;
+    }
+}
+
+/* Migration Hero Styles */
+.migration-hero-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+    padding: 4rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.migration-hero-text {
+    flex: 1.5;
+    max-width: 600px;
+}
+
+.migration-hero-text h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #1D2939;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.migration-hero-text .subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #475467;
+    margin-bottom: 2rem;
+    max-width: 560px;
+}
+
+.migration-hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.migration-switch-illustration {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
+}
+
+/* Override feature tags for migration page */
+.theme-migration .feature-tag {
+    background: rgba(74, 20, 140, 0.1);
+    color: #4A148C;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+}
+
+.theme-migration .landing-features {
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+}
+
+/* Override CTA buttons for migration page */
+.theme-migration .landing-cta {
+    align-items: center;
+    gap: 2rem;
+}
+
+.theme-migration .landing-btn-primary {
+    background: #4A148C;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    font-size: 1.125rem;
+}
+
+.theme-migration .landing-btn-secondary {
+    color: #027A48;
+    background: transparent;
+    padding: 1rem 0;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.theme-migration .landing-btn-secondary:hover {
+    background: transparent;
+    color: #015C36;
+}
+
+/* Responsive styles for migration hero */
+@media (max-width: 1200px) {
+    .migration-hero-wrapper {
+        padding: 4rem 2rem;
+    }
+
+    .migration-hero-text h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .migration-hero-wrapper {
+        flex-direction: column;
+        gap: 3rem;
+        text-align: center;
+        padding: 3rem 2rem;
+    }
+
+    .migration-hero-text {
+        max-width: 100%;
+    }
+
+    .migration-hero-text h1 {
+        font-size: 2.8rem;
+    }
+
+    .migration-hero-text .subtitle {
+        max-width: 600px;
+        margin: 0 auto 2rem;
+    }
+
+    .migration-hero-image {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .migration-switch-illustration {
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .migration-hero-wrapper {
+        padding: 2rem 1.5rem;
+    }
+
+    .migration-hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .migration-hero-text .subtitle {
+        font-size: 1.125rem;
+    }
+
+    .migration-switch-illustration {
+        max-width: 220px;
+    }
+
+    .theme-migration .landing-features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .theme-migration .landing-cta {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .theme-migration .feature-tag {
+        width: 100%;
+        text-align: center;
     }
 }
