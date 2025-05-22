@@ -472,3 +472,23 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add scroll event listener
     window.addEventListener('scroll', checkScroll);
 });
+
+// Mobile dropdown menu functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdownTrigger = document.querySelector('.dropdown-trigger');
+    const dropdown = document.querySelector('.dropdown');
+
+    if (dropdownTrigger && dropdown) {
+        dropdownTrigger.addEventListener('click', function (e) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    }
+});
