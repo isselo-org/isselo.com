@@ -3252,73 +3252,161 @@ textarea {
 .solutions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    margin-top: 3rem;
+    gap: 32px;
+    padding: 40px 0;
 }
 
 .solution-card {
-    background: white;
-    border-radius: 20px;
-    padding: 32px;
+    position: relative;
     text-decoration: none;
     color: inherit;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(230, 230, 240, 0.7);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
-.solution-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+.glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+}
+
+.solution-content {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.solution-icon-wrapper {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    margin-bottom: 8px;
 }
 
 .solution-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease;
 }
 
 .solution-icon img {
-    width: 20%;
-    height: auto
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: transform 0.4s ease;
 }
 
-.solution-card h3 {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 0.5rem;
-    font-weight: 700;
+.icon-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FF6B6B 0%, #C4283C 100%);
+    border-radius: 24px;
+    opacity: 0.1;
+    transition: all 0.4s ease;
 }
 
-.solution-card p {
-    color: var(--gray);
-    font-size: 1rem;
+.solution-text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.solution-text h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1A1A1A;
     margin: 0;
-    line-height: 1.5;
+    transition: color 0.3s ease;
 }
 
+.solution-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effects */
+.solution-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+}
+
+.solution-card:hover .icon-background {
+    transform: scale(1.2);
+    opacity: 0.15;
+}
+
+.solution-card:hover .solution-icon img {
+    transform: scale(1.1);
+}
+
+.solution-card:hover .solution-text h3 {
+    color: #C4283C;
+}
+
+/* Gradient background for section */
+.specialized-solutions {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(196, 40, 60, 0.03) 100%);
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.specialized-solutions::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 0% 0%, rgba(196, 40, 60, 0.03) 0%, rgba(255, 255, 255, 0) 50%),
+        radial-gradient(circle at 100% 100%, rgba(196, 40, 60, 0.03) 0%, rgba(255, 255, 255, 0) 50%);
+    pointer-events: none;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .dropdown {
-        position: static;
-    }
-
-    .dropdown-content {
-        position: static;
-        box-shadow: none;
-        padding: 0;
-        display: none;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: none;
-    }
-
-    .dropdown.active .dropdown-content {
-        display: block;
-    }
-
     .solutions-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        padding: 24px 0;
+    }
+
+    .solution-content {
+        padding: 24px;
+    }
+
+    .solution-icon-wrapper {
+        width: 80px;
+        height: 80px;
+    }
+
+    .solution-icon img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .solution-text h3 {
+        font-size: 20px;
+    }
+
+    .solution-text p {
+        font-size: 14px;
     }
 }

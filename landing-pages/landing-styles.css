@@ -90,6 +90,10 @@
             rgba(var(--theme-primary), 0.05) 100%);
     position: relative;
     overflow: hidden;
+    background-image:
+        linear-gradient(rgba(230, 230, 240, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(230, 230, 240, 0.2) 1px, transparent 1px);
+    background-size: 60px 60px;
 }
 
 .landing-hero::before {
@@ -115,15 +119,19 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    margin-top: -80px;
-    margin-right: 10px;
+    align-items: center;
+    position: relative;
 }
 
 .hero-image {
-    max-width: 60%;
+    max-width: 100%;
     height: auto;
-    border-radius: 20px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: translateY(-4px);
 }
 
 .landing-hero h1 {
@@ -235,9 +243,14 @@
     }
 
     .landing-hero-image {
+        margin-top: 40px;
         width: 100%;
         max-width: 500px;
-        margin-top: 40px;
+    }
+
+    .hero-image {
+        max-width: 90%;
+        margin: 0 auto;
     }
 }
 
