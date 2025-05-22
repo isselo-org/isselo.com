@@ -3279,6 +3279,11 @@ textarea {
     margin-bottom: 1rem;
 }
 
+.solution-icon img {
+    width: 20%;
+    height: auto
+}
+
 .solution-card h3 {
     font-size: 1.5rem;
     color: var(--secondary-color);
