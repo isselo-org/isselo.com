@@ -542,4 +542,167 @@ function initScreenshotsViewer() {
         });
     }
 }
-*/ 
+*/
+
+// Navigation
+document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.getElementById('main-nav');
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Navbar scroll behavior
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 10) {
+            navbar.classList.add('shadow-md');
+        } else {
+            navbar.classList.remove('shadow-md');
+        }
+    });
+
+    // Mobile menu toggle
+    mobileMenuToggle?.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+    });
+});
+
+// Product Tour Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const mainScreenshot = document.getElementById('mainScreenshot');
+    const featureTitle = document.getElementById('feature-title');
+    const featureDescription = document.getElementById('feature-description');
+    const prevButton = document.getElementById('prevScreen');
+    const nextButton = document.getElementById('nextScreen');
+    const activeDot = document.querySelector('.active-dot');
+    const inactiveDots = document.querySelectorAll('.inactive-dot');
+
+    // Screenshots and their descriptions
+    const screens = [
+        {
+            src: "assets/images/screenshots/Home.png",
+            title: "Complete Dashboard Overview",
+            description: "Get a comprehensive view of your restaurant's performance with our intuitive dashboard. Monitor sales, track popular items, and get real-time insights to make informed decisions."
+        },
+        {
+            src: "assets/images/screenshots/New Order.png",
+            title: "Simple Order Management",
+            description: "Create and manage orders effortlessly with our streamlined interface. Add items, apply discounts, and complete transactions quickly to serve customers faster."
+        },
+        {
+            src: "assets/images/screenshots/Item Details.png",
+            title: "Detailed Item Management",
+            description: "Easily view and edit item details including price, ingredients, and modifiers. Keep your menu up-to-date with just a few clicks."
+        },
+        {
+            src: "assets/images/screenshots/Select Variant.png",
+            title: "Flexible Item Variants",
+            description: "Offer multiple sizes, flavors, or options for your menu items. Our variant system makes it easy to customize products to customer preferences."
+        },
+        {
+            src: "assets/images/screenshots/Sales.png",
+            title: "Comprehensive Sales Reports",
+            description: "Track your business performance with detailed sales reports. Analyze revenue trends, bestselling items, and peak hours to optimize your operations."
+        },
+        {
+            src: "assets/images/screenshots/Accounts.png",
+            title: "Simplified Accounting",
+            description: "Manage your restaurant's finances with our integrated accounting features. Track expenses, monitor balance sheets, and keep your financial records in order."
+        }
+    ];
+
+    let currentIndex = 0;
+
+    // Preload images
+    function preloadImages() {
+        screens.forEach(screen => {
+            const img = new Image();
+            img.src = screen.src;
+        });
+    }
+    preloadImages();
+
+    // Update content function
+    function updateContent() {
+        mainScreenshot.style.opacity = '0';
+        featureTitle.style.opacity = '0';
+        featureDescription.style.opacity = '0';
+
+        updateDots();
+
+        setTimeout(() => {
+            mainScreenshot.src = screens[currentIndex].src;
+            featureTitle.textContent = screens[currentIndex].title;
+            featureDescription.textContent = screens[currentIndex].description;
+
+            setTimeout(() => {
+                mainScreenshot.style.opacity = '1';
+                featureTitle.style.opacity = '1';
+                featureDescription.style.opacity = '1';
+            }, 50);
+        }, 300);
+    }
+
+    // Update indicator dots
+    function updateDots() {
+        const dots = [activeDot, ...inactiveDots];
+        dots.forEach((dot, index) => {
+            if (index === 0) {
+                dot.style.width = index === currentIndex ? '32px' : '8px';
+                dot.style.backgroundColor = index === currentIndex ? 'var(--primary-color)' : '#cbd5e0';
+                dot.style.opacity = index === currentIndex ? '1' : '0.6';
+            } else {
+                dot.style.width = (index - 1) === currentIndex ? '32px' : '8px';
+                dot.style.backgroundColor = (index - 1) === currentIndex ? 'var(--primary-color)' : '#cbd5e0';
+                dot.style.opacity = (index - 1) === currentIndex ? '1' : '0.6';
+            }
+        });
+    }
+
+    // Navigation event listeners
+    prevButton?.addEventListener('click', function () {
+        this.classList.add('bg-gray-100');
+        setTimeout(() => this.classList.remove('bg-gray-100'), 150);
+        currentIndex = (currentIndex - 1 + screens.length) % screens.length;
+        updateContent();
+    });
+
+    nextButton?.addEventListener('click', function () {
+        this.classList.add('bg-gray-100');
+        setTimeout(() => this.classList.remove('bg-gray-100'), 150);
+        currentIndex = (currentIndex + 1) % screens.length;
+        updateContent();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') {
+            prevButton?.click();
+        } else if (e.key === 'ArrowRight') {
+            nextButton?.click();
+        }
+    });
+});
+
+// Back to Top Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 300) {
+            backToTopButton.style.opacity = '1';
+        } else {
+            backToTopButton.style.opacity = '0';
+        }
+    });
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Set current year in footer
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+}); 
