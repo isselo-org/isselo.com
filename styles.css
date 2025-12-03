@@ -1012,7 +1012,7 @@ p {
 .pos-image-container::before {
     content: '';
     display: block;
-    padding-bottom: 76.25%;
+    padding-bottom: 100%;
     /* 16:9 Aspect Ratio */
 }
 
