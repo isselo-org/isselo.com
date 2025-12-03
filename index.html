@@ -683,7 +683,7 @@
         <div class="modal-content">
             <button class="close-modal" onclick="closeDownloadModal()">&times;</button>
             <div class="text-center" style="margin-bottom: 2rem;">
-                <h3>Download isselo POS</h3>
+                <h3>Download Isselo Free</h3>
                 <p class="text-muted">Select your operating system</p>
             </div>
 
@@ -693,20 +693,22 @@
                     <i class="fab fa-windows" style="font-size: 2rem; color: #0078d4;"></i>
                     <span>Windows</span>
                 </button>
-                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="macOS"
-                    style="height: auto; flex-direction: column; gap: 0.5rem;">
+                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="macOS" disabled
+                    style="height: auto; flex-direction: column; gap: 0.5rem; opacity: 0.6; cursor: not-allowed; position: relative;">
                     <i class="fab fa-apple" style="font-size: 2rem; color: #333;"></i>
                     <span>macOS</span>
+                    <span style="font-size: 0.7rem; background: #666; color: white; padding: 2px 6px; border-radius: 4px;">Coming Soon</span>
                 </button>
                 <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="Android"
                     style="height: auto; flex-direction: column; gap: 0.5rem;">
                     <i class="fab fa-android" style="font-size: 2rem; color: #3ddc84;"></i>
                     <span>Android</span>
                 </button>
-                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="iOS"
-                    style="height: auto; flex-direction: column; gap: 0.5rem;">
+                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="iOS" disabled
+                    style="height: auto; flex-direction: column; gap: 0.5rem; opacity: 0.6; cursor: not-allowed; position: relative;">
                     <i class="fab fa-app-store-ios" style="font-size: 2rem; color: #007aff;"></i>
                     <span>iOS</span>
+                    <span style="font-size: 0.7rem; background: #666; color: white; padding: 2px 6px; border-radius: 4px;">Coming Soon</span>
                 </button>
             </div>
 
@@ -806,6 +808,12 @@
         }
 
         function selectPlatform(platform) {
+            // Check if the button is disabled before selecting
+            const btn = document.querySelector(`.platform-select-btn[data-platform="${platform}"]`);
+            if (btn && btn.hasAttribute('disabled')) {
+                return; // Do nothing if disabled
+            }
+
             currentSelectedPlatform = platform;
             
             // Update UI
