@@ -119,12 +119,26 @@
                     </div>
                 </div>
 
-                <div class="hero-image animate-fade-in" style="animation-delay: 0.2s;">
-                    <img src="assets/images/header_illustration/indian-man-taking-order-at-restaurant-using-pos-in-Photoroom.png"
-                        alt="Restaurant POS" style="z-index: 1; position: relative;">
+                <div class="hero-image">
+                    <!-- View Toggle -->
+                    <div class="view-toggle-wrapper" style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                        <div class="view-toggle" style="background: white; padding: 0.4rem; border-radius: 50px; display: inline-flex; gap: 0.25rem; border: 1px solid #e2e8f0;">
+                            <button class="toggle-btn active" onclick="switchHeroView('pos')" id="btn-pos" style="border: none; background: var(--primary); color: white; padding: 0.5rem 1.25rem; border-radius: 50px; font-weight: 600; font-size: 0.875rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
+                                <i class="fas fa-desktop"></i> POS
+                            </button>
+                            <button class="toggle-btn" onclick="switchHeroView('mobile')" id="btn-mobile" style="border: none; background: transparent; color: var(--text-muted); padding: 0.5rem 1.25rem; border-radius: 50px; font-weight: 600; font-size: 0.875rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
+                                <i class="fas fa-mobile-alt"></i> App
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: center; min-height: 400px; align-items: center;">
+                        <img id="hero-main-img" src="assets/images/POS/sales_pos_view.png"
+                            alt="Restaurant POS" style="z-index: 1; position: relative; border-radius: var(--radius-lg); transition: all 0.3s ease; width: 100%;">
+                    </div>
 
                     <!-- Floating Elements -->
-                    <div
+                    <div id="floating-el-1"
                         style="position: absolute; top: 10%; right: -20px; background: white; padding: 1rem; border-radius: 1rem; box-shadow: var(--shadow-lg); animation: float 5s ease-in-out infinite; z-index: 2;">
                         <div class="flex items-center gap-2">
                             <div
@@ -138,7 +152,7 @@
                         </div>
                     </div>
 
-                    <div
+                    <div id="floating-el-2"
                         style="position: absolute; bottom: 20%; left: -20px; background: white; padding: 1rem; border-radius: 1rem; box-shadow: var(--shadow-lg); animation: float 7s ease-in-out infinite; z-index: 2;">
                         <div class="flex items-center gap-2">
                             <div
@@ -343,7 +357,11 @@
             Get instant help whenever you need it. Our dedicated team is always ready to assist you.
         </p>
 
-        <br/>
+        <div style="margin-bottom: 1.5rem;">
+            <a href="tel:+919048872735" style="display: inline-flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; background: #fee2e2; padding: 0.5rem 1.25rem; border-radius: 999px; transition: all 0.3s ease;">
+                <i class="fas fa-phone-alt"></i> 090488 72735
+            </a>
+        </div>
 
         <ul style="color: var(--text-main); list-style: none; padding: 0;">
             <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem;">
@@ -386,8 +404,8 @@
         <br/>
         <ul style="color: var(--text-main); list-style: none; padding: 0;">
             <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem;">
-                <i class="fas fa-globe text-primary" style="font-size: 1.25rem;"></i>
-                <span style="font-size: 1.05rem;">Global coverage</span>
+                <i class="fas fa-language text-primary" style="font-size: 1.25rem;"></i>
+                <span style="font-size: 1.05rem;">Talk in your regional language</span>
             </li>
             <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem;">
                 <i class="fas fa-handshake text-primary" style="font-size: 1.25rem;"></i>
@@ -1204,6 +1222,58 @@
                 );
             }
         });
+
+        // Hero View Switcher
+        function switchHeroView(view) {
+            const img = document.getElementById('hero-main-img');
+            const btnPos = document.getElementById('btn-pos');
+            const btnMobile = document.getElementById('btn-mobile');
+            const floatingEl1 = document.getElementById('floating-el-1');
+            const floatingEl2 = document.getElementById('floating-el-2');
+            
+            // Hide image for transition
+            img.style.opacity = 0;
+            img.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                if (view === 'mobile') {
+                    img.src = 'assets/images/screenshots/New Order.png';
+                    
+                    // Hide floating elements in mobile view
+                    if(floatingEl1) floatingEl1.style.display = 'none';
+                    if(floatingEl2) floatingEl2.style.display = 'none';
+                    
+                    // Update buttons
+                    btnPos.style.background = 'transparent';
+                    btnPos.style.color = 'var(--text-muted)';
+                    btnPos.classList.remove('active');
+                    
+                    btnMobile.style.background = 'var(--primary)';
+                    btnMobile.style.color = 'white';
+                    btnMobile.classList.add('active');
+                    
+                } else {
+                    img.src = 'assets/images/POS/sales_pos_view.png';
+                    
+                    // Show floating elements in desktop view
+                    if(floatingEl1) floatingEl1.style.display = 'block';
+                    if(floatingEl2) floatingEl2.style.display = 'block';
+                    
+                    // Update buttons
+                    btnMobile.style.background = 'transparent';
+                    btnMobile.style.color = 'var(--text-muted)';
+                    btnMobile.classList.remove('active');
+                    
+                    btnPos.style.background = 'var(--primary)';
+                    btnPos.style.color = 'white';
+                    btnPos.classList.add('active');
+                }
+                
+                // Show image
+                img.style.opacity = 1;
+                img.style.transform = 'scale(1)';
+            }, 300);
+        }
     </script>
 </body>
 
