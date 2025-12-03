@@ -97,7 +97,7 @@
 
                     <div class="flex gap-4" style="flex-wrap: wrap;">
                         <a href="#demo" class="btn btn-primary">Book A Demo</a>
-                        <a href="javascript:void(0);" onclick="openDownloadModal()" class="btn btn-secondary">
+                        <a href="javascript:void(0);" id="hero-download-btn" onclick="openDownloadModal()" class="btn btn-secondary">
                             <i class="fas fa-download" style="margin-right: 0.5rem;"></i> Download Now
                         </a>
                     </div>
@@ -438,6 +438,7 @@
                         <li><i class="fas fa-check-circle check-icon"></i> Credit Reports</li>
                         <li><i class="fas fa-check-circle check-icon"></i> Works on Android, Windows & iOS</li>
                         <li><i class="fas fa-check-circle check-icon"></i> Offline Mode</li>
+                        <li><i class="fas fa-check-circle check-icon"></i> Free Onboarding Support</li>
                     </ul>
 
                     <div class="card-addons">
@@ -450,13 +451,10 @@
                                 <input type="checkbox">
                                 <span>Inventory Management</span>
                             </label>
-                            <label class="compact-addon">
-                                <input type="checkbox">
+                            <label class="compact-addon has-badge">
+                                <input type="checkbox" disabled title="Coming Soon">
                                 <span>Online Ordering Integration</span>
-                            </label>
-                            <label class="compact-addon">
-                                <input type="checkbox">
-                                <span>Production Management</span>
+                                <span class="addon-badge">Coming Soon</span>
                             </label>
                             <label class="compact-addon">
                                 <input type="checkbox">
@@ -476,7 +474,7 @@
                 <div class="pricing-card popular">
                     <div class="pricing-badge">BEST VALUE</div>
                     <h3>Annual Plan</h3>
-                    <div class="price">
+                    <div class="price" id="annual-price">
                         ₹2999 <span>/year</span>
                     </div>
                     <div class="savings-badge">Save ₹2,989 (50%)</div>
@@ -489,6 +487,7 @@
                         <li><i class="fas fa-check-circle check-icon"></i> Credit Reports</li>
                         <li><i class="fas fa-check-circle check-icon"></i> Works on Android, Windows & iOS</li>
                         <li><i class="fas fa-check-circle check-icon"></i> Offline Mode</li>
+                        <li><i class="fas fa-check-circle check-icon"></i> Free Onboarding Support</li>
                     </ul>
 
                     <div class="card-addons">
@@ -497,17 +496,27 @@
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="addons-list">
+                            <label class="printer-addon-card" style="--primary-color: #ef4444; border: 1px solid #fecaca; padding: 1.25rem; border-radius: 16px; margin-bottom: 1.5rem; margin-top: 1.5rem; cursor: pointer; display: flex; align-items: flex-start; gap: 1.25rem; transition: all 0.2s ease; background: #fff1f2; width: 100%; position: relative; overflow: hidden;">
+                                <div>
+                                    <img src="assets/images/POS/isselo_printer.png" alt="Thermal Printer" style="width: 50px; height: auto; object-fit: contain; display: block;">
+                                </div>
+                                <div style="flex: 1; text-align: left; display: flex; flex-direction: column; justify-content: center;">
+                                    <div style="font-weight: 700; color: #7f1d1d; font-size: 0.9rem; line-height: 1.2;">Thermal Printer</div>
+                                    <div class="text-muted" style="font-size: 0.85rem; margin-top: 4px; margin-bottom: 8px;">1 Year Warranty</div>
+                                    <div style="font-weight: 700; color: black; font-size: 1rem;">+₹2000</div>
+                                </div>
+                                <div style="display: flex; align-items: center; height: 100%; padding-top: 0.5rem; margin-left: auto;">
+                                    <input type="checkbox" id="printer-addon" onchange="updateAnnualPrice(this)" style="width: 1.2rem; height: 1.2rem; cursor: pointer; accent-color: var(--primary-color);">
+                                </div>
+                            </label>
                             <label class="compact-addon">
                                 <input type="checkbox">
                                 <span>Inventory Management</span>
                             </label>
-                            <label class="compact-addon">
-                                <input type="checkbox">
+                            <label class="compact-addon has-badge">
+                                <input type="checkbox" disabled title="Coming Soon">
                                 <span>Online Ordering Integration</span>
-                            </label>
-                            <label class="compact-addon">
-                                <input type="checkbox">
-                                <span>Production Management</span>
+                                <span class="addon-badge">Coming Soon</span>
                             </label>
                             <label class="compact-addon">
                                 <input type="checkbox">
@@ -679,29 +688,29 @@
             </div>
 
             <div class="grid gap-4" style="grid-template-columns: 1fr 1fr; margin-bottom: 2rem;">
-                <button class="btn btn-secondary flex-col p-4"
+                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="Windows"
                     style="height: auto; flex-direction: column; gap: 0.5rem;">
                     <i class="fab fa-windows" style="font-size: 2rem; color: #0078d4;"></i>
                     <span>Windows</span>
                 </button>
-                <button class="btn btn-secondary flex-col p-4"
+                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="macOS"
                     style="height: auto; flex-direction: column; gap: 0.5rem;">
                     <i class="fab fa-apple" style="font-size: 2rem; color: #333;"></i>
                     <span>macOS</span>
                 </button>
-                <button class="btn btn-secondary flex-col p-4"
+                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="Android"
                     style="height: auto; flex-direction: column; gap: 0.5rem;">
                     <i class="fab fa-android" style="font-size: 2rem; color: #3ddc84;"></i>
                     <span>Android</span>
                 </button>
-                <button class="btn btn-secondary flex-col p-4"
+                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="iOS"
                     style="height: auto; flex-direction: column; gap: 0.5rem;">
                     <i class="fab fa-app-store-ios" style="font-size: 2rem; color: #007aff;"></i>
                     <span>iOS</span>
                 </button>
             </div>
 
-            <button class="btn btn-primary" style="width: 100%;">Download Now</button>
+            <button class="btn btn-primary" id="modal-download-btn" style="width: 100%;" onclick="handleDownload()">Download Now</button>
         </div>
     </div>
 
@@ -737,16 +746,120 @@
             }
         });
 
+        // Platform Detection & Update
+        function getPlatform() {
+            const userAgent = window.navigator.userAgent;
+            let os = "Unknown";
+
+            if (userAgent.indexOf("Win") !== -1) os = "Windows";
+            else if (userAgent.indexOf("Mac") !== -1) os = "macOS";
+            else if (userAgent.indexOf("Android") !== -1) os = "Android";
+            else if (userAgent.indexOf("like Mac") !== -1) os = "iOS";
+            
+            return os;
+        }
+
+        function updateHeroButton() {
+            const platform = getPlatform();
+            const btn = document.getElementById('hero-download-btn');
+            if (!btn) return;
+
+            let iconClass = 'fas fa-download';
+            let text = 'Download Now';
+
+            if (platform === 'Windows') {
+                iconClass = 'fab fa-windows';
+                text = 'Download for Windows';
+            } else if (platform === 'macOS') {
+                iconClass = 'fab fa-apple';
+                text = 'Download for Mac';
+            } else if (platform === 'Android') {
+                iconClass = 'fab fa-android';
+                text = 'Download for Android';
+            } else if (platform === 'iOS') {
+                iconClass = 'fab fa-app-store-ios';
+                text = 'Download for iOS';
+            }
+
+            btn.innerHTML = `<i class="${iconClass}" style="margin-right: 0.5rem;"></i> ${text}`;
+            
+            // Update onclick to pass platform
+            btn.onclick = function() { openDownloadModal(platform); };
+        }
+
         // Modal Functions
-        function openDownloadModal() {
+        let currentSelectedPlatform = null;
+
+        function openDownloadModal(selectedPlatform) {
             document.getElementById('downloadModal').classList.add('active');
             document.body.style.overflow = 'hidden';
+
+            // Reset selections
+            document.querySelectorAll('.platform-select-btn').forEach(btn => {
+                btn.style.borderColor = 'transparent';
+                btn.style.backgroundColor = '';
+                // Add click listener for selection if not already added (or simple inline onclick would be easier, but let's do it here or in HTML)
+            });
+            
+            // Select platform if provided, otherwise clear
+            selectPlatform(selectedPlatform);
+        }
+
+        function selectPlatform(platform) {
+            currentSelectedPlatform = platform;
+            
+            // Update UI
+            document.querySelectorAll('.platform-select-btn').forEach(btn => {
+                if (btn.dataset.platform === platform) {
+                    btn.style.borderColor = 'var(--primary)';
+                    btn.style.backgroundColor = '#fff1f2';
+                } else {
+                    btn.style.borderColor = 'transparent';
+                    btn.style.backgroundColor = '';
+                }
+            });
+        }
+
+        function handleDownload() {
+            if (!currentSelectedPlatform) {
+                alert('Please select a platform to download.');
+                return;
+            }
+
+            const links = {
+                'Windows': 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/windows/isselo_windows.zip',
+                'Android': 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/android/app-release',
+                'macOS': 'coming_soon',
+                'iOS': 'coming_soon'
+            };
+
+            const link = links[currentSelectedPlatform];
+
+            if (link === 'coming_soon') {
+                alert('Coming Soon! We are working hard to bring isselo to ' + currentSelectedPlatform + '.');
+            } else if (link) {
+                window.location.href = link;
+            } else {
+                alert('Download link not available.');
+            }
         }
 
         function closeDownloadModal() {
             document.getElementById('downloadModal').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
+
+        // Initialize platform detection
+        document.addEventListener('DOMContentLoaded', () => {
+            updateHeroButton();
+            
+            // Add click listeners to platform buttons in modal
+            document.querySelectorAll('.platform-select-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    selectPlatform(btn.dataset.platform);
+                });
+            });
+        });
 
         // Close modal on outside click
         document.getElementById('downloadModal').addEventListener('click', (e) => {
@@ -793,6 +906,22 @@
                 icon.style.transform = 'rotate(180deg)';
                 btn.classList.add('active');
             }
+        }
+
+        // Update Annual Price
+        function updateAnnualPrice(checkbox) {
+            const priceElement = document.getElementById('annual-price');
+            const basePrice = 2999;
+            const printerCost = 2000;
+            
+            let finalPrice = basePrice;
+            
+            if (checkbox.checked) {
+                finalPrice += printerCost;
+            }
+            
+            // Update price text but keep the span
+            priceElement.innerHTML = `₹${finalPrice} <span>/year</span>`;
         }
 
         // Set Year

@@ -164,6 +164,17 @@ p {
     display: grid;
 }
 
+/* Display Utilities */
+.hidden {
+    display: none !important;
+}
+
+@media (min-width: 640px) {
+    .sm\:inline-flex {
+        display: inline-flex !important;
+    }
+}
+
 /* Buttons */
 .btn {
     display: inline-flex;
@@ -272,6 +283,22 @@ p {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .header .btn-primary {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        border-radius: 12px;
+    }
+
+    .nav-container .gap-4 {
+        gap: 0.5rem;
+    }
+
+    .logo img {
+        height: 32px;
+    }
 }
 
 /* Hero Section */
@@ -588,6 +615,24 @@ p {
     color: var(--text-main);
 }
 
+.has-badge {
+    position: relative;
+}
+
+.addon-badge {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-full);
+    padding: 0.15rem 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
 @media (max-width: 768px) {
     .pricing-card.popular {
         transform: none;
@@ -773,6 +818,38 @@ p {
     .tour-container {
         display: flex;
         flex-direction: column-reverse;
+    }
+}
+
+/* Support Section Responsive */
+/* The support banners use inline styles; mobile overrides ensure proper stacking */
+@media (max-width: 968px) {
+    #support .support-banner {
+        flex-direction: column;
+        border-radius: 1.5rem;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    #support .support-banner > div {
+        flex: 1 1 auto !important;
+        height: auto !important;
+        padding: 1rem !important;
+    }
+
+    #support .support-banner img {
+        height: 220px !important;
+        width: auto !important;
+        object-fit: contain !important;
+    }
+
+    #support .support-banner h2 {
+        font-size: 1.5rem !important;
+    }
+
+    #support .support-banner p,
+    #support .support-banner li span {
+        font-size: 1rem !important;
     }
 }
 

@@ -1,14 +1,14 @@
 // Main Scripts for isselo website
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Initialize all components
-    initNavigation();
-    initAnimations();
-    initModals();
-    initForms();
-    initCounters();
-    initTestimonialSlider();
-    // initScreenshotsViewer();
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize all components
+  initNavigation();
+  initAnimations();
+  initModals();
+  initForms();
+  initCounters();
+  initTestimonialSlider();
+  // initScreenshotsViewer();
 });
 
 // Function to change screenshots on the main page
@@ -59,146 +59,147 @@ function changeScreenshot(screenshotNum) {
 
 // Navigation functions
 function initNavigation() {
-    // Mobile menu toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const mobileMenu = document.querySelector('.mobile-menu');
+  // Mobile menu toggle
+  const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+  const mobileMenu = document.querySelector(".mobile-menu");
 
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', function () {
-            mobileMenu.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden');
-        });
-    }
-
-    // Dropdown menus
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function (e) {
-            e.preventDefault();
-            const dropdown = this.nextElementSibling;
-            dropdown.classList.toggle('hidden');
-        });
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener("click", function () {
+      mobileMenu.classList.toggle("hidden");
+      document.body.classList.toggle("overflow-hidden");
     });
+  }
 
-    // Scroll spy - highlight active nav item
-    window.addEventListener('scroll', function () {
-        const sections = document.querySelectorAll('section[id]');
-        let scrollPosition = window.scrollY + 100;
+  // Dropdown menus
+  const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
-        sections.forEach(section => {
-            if (section.offsetTop <= scrollPosition &&
-                (section.offsetTop + section.offsetHeight) > scrollPosition) {
-
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + section.getAttribute('id')) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
+  dropdownToggles.forEach((toggle) => {
+    toggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      const dropdown = this.nextElementSibling;
+      dropdown.classList.toggle("hidden");
     });
+  });
+
+  // Scroll spy - highlight active nav item
+  window.addEventListener("scroll", function () {
+    const sections = document.querySelectorAll("section[id]");
+    let scrollPosition = window.scrollY + 100;
+
+    sections.forEach((section) => {
+      if (section.offsetTop <= scrollPosition && section.offsetTop + section.offsetHeight > scrollPosition) {
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + section.getAttribute("id")) {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  });
 }
 
 // Animation functions
 function initAnimations() {
-    // Animate elements when they come into view
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+  // Animate elements when they come into view
+  const animatedElements = document.querySelectorAll(".animate-on-scroll");
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animated");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
 
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
+  animatedElements.forEach((el) => {
+    observer.observe(el);
+  });
 
-    // Pulse animation for CTA buttons
-    const ctaButtons = document.querySelectorAll('.btn-primary');
-    ctaButtons.forEach(btn => {
-        btn.classList.add('pulse-animation');
-    });
+  // Pulse animation for CTA buttons
+  const ctaButtons = document.querySelectorAll(".btn-primary");
+  ctaButtons.forEach((btn) => {
+    btn.classList.add("pulse-animation");
+  });
 }
 
 // Modal functions
 function initModals() {
-    // Generic modal functions
-    const modalTriggers = document.querySelectorAll('[data-modal-target]');
-    const modalCloseButtons = document.querySelectorAll('[data-modal-close]');
+  // Generic modal functions
+  const modalTriggers = document.querySelectorAll("[data-modal-target]");
+  const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
 
-    modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function (e) {
-            e.preventDefault();
-            const modalId = this.getAttribute('data-modal-target');
-            const modal = document.getElementById(modalId);
+  modalTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", function (e) {
+      e.preventDefault();
+      const modalId = this.getAttribute("data-modal-target");
+      const modal = document.getElementById(modalId);
 
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                document.body.classList.add('overflow-hidden');
-            }
-        });
+      if (modal) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.classList.add("overflow-hidden");
+      }
     });
+  });
 
-    modalCloseButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const modal = this.closest('.modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.classList.remove('overflow-hidden');
-            }
-        });
+  modalCloseButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const modal = this.closest(".modal");
+      if (modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.classList.remove("overflow-hidden");
+      }
     });
+  });
 
-    // Close modal when clicking outside content
-    document.addEventListener('click', function (e) {
-        const modals = document.querySelectorAll('.modal:not(.hidden)');
-        modals.forEach(modal => {
-            if (e.target === modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.classList.remove('overflow-hidden');
-            }
-        });
+  // Close modal when clicking outside content
+  document.addEventListener("click", function (e) {
+    const modals = document.querySelectorAll(".modal:not(.hidden)");
+    modals.forEach((modal) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.classList.remove("overflow-hidden");
+      }
     });
+  });
 }
 
 // Form handling
 function initForms() {
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
+  // Contact form submission
+  const contactForm = document.getElementById("contactForm");
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-            // Form validation
-            const formData = new FormData(this);
-            let isValid = true;
+      // Form validation
+      const formData = new FormData(this);
+      let isValid = true;
 
-            // Simple validation example
-            for (const [key, value] of formData.entries()) {
-                const field = document.querySelector(`[name="${key}"]`);
-                if (field && field.hasAttribute('required') && !value.trim()) {
-                    field.classList.add('border-red-500');
-                    isValid = false;
-                } else if (field) {
-                    field.classList.remove('border-red-500');
-                }
-            }
+      // Simple validation example
+      for (const [key, value] of formData.entries()) {
+        const field = document.querySelector(`[name="${key}"]`);
+        if (field && field.hasAttribute("required") && !value.trim()) {
+          field.classList.add("border-red-500");
+          isValid = false;
+        } else if (field) {
+          field.classList.remove("border-red-500");
+        }
+      }
 
-            if (isValid) {
-                // AJAX submission would go here in a real implementation
+      if (isValid) {
+        // AJAX submission would go here in a real implementation
 
-                // Show success message
-                contactForm.innerHTML = `
+        // Show success message
+        contactForm.innerHTML = `
                     <div class="text-center py-8">
                         <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -207,177 +208,180 @@ function initForms() {
                         <p class="text-gray-600">Thank you for reaching out. We'll get back to you shortly.</p>
                     </div>
                 `;
-            }
-        });
-    }
+      }
+    });
+  }
 
-    // Demo request form
-    const demoForm = document.getElementById('demoForm');
+  // Demo request form
+  const demoForm = document.getElementById("demoForm");
 
-    if (demoForm) {
-        demoForm.addEventListener('submit', handleDemoSubmit);
-    }
+  if (demoForm) {
+    demoForm.addEventListener("submit", handleDemoSubmit);
+  }
 
-    // Download form
-    const downloadForm = document.getElementById('downloadForm');
+  // Download form
+  const downloadForm = document.getElementById("downloadForm");
 
-    if (downloadForm) {
-        downloadForm.addEventListener('submit', handleDownloadSubmit);
-    }
+  if (downloadForm) {
+    downloadForm.addEventListener("submit", handleDownloadSubmit);
+  }
 }
 
 // Animated counter functions
 function initCounters() {
-    const counters = document.querySelectorAll('.stat-counter');
+  const counters = document.querySelectorAll(".stat-counter");
 
-    if (counters.length === 0) return;
+  if (counters.length === 0) return;
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.getAttribute('data-target'), 10);
-                const duration = 2000; // 2 seconds
-                const step = target / (duration / 16); // 16ms is roughly one frame at 60fps
-                let current = 0;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = parseInt(counter.getAttribute("data-target"), 10);
+          const duration = 2000; // 2 seconds
+          const step = target / (duration / 16); // 16ms is roughly one frame at 60fps
+          let current = 0;
 
-                const updateCounter = () => {
-                    current += step;
-                    if (current < target) {
-                        counter.textContent = Math.floor(current);
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.textContent = target;
-                    }
-                };
-
-                updateCounter();
-                observer.unobserve(counter);
+          const updateCounter = () => {
+            current += step;
+            if (current < target) {
+              counter.textContent = Math.floor(current);
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target;
             }
-        });
-    }, { threshold: 0.5 });
+          };
 
-    counters.forEach(counter => {
-        observer.observe(counter);
-    });
+          updateCounter();
+          observer.unobserve(counter);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach((counter) => {
+    observer.observe(counter);
+  });
 }
 
 // Testimonial slider
 function initTestimonialSlider() {
-    const testimonialContainer = document.querySelector('.testimonial-slider');
-    if (!testimonialContainer) return;
+  const testimonialContainer = document.querySelector(".testimonial-slider");
+  if (!testimonialContainer) return;
 
-    const testimonials = testimonialContainer.querySelectorAll('.testimonial-slide');
-    const navButtons = document.querySelectorAll('.testimonial-nav-btn');
-    let currentIndex = 0;
+  const testimonials = testimonialContainer.querySelectorAll(".testimonial-slide");
+  const navButtons = document.querySelectorAll(".testimonial-nav-btn");
+  let currentIndex = 0;
 
-    function showTestimonial(index) {
-        if (index < 0) index = testimonials.length - 1;
-        if (index >= testimonials.length) index = 0;
+  function showTestimonial(index) {
+    if (index < 0) index = testimonials.length - 1;
+    if (index >= testimonials.length) index = 0;
 
-        testimonials.forEach((testimonial, i) => {
-            testimonial.classList.toggle('hidden', i !== index);
-            if (i === index) {
-                testimonial.classList.add('animate-fade-in');
-            }
-        });
-
-        navButtons.forEach((btn, i) => {
-            btn.classList.toggle('bg-primary', i === index);
-            btn.classList.toggle('bg-gray-300', i !== index);
-        });
-
-        currentIndex = index;
-    }
-
-    // Initialize
-    showTestimonial(currentIndex);
-
-    // Navigation buttons
-    navButtons.forEach((btn, i) => {
-        btn.addEventListener('click', () => {
-            showTestimonial(i);
-        });
+    testimonials.forEach((testimonial, i) => {
+      testimonial.classList.toggle("hidden", i !== index);
+      if (i === index) {
+        testimonial.classList.add("animate-fade-in");
+      }
     });
 
-    // Auto-scroll testimonials
-    setInterval(() => {
-        showTestimonial(currentIndex + 1);
-    }, 5000);
+    navButtons.forEach((btn, i) => {
+      btn.classList.toggle("bg-primary", i === index);
+      btn.classList.toggle("bg-gray-300", i !== index);
+    });
+
+    currentIndex = index;
+  }
+
+  // Initialize
+  showTestimonial(currentIndex);
+
+  // Navigation buttons
+  navButtons.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      showTestimonial(i);
+    });
+  });
+
+  // Auto-scroll testimonials
+  setInterval(() => {
+    showTestimonial(currentIndex + 1);
+  }, 5000);
 }
 
 // USP rotating text functionality
-const uspContainer = document.querySelector('.usp-container');
+const uspContainer = document.querySelector(".usp-container");
 if (uspContainer) {
-    const rotatingUsp = document.getElementById('rotating-usp');
-    const uspItems = document.querySelectorAll('.usp-item');
-    const navBtns = document.querySelectorAll('.usp-nav-btn');
-    let currentIndex = 0;
+  const rotatingUsp = document.getElementById("rotating-usp");
+  const uspItems = document.querySelectorAll(".usp-item");
+  const navBtns = document.querySelectorAll(".usp-nav-btn");
+  let currentIndex = 0;
 
-    function updateActiveButton(index) {
-        navBtns.forEach(btn => btn.classList.remove('active'));
-        navBtns[index].classList.add('active');
-    }
+  function updateActiveButton(index) {
+    navBtns.forEach((btn) => btn.classList.remove("active"));
+    navBtns[index].classList.add("active");
+  }
 
-    function updateUSP(index) {
-        const item = uspItems[index];
-        const newUsp = item.getAttribute('data-usp');
-        rotatingUsp.firstChild.textContent = newUsp;
-        updateActiveButton(index);
-    }
+  function updateUSP(index) {
+    const item = uspItems[index];
+    const newUsp = item.getAttribute("data-usp");
+    rotatingUsp.firstChild.textContent = newUsp;
+    updateActiveButton(index);
+  }
 
-    // Initialize auto-rotation
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % uspItems.length;
-        updateUSP(currentIndex);
-    }, 3000);
+  // Initialize auto-rotation
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % uspItems.length;
+    updateUSP(currentIndex);
+  }, 3000);
 }
 
 // FAQ toggles
 function toggleFAQ(element) {
-    const answer = element.nextElementSibling;
-    const arrow = element.querySelector('span');
-    answer.classList.toggle('hidden');
-    arrow.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+  const answer = element.nextElementSibling;
+  const arrow = element.querySelector("span");
+  answer.classList.toggle("hidden");
+  arrow.style.transform = answer.classList.contains("hidden") ? "rotate(0deg)" : "rotate(180deg)";
 }
 
 // Modal functions
 function openDemoModal() {
-    document.getElementById('demoModal').classList.remove('hidden');
-    document.getElementById('demoModal').classList.add('flex');
-    document.body.style.overflow = 'hidden';
+  document.getElementById("demoModal").classList.remove("hidden");
+  document.getElementById("demoModal").classList.add("flex");
+  document.body.style.overflow = "hidden";
 }
 
 function closeDemoModal() {
-    document.getElementById('demoModal').classList.add('hidden');
-    document.getElementById('demoModal').classList.remove('flex');
-    document.body.style.overflow = 'auto';
+  document.getElementById("demoModal").classList.add("hidden");
+  document.getElementById("demoModal").classList.remove("flex");
+  document.body.style.overflow = "auto";
 }
 
 function openDownloadModal() {
-    document.getElementById('downloadModal').classList.remove('hidden');
-    document.getElementById('downloadModal').classList.add('flex');
-    document.body.style.overflow = 'hidden';
+  document.getElementById("downloadModal").classList.remove("hidden");
+  document.getElementById("downloadModal").classList.add("flex");
+  document.body.style.overflow = "hidden";
 }
 
 function closeDownloadModal() {
-    document.getElementById('downloadModal').classList.add('hidden');
-    document.getElementById('downloadModal').classList.remove('flex');
-    document.body.style.overflow = 'auto';
+  document.getElementById("downloadModal").classList.add("hidden");
+  document.getElementById("downloadModal").classList.remove("flex");
+  document.body.style.overflow = "auto";
 }
 
 // Function to handle demo form submission
 function handleDemoSubmit(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const form = event.target;
-    const formData = new FormData(form);
+  const form = event.target;
+  const formData = new FormData(form);
 
-    // This is where you'd handle the actual form submission in a real app
-    console.log('Form submitted:', Object.fromEntries(formData));
+  // This is where you'd handle the actual form submission in a real app
+  console.log("Form submitted:", Object.fromEntries(formData));
 
-    // Show success message
-    form.innerHTML = `
+  // Show success message
+  form.innerHTML = `
         <div class="text-center py-8">
             <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -387,76 +391,76 @@ function handleDemoSubmit(event) {
         </div>
     `;
 
-    // Close modal after 3 seconds
-    setTimeout(closeDemoModal, 3000);
+  // Close modal after 3 seconds
+  setTimeout(closeDemoModal, 3000);
 }
 
 // Handle download form submission
 function handleDownloadSubmit(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    // Show loading spinner
-    const downloadSpinner = document.getElementById('downloadSpinner');
-    downloadSpinner.classList.remove('hidden');
+  // Show loading spinner
+  const downloadSpinner = document.getElementById("downloadSpinner");
+  downloadSpinner.classList.remove("hidden");
 
-    // Get form data
-    const form = event.target;
-    const formData = new FormData(form);
+  // Get form data
+  const form = event.target;
+  const formData = new FormData(form);
 
-    // Form validation
-    let isValid = true;
-    const formStatus = document.getElementById('downloadFormStatus');
+  // Form validation
+  let isValid = true;
+  const formStatus = document.getElementById("downloadFormStatus");
 
-    // Reset previous validation errors
-    form.querySelectorAll('.border-red-500').forEach(field => {
-        field.classList.remove('border-red-500');
-    });
+  // Reset previous validation errors
+  form.querySelectorAll(".border-red-500").forEach((field) => {
+    field.classList.remove("border-red-500");
+  });
 
-    // Validate required fields
-    for (const [key, value] of formData.entries()) {
-        const field = form.querySelector(`[name="${key}"]`);
-        if (field && field.hasAttribute('required') && !value.trim()) {
-            if (field.type === 'checkbox') {
-                field.nextElementSibling.classList.add('text-red-500');
-            } else {
-                field.classList.add('border-red-500');
-            }
-            isValid = false;
-        }
+  // Validate required fields
+  for (const [key, value] of formData.entries()) {
+    const field = form.querySelector(`[name="${key}"]`);
+    if (field && field.hasAttribute("required") && !value.trim()) {
+      if (field.type === "checkbox") {
+        field.nextElementSibling.classList.add("text-red-500");
+      } else {
+        field.classList.add("border-red-500");
+      }
+      isValid = false;
     }
+  }
 
-    // Validate email format
-    const email = formData.get('email');
-    const emailField = form.querySelector('[name="email"]');
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        emailField.classList.add('border-red-500');
-        isValid = false;
-    }
+  // Validate email format
+  const email = formData.get("email");
+  const emailField = form.querySelector('[name="email"]');
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    emailField.classList.add("border-red-500");
+    isValid = false;
+  }
 
-    if (!isValid) {
-        // Show error message
-        formStatus.textContent = 'Please fill in all required fields correctly';
-        formStatus.className = 'bg-red-100 text-red-700 p-3 rounded-lg text-sm';
-        formStatus.classList.remove('hidden');
-        downloadSpinner.classList.add('hidden');
-        return;
-    }
+  if (!isValid) {
+    // Show error message
+    formStatus.textContent = "Please fill in all required fields correctly";
+    formStatus.className = "bg-red-100 text-red-700 p-3 rounded-lg text-sm";
+    formStatus.classList.remove("hidden");
+    downloadSpinner.classList.add("hidden");
+    return;
+  }
 
-    // Get selected OS
-    const selectedOS = formData.get('os');
+  // Get selected OS
+  const selectedOS = formData.get("os");
 
-    // Simulate download process (normally this would redirect to actual download URL)
-    setTimeout(() => {
-        // Download links for different OS (for demonstration - in production these would be actual download URLs)
-        const downloadLinks = {
-            'windows': 'https://isselo.com/downloads/isselo-windows-installer.exe',
-            'mac': 'https://isselo.com/downloads/isselo-macos.dmg',
-            'android': 'https://play.google.com/store/apps/details?id=com.isselo.pos',
-            'ios': 'https://apps.apple.com/app/isselo-pos/id1234567890'
-        };
+  // Simulate download process (normally this would redirect to actual download URL)
+  setTimeout(() => {
+    // Download links for different OS (for demonstration - in production these would be actual download URLs)
+    const downloadLinks = {
+      windows: "https://isselo.com/downloads/isselo-windows-installer.exe",
+      mac: "https://isselo.com/downloads/isselo-macos.dmg",
+      android: "https://play.google.com/store/apps/details?id=com.isselo.pos",
+      ios: "https://apps.apple.com/app/isselo-pos/id1234567890",
+    };
 
-        // Success message
-        form.innerHTML = `
+    // Success message
+    form.innerHTML = `
             <div class="text-center py-8">
                 <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -468,18 +472,17 @@ function handleDownloadSubmit(event) {
             </div>
         `;
 
-        // Start the download
-        const downloadIframe = document.createElement('iframe');
-        downloadIframe.style.display = 'none';
-        downloadIframe.src = downloadLinks[selectedOS];
-        document.body.appendChild(downloadIframe);
+    // Start the download
+    const downloadIframe = document.createElement("iframe");
+    downloadIframe.style.display = "none";
+    downloadIframe.src = downloadLinks[selectedOS];
+    document.body.appendChild(downloadIframe);
 
-        // Remove iframe after download starts
-        setTimeout(() => {
-            document.body.removeChild(downloadIframe);
-        }, 2000);
-
-    }, 1500);
+    // Remove iframe after download starts
+    setTimeout(() => {
+      document.body.removeChild(downloadIframe);
+    }, 2000);
+  }, 1500);
 }
 
 // Initialize the screenshots viewer on the dedicated screenshots page
@@ -545,164 +548,164 @@ function initScreenshotsViewer() {
 */
 
 // Navigation
-document.addEventListener('DOMContentLoaded', function () {
-    const navbar = document.getElementById('main-nav');
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
+document.addEventListener("DOMContentLoaded", function () {
+  const navbar = document.getElementById("main-nav");
+  const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-    // Navbar scroll behavior
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 10) {
-            navbar.classList.add('shadow-md');
-        } else {
-            navbar.classList.remove('shadow-md');
-        }
-    });
+  // Navbar scroll behavior
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 10) {
+      navbar.classList.add("shadow-md");
+    } else {
+      navbar.classList.remove("shadow-md");
+    }
+  });
 
-    // Mobile menu toggle
-    mobileMenuToggle?.addEventListener('click', function () {
-        mobileMenu.classList.toggle('hidden');
-    });
+  // Mobile menu toggle
+  mobileMenuToggle?.addEventListener("click", function () {
+    mobileMenu.classList.toggle("hidden");
+  });
 });
 
 // Product Tour Functionality
-document.addEventListener('DOMContentLoaded', function () {
-    const mainScreenshot = document.getElementById('mainScreenshot');
-    const featureTitle = document.getElementById('feature-title');
-    const featureDescription = document.getElementById('feature-description');
-    const prevButton = document.getElementById('prevScreen');
-    const nextButton = document.getElementById('nextScreen');
-    const activeDot = document.querySelector('.active-dot');
-    const inactiveDots = document.querySelectorAll('.inactive-dot');
+document.addEventListener("DOMContentLoaded", function () {
+  const mainScreenshot = document.getElementById("mainScreenshot");
+  const featureTitle = document.getElementById("feature-title");
+  const featureDescription = document.getElementById("feature-description");
+  const prevButton = document.getElementById("prevScreen");
+  const nextButton = document.getElementById("nextScreen");
+  const activeDot = document.querySelector(".active-dot");
+  const inactiveDots = document.querySelectorAll(".inactive-dot");
 
-    // Screenshots and their descriptions
-    const screens = [
-        {
-            src: "assets/images/screenshots/Home.png",
-            title: "Complete Dashboard Overview",
-            description: "Get a comprehensive view of your restaurant's performance with our intuitive dashboard. Monitor sales, track popular items, and get real-time insights to make informed decisions."
-        },
-        {
-            src: "assets/images/screenshots/New Order.png",
-            title: "Simple Order Management",
-            description: "Create and manage orders effortlessly with our streamlined interface. Add items, apply discounts, and complete transactions quickly to serve customers faster."
-        },
-        {
-            src: "assets/images/screenshots/Item Details.png",
-            title: "Detailed Item Management",
-            description: "Easily view and edit item details including price, ingredients, and modifiers. Keep your menu up-to-date with just a few clicks."
-        },
-        {
-            src: "assets/images/screenshots/Select Variant.png",
-            title: "Flexible Item Variants",
-            description: "Offer multiple sizes, flavors, or options for your menu items. Our variant system makes it easy to customize products to customer preferences."
-        },
-        {
-            src: "assets/images/screenshots/Sales.png",
-            title: "Comprehensive Sales Reports",
-            description: "Track your business performance with detailed sales reports. Analyze revenue trends, bestselling items, and peak hours to optimize your operations."
-        },
-        {
-            src: "assets/images/screenshots/Accounts.png",
-            title: "Simplified Accounting",
-            description: "Manage your restaurant's finances with our integrated accounting features. Track expenses, monitor balance sheets, and keep your financial records in order."
-        }
-    ];
+  // Screenshots and their descriptions
+  const screens = [
+    {
+      src: "assets/images/screenshots/Home.png",
+      title: "Complete Dashboard Overview",
+      description: "Get a comprehensive view of your restaurant's performance with our intuitive dashboard. Monitor sales, track popular items, and get real-time insights to make informed decisions.",
+    },
+    {
+      src: "assets/images/screenshots/New Order.png",
+      title: "Simple Order Management",
+      description: "Create and manage orders effortlessly with our streamlined interface. Add items, apply discounts, and complete transactions quickly to serve customers faster.",
+    },
+    {
+      src: "assets/images/screenshots/Item Details.png",
+      title: "Detailed Item Management",
+      description: "Easily view and edit item details including price, ingredients, and modifiers. Keep your menu up-to-date with just a few clicks.",
+    },
+    {
+      src: "assets/images/screenshots/Select Variant.png",
+      title: "Flexible Item Variants",
+      description: "Offer multiple sizes, flavors, or options for your menu items. Our variant system makes it easy to customize products to customer preferences.",
+    },
+    {
+      src: "assets/images/screenshots/Sales.png",
+      title: "Comprehensive Sales Reports",
+      description: "Track your business performance with detailed sales reports. Analyze revenue trends, bestselling items, and peak hours to optimize your operations.",
+    },
+    {
+      src: "assets/images/screenshots/Accounts.png",
+      title: "Simplified Accounting",
+      description: "Manage your restaurant's finances with our integrated accounting features. Track expenses, monitor balance sheets, and keep your financial records in order.",
+    },
+  ];
 
-    let currentIndex = 0;
+  let currentIndex = 0;
 
-    // Preload images
-    function preloadImages() {
-        screens.forEach(screen => {
-            const img = new Image();
-            img.src = screen.src;
-        });
-    }
-    preloadImages();
-
-    // Update content function
-    function updateContent() {
-        mainScreenshot.style.opacity = '0';
-        featureTitle.style.opacity = '0';
-        featureDescription.style.opacity = '0';
-
-        updateDots();
-
-        setTimeout(() => {
-            mainScreenshot.src = screens[currentIndex].src;
-            featureTitle.textContent = screens[currentIndex].title;
-            featureDescription.textContent = screens[currentIndex].description;
-
-            setTimeout(() => {
-                mainScreenshot.style.opacity = '1';
-                featureTitle.style.opacity = '1';
-                featureDescription.style.opacity = '1';
-            }, 50);
-        }, 300);
-    }
-
-    // Update indicator dots
-    function updateDots() {
-        const dots = [activeDot, ...inactiveDots];
-        dots.forEach((dot, index) => {
-            if (index === 0) {
-                dot.style.width = index === currentIndex ? '32px' : '8px';
-                dot.style.backgroundColor = index === currentIndex ? 'var(--primary-color)' : '#cbd5e0';
-                dot.style.opacity = index === currentIndex ? '1' : '0.6';
-            } else {
-                dot.style.width = (index - 1) === currentIndex ? '32px' : '8px';
-                dot.style.backgroundColor = (index - 1) === currentIndex ? 'var(--primary-color)' : '#cbd5e0';
-                dot.style.opacity = (index - 1) === currentIndex ? '1' : '0.6';
-            }
-        });
-    }
-
-    // Navigation event listeners
-    prevButton?.addEventListener('click', function () {
-        this.classList.add('bg-gray-100');
-        setTimeout(() => this.classList.remove('bg-gray-100'), 150);
-        currentIndex = (currentIndex - 1 + screens.length) % screens.length;
-        updateContent();
+  // Preload images
+  function preloadImages() {
+    screens.forEach((screen) => {
+      const img = new Image();
+      img.src = screen.src;
     });
+  }
+  preloadImages();
 
-    nextButton?.addEventListener('click', function () {
-        this.classList.add('bg-gray-100');
-        setTimeout(() => this.classList.remove('bg-gray-100'), 150);
-        currentIndex = (currentIndex + 1) % screens.length;
-        updateContent();
-    });
+  // Update content function
+  function updateContent() {
+    mainScreenshot.style.opacity = "0";
+    featureTitle.style.opacity = "0";
+    featureDescription.style.opacity = "0";
 
-    // Keyboard navigation
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowLeft') {
-            prevButton?.click();
-        } else if (e.key === 'ArrowRight') {
-            nextButton?.click();
-        }
+    updateDots();
+
+    setTimeout(() => {
+      mainScreenshot.src = screens[currentIndex].src;
+      featureTitle.textContent = screens[currentIndex].title;
+      featureDescription.textContent = screens[currentIndex].description;
+
+      setTimeout(() => {
+        mainScreenshot.style.opacity = "1";
+        featureTitle.style.opacity = "1";
+        featureDescription.style.opacity = "1";
+      }, 50);
+    }, 300);
+  }
+
+  // Update indicator dots
+  function updateDots() {
+    const dots = [activeDot, ...inactiveDots];
+    dots.forEach((dot, index) => {
+      if (index === 0) {
+        dot.style.width = index === currentIndex ? "32px" : "8px";
+        dot.style.backgroundColor = index === currentIndex ? "var(--primary-color)" : "#cbd5e0";
+        dot.style.opacity = index === currentIndex ? "1" : "0.6";
+      } else {
+        dot.style.width = index - 1 === currentIndex ? "32px" : "8px";
+        dot.style.backgroundColor = index - 1 === currentIndex ? "var(--primary-color)" : "#cbd5e0";
+        dot.style.opacity = index - 1 === currentIndex ? "1" : "0.6";
+      }
     });
+  }
+
+  // Navigation event listeners
+  prevButton?.addEventListener("click", function () {
+    this.classList.add("bg-gray-100");
+    setTimeout(() => this.classList.remove("bg-gray-100"), 150);
+    currentIndex = (currentIndex - 1 + screens.length) % screens.length;
+    updateContent();
+  });
+
+  nextButton?.addEventListener("click", function () {
+    this.classList.add("bg-gray-100");
+    setTimeout(() => this.classList.remove("bg-gray-100"), 150);
+    currentIndex = (currentIndex + 1) % screens.length;
+    updateContent();
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      prevButton?.click();
+    } else if (e.key === "ArrowRight") {
+      nextButton?.click();
+    }
+  });
 });
 
 // Back to Top Functionality
-document.addEventListener('DOMContentLoaded', function () {
-    const backToTopButton = document.getElementById('back-to-top');
+document.addEventListener("DOMContentLoaded", function () {
+  const backToTopButton = document.getElementById("back-to-top");
 
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 300) {
-            backToTopButton.style.opacity = '1';
-        } else {
-            backToTopButton.style.opacity = '0';
-        }
-    });
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 300) {
+      backToTopButton.style.opacity = "1";
+    } else {
+      backToTopButton.style.opacity = "0";
+    }
+  });
 });
 
 function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 }
 
 // Set current year in footer
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-}); 
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("currentYear").textContent = new Date().getFullYear();
+});
