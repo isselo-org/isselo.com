@@ -1010,7 +1010,8 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1027,13 +1028,14 @@ p {
 
 .modal-content {
     background: white;
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    max-width: 500px;
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    max-width: 550px;
     width: 90%;
     position: relative;
     transform: translateY(20px);
     transition: var(--transition);
+    box-shadow: var(--shadow-2xl);
 }
 
 .modal.active .modal-content {
@@ -1042,13 +1044,92 @@ p {
 
 .close-modal {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: #f1f5f9;
     border: none;
-    font-size: 1.5rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
     cursor: pointer;
     color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    background: #e2e8f0;
+    color: var(--text-main);
+}
+
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.platform-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius-md);
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    text-align: center;
+}
+
+.platform-card:hover:not(:disabled) {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.platform-card.selected {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(196, 40, 60, 0.2);
+}
+
+.platform-card:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #f8fafc;
+    border-color: #f1f5f9;
+}
+
+.platform-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    transition: var(--transition);
+}
+
+.platform-card:hover .platform-icon {
+    transform: scale(1.1);
+}
+
+.platform-name {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+.coming-soon-badge {
+    font-size: 0.7rem;
+    background: #64748b;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 0.5rem;
+    font-weight: 500;
 }
 
 /* Savings Badge */

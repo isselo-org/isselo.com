@@ -760,38 +760,50 @@
     <!-- Download Modal -->
     <div id="downloadModal" class="modal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeDownloadModal()">&times;</button>
+            <button class="close-modal" onclick="closeDownloadModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
             <div class="text-center" style="margin-bottom: 2rem;">
-                <h3>Download Isselo Free</h3>
-                <p class="text-muted">Select your operating system</p>
+                <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Get Isselo</h3>
+                <p class="text-muted">Select your device to start downloading</p>
             </div>
 
-            <div class="grid gap-4" style="grid-template-columns: 1fr 1fr; margin-bottom: 2rem;">
-                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="Windows"
-                    style="height: auto; flex-direction: column; gap: 0.5rem;">
-                    <i class="fab fa-windows" style="font-size: 2rem; color: #0078d4;"></i>
-                    <span>Windows</span>
+            <div class="platform-grid">
+                <!-- Windows -->
+                <button class="platform-card platform-select-btn" data-platform="Windows">
+                    <i class="fab fa-windows platform-icon" style="color: #0078d4;"></i>
+                    <span class="platform-name">Windows</span>
                 </button>
-                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="macOS" disabled
-                    style="height: auto; flex-direction: column; gap: 0.5rem; opacity: 0.6; cursor: not-allowed; position: relative;">
-                    <i class="fab fa-apple" style="font-size: 2rem; color: #333;"></i>
-                    <span>macOS</span>
-                    <span style="font-size: 0.7rem; background: #666; color: white; padding: 2px 6px; border-radius: 4px;">Coming Soon</span>
+
+                <!-- Android -->
+                <button class="platform-card platform-select-btn" data-platform="Android">
+                    <i class="fab fa-android platform-icon" style="color: #3ddc84;"></i>
+                    <span class="platform-name">Android</span>
                 </button>
-                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="Android"
-                    style="height: auto; flex-direction: column; gap: 0.5rem;">
-                    <i class="fab fa-android" style="font-size: 2rem; color: #3ddc84;"></i>
-                    <span>Android</span>
+                
+                <!-- macOS -->
+                <button class="platform-card platform-select-btn" data-platform="macOS" disabled>
+                    <i class="fab fa-apple platform-icon" style="color: #333;"></i>
+                    <span class="platform-name">macOS</span>
+                    <span class="coming-soon-badge">Coming Soon</span>
                 </button>
-                <button class="btn btn-secondary flex-col p-4 platform-select-btn" data-platform="iOS" disabled
-                    style="height: auto; flex-direction: column; gap: 0.5rem; opacity: 0.6; cursor: not-allowed; position: relative;">
-                    <i class="fab fa-app-store-ios" style="font-size: 2rem; color: #007aff;"></i>
-                    <span>iOS</span>
-                    <span style="font-size: 0.7rem; background: #666; color: white; padding: 2px 6px; border-radius: 4px;">Coming Soon</span>
+
+                <!-- iOS -->
+                <button class="platform-card platform-select-btn" data-platform="iOS" disabled>
+                    <i class="fab fa-app-store-ios platform-icon" style="color: #007aff;"></i>
+                    <span class="platform-name">iOS</span>
+                    <span class="coming-soon-badge">Coming Soon</span>
                 </button>
             </div>
 
-            <button class="btn btn-primary" id="modal-download-btn" style="width: 100%;" onclick="handleDownload()">Download Now</button>
+            <button class="btn btn-primary" id="modal-download-btn" style="width: 100%; padding: 1rem; font-size: 1.1rem;" onclick="handleDownload()">
+                <i class="fas fa-download" style="margin-right: 0.5rem;"></i> Download Now
+            </button>
+            
+            <p class="text-center text-muted" style="margin-top: 1.5rem; font-size: 0.875rem;">
+                By downloading, you agree to our <a href="terms.html" style="color: var(--primary); text-decoration: underline;">Terms</a> & <a href="privacy.html" style="color: var(--primary); text-decoration: underline;">Privacy Policy</a>
+            </p>
         </div>
     </div>
 
@@ -877,32 +889,30 @@
 
             // Reset selections
             document.querySelectorAll('.platform-select-btn').forEach(btn => {
-                btn.style.borderColor = 'transparent';
-                btn.style.backgroundColor = '';
-                // Add click listener for selection if not already added (or simple inline onclick would be easier, but let's do it here or in HTML)
+                btn.classList.remove('selected');
             });
             
             // Select platform if provided, otherwise clear
-            selectPlatform(selectedPlatform);
+            if (selectedPlatform) {
+                selectPlatform(selectedPlatform);
+            }
         }
 
         function selectPlatform(platform) {
             // Check if the button is disabled before selecting
             const btn = document.querySelector(`.platform-select-btn[data-platform="${platform}"]`);
-            if (btn && btn.hasAttribute('disabled')) {
-                return; // Do nothing if disabled
+            if (!btn || btn.hasAttribute('disabled')) {
+                return; // Do nothing if disabled or not found
             }
 
             currentSelectedPlatform = platform;
             
             // Update UI
-            document.querySelectorAll('.platform-select-btn').forEach(btn => {
-                if (btn.dataset.platform === platform) {
-                    btn.style.borderColor = 'var(--primary)';
-                    btn.style.backgroundColor = '#fff1f2';
+            document.querySelectorAll('.platform-select-btn').forEach(b => {
+                if (b.dataset.platform === platform) {
+                    b.classList.add('selected');
                 } else {
-                    btn.style.borderColor = 'transparent';
-                    btn.style.backgroundColor = '';
+                    b.classList.remove('selected');
                 }
             });
         }
@@ -915,7 +925,7 @@
 
             const links = {
                 'Windows': 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/windows/isselo_windows.zip',
-                'Android': 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/android/app-release',
+                'Android': 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/android/isselo.apk.zip',
                 'macOS': 'coming_soon',
                 'iOS': 'coming_soon'
             };
