@@ -648,31 +648,7 @@
                         <li><i class="fas fa-check-circle check-icon"></i> Free Onboarding Support</li>
                     </ul>
 
-                    <div class="card-addons">
-                        <button class="addons-toggle" onclick="toggleAddons(this)">
-                            <span class="addons-title" style="margin: 0;">Customize with Add-ons</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="addons-list">
-                            <label class="compact-addon">
-                                <input type="checkbox">
-                                <span>Inventory Management</span>
-                            </label>
-                            <label class="compact-addon has-badge">
-                                <input type="checkbox" disabled title="Coming Soon">
-                                <span>Online Ordering Integration</span>
-                                <span class="addon-badge">Coming Soon</span>
-                            </label>
-                            <label class="compact-addon">
-                                <input type="checkbox">
-                                <span>Recipe Management</span>
-                            </label>
-                            <label class="compact-addon">
-                                <input type="checkbox">
-                                <span>Advanced Features</span>
-                            </label>
-                        </div>
-                    </div>
+
 
                     <a href="https://wa.me/919048872735" class="btn btn-secondary" style="width: 100%;" target="_blank"
                         rel="noopener">Get Started Now</a>
@@ -698,12 +674,9 @@
                         <li><i class="fas fa-check-circle check-icon"></i> Free Onboarding Support</li>
                     </ul>
 
-                    <div class="card-addons">
-                        <button class="addons-toggle" onclick="toggleAddons(this)">
-                            <span class="addons-title" style="margin: 0;">Customize with Add-ons</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="addons-list">
+                    <div class="card-addons" style="border-top: none; margin-top: 0;">
+                        <!-- Printer Addon - Kept as Special Item -->
+                        <div class="addons-list" style="max-height: none;">
                             <label class="printer-addon-card"
                                 style="--primary-color: #ef4444; border: 1px solid #fecaca; padding: 1.25rem; border-radius: 16px; margin-bottom: 1.5rem; margin-top: 1.5rem; cursor: pointer; display: flex; align-items: flex-start; gap: 1.25rem; transition: all 0.2s ease; background: #fff1f2; width: 100%; position: relative; overflow: hidden;">
                                 <div>
@@ -725,23 +698,6 @@
                                         style="width: 1.2rem; height: 1.2rem; cursor: pointer; accent-color: var(--primary-color);">
                                 </div>
                             </label>
-                            <label class="compact-addon">
-                                <input type="checkbox">
-                                <span>Inventory Management</span>
-                            </label>
-                            <label class="compact-addon has-badge">
-                                <input type="checkbox" disabled title="Coming Soon">
-                                <span>Online Ordering Integration</span>
-                                <span class="addon-badge">Coming Soon</span>
-                            </label>
-                            <label class="compact-addon">
-                                <input type="checkbox">
-                                <span>Recipe Management</span>
-                            </label>
-                            <label class="compact-addon">
-                                <input type="checkbox">
-                                <span>Advanced Features</span>
-                            </label>
                         </div>
                     </div>
 
@@ -749,6 +705,61 @@
                         rel="noopener">Get Started Now</a>
                     <p class="text-muted" style="margin-top: 1rem; font-size: 0.875rem;">No credit card required for
                         demo</p>
+                </div>
+            </div>
+
+            <!-- New Dedicated Add-ons Section -->
+            <div class="addons-section animate-fade-in">
+                <div class="text-center" style="margin-bottom: 3rem; margin-top: 6rem;">
+                    <span class="text-primary"
+                        style="font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.875rem;">Expansion</span>
+                    <h2 style="margin-top: 0.5rem;">Powerful Add-ons</h2>
+                    <p class="text-muted">Scale your operations with these premium features.</p>
+                </div>
+
+                <div class="addons-grid-system">
+                    <!-- Inventory -->
+                    <div class="addon-system-card">
+                        <div class="addon-icon"><i class="fas fa-boxes"></i></div>
+                        <div class="addon-content">
+                            <h4>Inventory Management</h4>
+                            <p class="addon-desc">Advanced tracking, low stock alerts, and wastage management.</p>
+                            <div class="addon-price-tag">₹499 <span class="period">/year</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Recipe & Production -->
+                    <div class="addon-system-card">
+                        <div class="addon-icon"><i class="fas fa-utensils"></i></div>
+                        <div class="addon-content">
+                            <h4>Recipe & Production</h4>
+                            <p class="addon-desc">Manage recipes, food costs, and production batches effortlessly.</p>
+                            <div class="addon-price-tag">₹699 <span class="period">/year</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Additional User -->
+                    <div class="addon-system-card">
+                        <div class="addon-icon"><i class="fas fa-user-plus"></i></div>
+                        <div class="addon-content">
+                            <h4>Additional User</h4>
+                            <p class="addon-desc">Add more staff accounts with custom permissions and roles.</p>
+                            <div class="addon-price-tag">₹499 <span class="period">/year</span></div>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <div class="addon-system-card highlight">
+                        <div class="addon-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="addon-content">
+                            <h4>WhatsApp Integration</h4>
+                            <p class="addon-desc">Send invoices and updates. First 10 msgs/mo free.</p>
+                            <div class="addon-price-tag">
+                                <span class="small-text">Starts @</span> ₹249 <span class="period"
+                                    style="font-size: 0.8rem;">(Credit System)</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
