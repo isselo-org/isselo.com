@@ -1359,11 +1359,14 @@ p {
     background: white;
     padding: 1.5rem;
     border-radius: var(--radius-md);
-    border: 1px solid #e2e8f0;
+    border: 2px solid #e2e8f0;
+    /* Slightly thicker for better selected state visibility */
     display: flex;
     align-items: flex-start;
     gap: 1.25rem;
     transition: var(--transition);
+    cursor: pointer;
+    position: relative;
 }
 
 .addon-system-card:hover {
@@ -1372,10 +1375,66 @@ p {
     border-color: var(--primary-light);
 }
 
+.addon-system-card.selected {
+    border-color: var(--primary);
+    background-color: #fef2f2;
+    /* Light primary tint */
+}
+
+/* Custom Checkbox */
+.addon-checkbox {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: var(--transition);
+    background: white;
+}
+
+.addon-system-card.selected .addon-checkbox {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.addon-checkbox i {
+    font-size: 0.75rem;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.addon-system-card.selected .addon-checkbox i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
 .addon-system-card.highlight {
     background: linear-gradient(to bottom right, #f0fdf4, #ffffff);
     border-color: #bbf7d0;
 }
+
+.addon-system-card.highlight:hover {
+    border-color: #4ade80;
+}
+
+.addon-system-card.highlight.selected {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+
+.addon-system-card.highlight.selected .addon-checkbox {
+    background: #16a34a;
+    border-color: #16a34a;
+}
+
 
 .addon-icon {
     flex-shrink: 0;
@@ -1388,12 +1447,30 @@ p {
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
+    transition: var(--transition);
+}
+
+.addon-system-card.selected .addon-icon {
+    background: white;
 }
 
 .addon-system-card.highlight .addon-icon {
     background: #dcfce7;
     color: #16a34a;
     /* WhatsApp Greenish */
+}
+
+.addon-system-card.disabled {
+    opacity: 0.7;
+    cursor: default;
+    background: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+.addon-system-card.disabled:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #e2e8f0;
 }
 
 .addon-content {
@@ -1428,6 +1505,17 @@ p {
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-muted);
+}
+
+.addon-badge-sm {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 99px;
+    font-weight: 600;
+    border: 1px solid #fecaca;
+    white-space: nowrap;
 }
 
 @media (max-width: 640px) {

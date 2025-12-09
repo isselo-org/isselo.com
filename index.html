@@ -719,7 +719,10 @@
 
                 <div class="addons-grid-system">
                     <!-- Inventory -->
-                    <div class="addon-system-card">
+                    <div class="addon-system-card" onclick="toggleAddonSystem(this)">
+                        <div class="addon-checkbox">
+                            <i class="fas fa-check"></i>
+                        </div>
                         <div class="addon-icon"><i class="fas fa-boxes"></i></div>
                         <div class="addon-content">
                             <h4>Inventory Management</h4>
@@ -729,7 +732,10 @@
                     </div>
 
                     <!-- Recipe & Production -->
-                    <div class="addon-system-card">
+                    <div class="addon-system-card" onclick="toggleAddonSystem(this)">
+                        <div class="addon-checkbox">
+                            <i class="fas fa-check"></i>
+                        </div>
                         <div class="addon-icon"><i class="fas fa-utensils"></i></div>
                         <div class="addon-content">
                             <h4>Recipe & Production</h4>
@@ -739,7 +745,10 @@
                     </div>
 
                     <!-- Additional User -->
-                    <div class="addon-system-card">
+                    <div class="addon-system-card" onclick="toggleAddonSystem(this)">
+                        <div class="addon-checkbox">
+                            <i class="fas fa-check"></i>
+                        </div>
                         <div class="addon-icon"><i class="fas fa-user-plus"></i></div>
                         <div class="addon-content">
                             <h4>Additional User</h4>
@@ -749,7 +758,10 @@
                     </div>
 
                     <!-- WhatsApp -->
-                    <div class="addon-system-card highlight">
+                    <div class="addon-system-card highlight" onclick="toggleAddonSystem(this)">
+                        <div class="addon-checkbox">
+                            <i class="fas fa-check"></i>
+                        </div>
                         <div class="addon-icon"><i class="fab fa-whatsapp"></i></div>
                         <div class="addon-content">
                             <h4>WhatsApp Integration</h4>
@@ -757,6 +769,21 @@
                             <div class="addon-price-tag">
                                 <span class="small-text">Starts @</span> ₹249 <span class="period"
                                     style="font-size: 0.8rem;">(Credit System)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Swiggy & Zomato -->
+                    <div class="addon-system-card disabled" title="Coming Soon">
+                        <div class="addon-checkbox"></div>
+                        <div class="addon-icon"><i class="fas fa-motorcycle"></i></div>
+                        <div class="addon-content">
+                            <div class="flex items-center gap-2">
+                                <h4>Swiggy & Zomato Integration</h4>
+                                <span class="addon-badge-sm">Coming Soon</span>
+                            </div>
+                            <p class="addon-desc">Seamlessly receive online orders directly into your POS.</p>
+                            <div class="addon-price-tag" style="opacity: 0.5;">₹1499 <span class="period">/year</span>
                             </div>
                         </div>
                     </div>
@@ -1317,6 +1344,15 @@
                 img.style.opacity = 1;
                 img.style.transform = 'scale(1)';
             }, 300);
+        }
+
+        // Toggle Add-on System Selection
+        function toggleAddonSystem(element) {
+            // Prevent toggling if disabled
+            if (element.classList.contains('disabled')) return;
+
+            // Toggle selected class
+            element.classList.toggle('selected');
         }
     </script>
 </body>
