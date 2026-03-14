@@ -46,7 +46,7 @@
         "operatingSystem": "Windows, macOS, Android, iOS",
         "offers": {
             "@type": "Offer",
-            "price": "2999",
+            "price": "8499",
             "priceCurrency": "INR",
             "availability": "https://schema.org/InStock"
         },
@@ -634,7 +634,7 @@
                 <div class="pricing-card">
                     <h3>Monthly Plan</h3>
                     <div class="price">
-                        ₹499 <span>/month</span>
+                        ₹3999 <span>/month</span>
                     </div>
                     <p class="text-muted">Flexible billing for your restaurant.</p>
 
@@ -654,14 +654,14 @@
                         rel="noopener">Get Started Now</a>
                 </div>
 
-                <!-- Annual Plan -->
+                <!-- 3 Year Plan -->
                 <div class="pricing-card popular">
                     <div class="pricing-badge">BEST VALUE</div>
-                    <h3>Annual Plan</h3>
+                    <h3>3 Year Plan</h3>
                     <div class="price" id="annual-price">
-                        ₹2999 <span>/year</span>
+                        ₹8499 <span>/3 years</span>
                     </div>
-                    <div class="savings-badge">Save ₹2,989 (50%)</div>
+                    <div class="savings-badge">Save ₹3,489 (29%)</div>
                     <p class="text-muted">Everything you need to run your restaurant.</p>
 
                     <ul class="pricing-features">
@@ -1191,7 +1191,7 @@
         // Update Annual Price
         function updateAnnualPrice(checkbox) {
             const priceElement = document.getElementById('annual-price');
-            const basePrice = 2999;
+            const basePrice = 8499;
             const printerCost = 2000;
 
             let finalPrice = basePrice;
@@ -1201,7 +1201,7 @@
             }
 
             // Update price text but keep the span
-            priceElement.innerHTML = `₹${finalPrice} <span>/year</span>`;
+            priceElement.innerHTML = `₹${finalPrice} <span>/3 years</span>`;
         }
 
         // Set Year
