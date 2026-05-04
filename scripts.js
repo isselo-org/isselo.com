@@ -454,9 +454,9 @@ function handleDownloadSubmit(event) {
     // Download links for different OS (for demonstration - in production these would be actual download URLs)
     const downloadLinks = {
       windows: "https://isselo.com/downloads/isselo-windows-installer.exe",
-      mac: "https://isselo.com/downloads/isselo-macos.dmg",
+      mac: "https://apps.apple.com/in/app/isselo/id6758596444",
       android: "https://play.google.com/store/apps/details?id=com.isselo.pos",
-      ios: "https://apps.apple.com/app/isselo-pos/id1234567890",
+      ios: "https://apps.apple.com/in/app/isselo/id6758596444",
     };
 
     // Success message

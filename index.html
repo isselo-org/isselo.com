@@ -964,17 +964,15 @@
                 </button>
 
                 <!-- macOS -->
-                <button class="platform-card platform-select-btn" data-platform="macOS" disabled>
+                <button class="platform-card platform-select-btn" data-platform="macOS">
                     <i class="fab fa-apple platform-icon" style="color: #333;"></i>
                     <span class="platform-name">macOS</span>
-                    <span class="coming-soon-badge">Coming Soon</span>
                 </button>
 
                 <!-- iOS -->
-                <button class="platform-card platform-select-btn" data-platform="iOS" disabled>
+                <button class="platform-card platform-select-btn" data-platform="iOS">
                     <i class="fab fa-app-store-ios platform-icon" style="color: #007aff;"></i>
                     <span class="platform-name">iOS</span>
-                    <span class="coming-soon-badge">Coming Soon</span>
                 </button>
             </div>
 
@@ -1049,13 +1047,13 @@
                 text = 'Download for Windows';
             } else if (platform === 'macOS') {
                 iconClass = 'fab fa-apple';
-                text = 'Download for Mac';
+                text = 'Get it on App Store';
             } else if (platform === 'Android') {
                 iconClass = 'fab fa-android';
                 text = 'Download for Android';
             } else if (platform === 'iOS') {
-                iconClass = 'fab fa-app-store-ios';
-                text = 'Download for iOS';
+                iconClass = 'fab fa-apple';
+                text = 'Get it on App Store';
             }
 
             btn.innerHTML = `<i class="${iconClass}" style="margin-right: 0.5rem;"></i> ${text}`;
@@ -1099,6 +1097,15 @@
                     b.classList.remove('selected');
                 }
             });
+
+            // Update download button text based on platform
+            const downloadBtn = document.getElementById('modal-download-btn');
+            if (downloadBtn) {
+                const isAppStore = (platform === 'macOS' || platform === 'iOS');
+                const iconClass = isAppStore ? 'fab fa-apple' : 'fas fa-download';
+                const btnText = isAppStore ? 'Open in App Store' : 'Download Now';
+                downloadBtn.innerHTML = `<i class="${iconClass}" style="margin-right: 0.5rem;"></i> ${btnText}`;
+            }
         }
 
         function handleDownload() {
@@ -1110,16 +1117,19 @@
             const links = {
                 'Windows': 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/windows/isselo.exe',
                 'Android': 'https://bucket-lb92bb.s3.ap-south-1.amazonaws.com/android/isselo.apk',
-                'macOS': 'coming_soon',
-                'iOS': 'coming_soon'
+                'macOS': 'https://apps.apple.com/in/app/isselo/id6758596444',
+                'iOS': 'https://apps.apple.com/in/app/isselo/id6758596444'
             };
 
             const link = links[currentSelectedPlatform];
+            const isAppStore = (currentSelectedPlatform === 'macOS' || currentSelectedPlatform === 'iOS');
 
-            if (link === 'coming_soon') {
-                alert('Coming Soon! We are working hard to bring isselo to ' + currentSelectedPlatform + '.');
-            } else if (link) {
-                window.location.href = link;
+            if (link) {
+                if (isAppStore) {
+                    window.open(link, '_blank', 'noopener');
+                } else {
+                    window.location.href = link;
+                }
             } else {
                 alert('Download link not available.');
             }

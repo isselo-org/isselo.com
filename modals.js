@@ -48,9 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const selectedOS = formData.get('os');
             const downloadLinks = {
                 windows: 'https://download.isselo.com/windows/latest',
-                mac: 'https://download.isselo.com/mac/latest',
+                mac: 'https://apps.apple.com/in/app/isselo/id6758596444',
                 android: 'https://play.google.com/store/apps/details?id=com.isselo.pos',
-                ios: 'https://apps.apple.com/app/isselo-pos/id123456789'
+                ios: 'https://apps.apple.com/in/app/isselo/id6758596444'
             };
 
             if (downloadLinks[selectedOS]) {
