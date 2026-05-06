@@ -68,7 +68,6 @@
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#product-tour" class="nav-link">Product Tour</a>
                 <a href="#support" class="nav-link">Support</a>
-                <a href="#pricing" class="nav-link">Pricing</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
@@ -619,182 +618,6 @@
         </style>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="section" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <span class="text-primary"
-                    style="font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.875rem;">Pricing</span>
-                <h2 style="margin-top: 0.5rem;">Simple, Transparent Pricing</h2>
-                <p class="text-muted">No hidden fees. One price for everything you need.</p>
-            </div>
-
-            <div class="pricing-grid">
-                <!-- Monthly Plan -->
-                <div class="pricing-card">
-                    <h3>Monthly Plan</h3>
-                    <div class="price">
-                        ₹3999 <span>/month</span>
-                    </div>
-                    <p class="text-muted">Flexible billing for your restaurant.</p>
-
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle check-icon"></i> Complete POS System</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Multiple Order Channels</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Account Statement & Due Reports</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Credit Reports</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Works on Android, Windows & iOS</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Offline Mode</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Free Onboarding Support</li>
-                    </ul>
-
-
-
-                    <a href="https://wa.me/919048872735" class="btn btn-secondary" style="width: 100%;" target="_blank"
-                        rel="noopener">Get Started Now</a>
-                </div>
-
-                <!-- 3 Year Plan -->
-                <div class="pricing-card popular">
-                    <div class="pricing-badge">BEST VALUE</div>
-                    <h3>3 Year Plan</h3>
-                    <div class="price" id="annual-price">
-                        ₹8499 <span>/3 years</span>
-                    </div>
-                    <div class="savings-badge">Save ₹3,489 (29%)</div>
-                    <p class="text-muted">Everything you need to run your restaurant.</p>
-
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check-circle check-icon"></i> Complete POS System</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Multiple Order Channels</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Account Statement & Due Reports</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Credit Reports</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Works on Android, Windows & iOS</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Offline Mode</li>
-                        <li><i class="fas fa-check-circle check-icon"></i> Free Onboarding Support</li>
-                    </ul>
-
-                    <div class="card-addons" style="border-top: none; margin-top: 0;">
-                        <!-- Printer Addon - Kept as Special Item -->
-                        <div class="addons-list" style="max-height: none;">
-                            <label class="printer-addon-card"
-                                style="--primary-color: #ef4444; border: 1px solid #fecaca; padding: 1.25rem; border-radius: 16px; margin-bottom: 1.5rem; margin-top: 1.5rem; cursor: pointer; display: flex; align-items: flex-start; gap: 1.25rem; transition: all 0.2s ease; background: #fff1f2; width: 100%; position: relative; overflow: hidden;">
-                                <div>
-                                    <img src="assets/images/POS/isselo_printer.png" alt="Thermal Printer"
-                                        style="width: 50px; height: auto; object-fit: contain; display: block;">
-                                </div>
-                                <div
-                                    style="flex: 1; text-align: left; display: flex; flex-direction: column; justify-content: center;">
-                                    <div style="font-weight: 700; color: #7f1d1d; font-size: 0.9rem; line-height: 1.2;">
-                                        Thermal Printer</div>
-                                    <div class="text-muted"
-                                        style="font-size: 0.85rem; margin-top: 4px; margin-bottom: 8px;">1 Year Warranty
-                                    </div>
-                                    <div style="font-weight: 700; color: black; font-size: 1rem;">+₹2000</div>
-                                </div>
-                                <div
-                                    style="display: flex; align-items: center; height: 100%; padding-top: 0.5rem; margin-left: auto;">
-                                    <input type="checkbox" id="printer-addon" onchange="updateAnnualPrice(this)"
-                                        style="width: 1.2rem; height: 1.2rem; cursor: pointer; accent-color: var(--primary-color);">
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <a href="https://wa.me/919048872735" class="btn btn-primary" style="width: 100%;" target="_blank"
-                        rel="noopener">Get Started Now</a>
-                    <p class="text-muted" style="margin-top: 1rem; font-size: 0.875rem;">No credit card required for
-                        demo</p>
-                </div>
-            </div>
-
-            <!-- New Dedicated Add-ons Section -->
-            <div class="addons-section animate-fade-in">
-                <div class="text-center" style="margin-bottom: 3rem; margin-top: 6rem;">
-                    <span class="text-primary"
-                        style="font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.875rem;">Expansion</span>
-                    <h2 style="margin-top: 0.5rem;">Powerful Add-ons</h2>
-                    <p class="text-muted">Scale your operations with these premium features.</p>
-                </div>
-
-                <div class="addons-grid-system">
-                    <!-- Inventory -->
-                    <div class="addon-system-card" onclick="toggleAddonSystem(this)">
-                        <div class="addon-checkbox">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="addon-icon"><i class="fas fa-boxes"></i></div>
-                        <div class="addon-content">
-                            <h4>Inventory Management</h4>
-                            <p class="addon-desc">Advanced tracking, low stock alerts, and wastage management.</p>
-                            <div class="addon-price-tag">₹499 <span class="period">/year</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Recipe & Production -->
-                    <div class="addon-system-card" onclick="toggleAddonSystem(this)">
-                        <div class="addon-checkbox">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="addon-icon"><i class="fas fa-utensils"></i></div>
-                        <div class="addon-content">
-                            <h4>Recipe & Production</h4>
-                            <p class="addon-desc">Manage recipes, food costs, and production batches effortlessly.</p>
-                            <div class="addon-price-tag">₹699 <span class="period">/year</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Additional User -->
-                    <div class="addon-system-card" onclick="toggleAddonSystem(this)">
-                        <div class="addon-checkbox">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="addon-icon"><i class="fas fa-user-plus"></i></div>
-                        <div class="addon-content">
-                            <h4>Additional User</h4>
-                            <p class="addon-desc">Add more staff accounts with custom permissions and roles.</p>
-                            <div class="addon-price-tag">₹499 <span class="period">/year</span></div>
-                        </div>
-                    </div>
-
-                    <!-- WhatsApp -->
-                    <div class="addon-system-card highlight" onclick="toggleAddonSystem(this)">
-                        <div class="addon-checkbox">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="addon-icon"><i class="fab fa-whatsapp"></i></div>
-                        <div class="addon-content">
-                            <h4>WhatsApp Integration</h4>
-                            <p class="addon-desc">Send invoices and updates. First 10 msgs/mo free.</p>
-                            <div class="addon-price-tag">
-                                <span class="small-text">Starts @</span> ₹249 <span class="period"
-                                    style="font-size: 0.8rem;">(Credit System)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Swiggy & Zomato -->
-                    <div class="addon-system-card disabled" title="Coming Soon">
-                        <div class="addon-checkbox"></div>
-                        <div class="addon-icon"><i class="fas fa-motorcycle"></i></div>
-                        <div class="addon-content">
-                            <div class="flex items-center gap-2">
-                                <h4>Swiggy & Zomato Integration</h4>
-                                <span class="addon-badge-sm">Coming Soon</span>
-                            </div>
-                            <p class="addon-desc">Seamlessly receive online orders directly into your POS.</p>
-                            <div class="addon-price-tag" style="opacity: 0.5;">₹1499 <span class="period">/year</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section class="section bg-surface" id="contact">
         <div class="container">
@@ -900,7 +723,6 @@
                     <h4>Product</h4>
                     <ul class="footer-links">
                         <li><a href="#features">Features</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#product-tour">Product Tour</a></li>
                         <li><a href="#">Updates</a></li>
                     </ul>
@@ -1199,22 +1021,6 @@
             }
         }
 
-        // Update Annual Price
-        function updateAnnualPrice(checkbox) {
-            const priceElement = document.getElementById('annual-price');
-            const basePrice = 8499;
-            const printerCost = 2000;
-
-            let finalPrice = basePrice;
-
-            if (checkbox.checked) {
-                finalPrice += printerCost;
-            }
-
-            // Update price text but keep the span
-            priceElement.innerHTML = `₹${finalPrice} <span>/3 years</span>`;
-        }
-
         // Set Year
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
@@ -1357,14 +1163,6 @@
             }, 300);
         }
 
-        // Toggle Add-on System Selection
-        function toggleAddonSystem(element) {
-            // Prevent toggling if disabled
-            if (element.classList.contains('disabled')) return;
-
-            // Toggle selected class
-            element.classList.toggle('selected');
-        }
     </script>
 </body>
 
