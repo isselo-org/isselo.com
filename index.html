@@ -74,8 +74,6 @@
             <div class="flex items-center gap-4">
                 <a href="javascript:void(0);" onclick="openDownloadModal()"
                     class="btn btn-text hidden sm:inline-flex">Download</a>
-                <a href="https://wa.me/918714606900" class="btn btn-primary" target="_blank" rel="noopener">Book
-                    Demo</a>
                 <button class="mobile-menu-btn" id="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -92,21 +90,22 @@
                         <i class="fas fa-bolt"></i> 10x Faster Billing
                     </div>
                     <h1>Restaurant Software <span class="text-primary">Made Simple</span></h1>
-                    <p class="text-muted" style="font-size: 1.25rem; margin-bottom: 2rem;">
+                    <p class="text-muted hero-desc" style="font-size: 1.1rem; margin-bottom: 2rem;">
                         Run billing, KOTs, and GST reports—without internet. Isselo is all you need to run your
                         restaurant efficiently.
                     </p>
 
                     <div class="flex gap-4" style="flex-wrap: wrap;">
-                        <a href="https://wa.me/919048872735" class="btn btn-primary" target="_blank" rel="noopener">Book
-                            A Demo</a>
                         <a href="javascript:void(0);" id="hero-download-btn" onclick="openDownloadModal()"
-                            class="btn btn-secondary">
+                            class="btn btn-primary">
                             <i class="fas fa-download" style="margin-right: 0.5rem;"></i> Download Now
                         </a>
+                        <a href="https://wa.me/919048872735" class="hero-demo-btn" target="_blank" rel="noopener">Book a
+                            demo</a>
                     </div>
-                    <p class="text-muted" style="font-size: 0.875rem; margin-top: 1rem;">No Credit Card Required • Setup
-                        in 60 Seconds</p>
+                    <p class="hero-trust-line">
+                        <i class="fas fa-check-circle"></i> Free to try &nbsp;·&nbsp; Setup in 60 seconds
+                    </p>
 
                     <div class="hero-stats">
                         <div>
@@ -141,36 +140,37 @@
                         </div>
                     </div>
 
-                    <div style="display: flex; justify-content: center; min-height: 400px; align-items: center;">
+                    <div class="hero-img-wrapper"
+                        style="position: relative; display: flex; justify-content: center; align-items: center;">
                         <img id="hero-main-img" src="assets/images/POS/sales_pos_view.png" alt="Restaurant POS"
                             style="z-index: 1; position: relative; border-radius: var(--radius-lg); transition: all 0.3s ease; width: 100%;">
-                    </div>
 
-                    <!-- Floating Elements -->
-                    <div id="floating-el-1"
-                        style="position: absolute; top: 10%; right: -20px; background: white; padding: 1rem; border-radius: 1rem; box-shadow: var(--shadow-lg); animation: float 5s ease-in-out infinite; z-index: 2;">
-                        <div class="flex items-center gap-2">
-                            <div
-                                style="width: 40px; height: 40px; background: #ecfdf5; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #10b981;">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div>
-                                <h5 style="margin: 0; font-size: 0.9rem;">Order Sent</h5>
-                                <span class="text-muted" style="font-size: 0.8rem;">Table 4 • Just now</span>
+                        <!-- Floating Elements -->
+                        <div id="floating-el-1"
+                            style="position: absolute; top: 10%; right: -20px; background: white; padding: 1rem; border-radius: 1rem; box-shadow: var(--shadow-lg); animation: float 5s ease-in-out infinite; z-index: 2;">
+                            <div class="flex items-center gap-2">
+                                <div
+                                    style="width: 40px; height: 40px; background: #ecfdf5; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #10b981;">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <h5 style="margin: 0; font-size: 0.9rem;">Order Sent</h5>
+                                    <span class="text-muted" style="font-size: 0.8rem;">Table 4 • Just now</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div id="floating-el-2"
-                        style="position: absolute; bottom: 20%; left: -20px; background: white; padding: 1rem; border-radius: 1rem; box-shadow: var(--shadow-lg); animation: float 7s ease-in-out infinite; z-index: 2;">
-                        <div class="flex items-center gap-2">
-                            <div
-                                style="width: 40px; height: 40px; background: #eff6ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3b82f6;">
-                                <i class="fas fa-rupee-sign"></i>
-                            </div>
-                            <div>
-                                <h5 style="margin: 0; font-size: 0.9rem;">Payment Received</h5>
-                                <span class="text-muted" style="font-size: 0.8rem;">₹1,250 • UPI</span>
+                        <div id="floating-el-2"
+                            style="position: absolute; bottom: 20%; left: -20px; background: white; padding: 1rem; border-radius: 1rem; box-shadow: var(--shadow-lg); animation: float 7s ease-in-out infinite; z-index: 2;">
+                            <div class="flex items-center gap-2">
+                                <div
+                                    style="width: 40px; height: 40px; background: #eff6ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #3b82f6;">
+                                    <i class="fas fa-rupee-sign"></i>
+                                </div>
+                                <div>
+                                    <h5 style="margin: 0; font-size: 0.9rem;">Payment Received</h5>
+                                    <span class="text-muted" style="font-size: 0.8rem;">₹1,250 • UPI</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -798,12 +798,11 @@
                 </button>
             </div>
 
-            <button class="btn btn-primary" id="modal-download-btn"
-                style="width: 100%; padding: 1rem; font-size: 1.1rem;" onclick="handleDownload()">
+            <button class="btn btn-primary" id="modal-download-btn" style="width: 100%;" onclick="handleDownload()">
                 <i class="fas fa-download" style="margin-right: 0.5rem;"></i> Download Now
             </button>
 
-            <p class="text-center text-muted" style="margin-top: 1.5rem; font-size: 0.875rem;">
+            <p class="text-center text-muted" style="margin-top: 0.75rem; font-size: 0.62rem;">
                 By downloading, you agree to our <a href="terms_and_conditions.html"
                     style="color: var(--primary); text-decoration: underline;">Terms</a> & <a href="privacy.html"
                     style="color: var(--primary); text-decoration: underline;">Privacy Policy</a>

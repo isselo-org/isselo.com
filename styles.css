@@ -92,12 +92,12 @@ h6 {
 }
 
 h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(1.75rem, 5vw, 4rem);
     letter-spacing: -0.02em;
 }
 
 h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.5rem, 4vw, 3rem);
     letter-spacing: -0.01em;
 }
 
@@ -229,10 +229,10 @@ p {
     left: 0;
     width: 100%;
     height: var(--header-height);
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     transition: var(--transition);
 }
 
@@ -283,22 +283,9 @@ p {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-}
-
-@media (max-width: 640px) {
-    .header .btn-primary {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.875rem;
-        border-radius: 12px;
-    }
-
-    .nav-container .gap-4 {
-        gap: 0.5rem;
-    }
-
-    .logo img {
-        height: 32px;
-    }
+    color: var(--text-main);
+    padding: 0.25rem;
+    line-height: 1;
 }
 
 /* Hero Section */
@@ -341,6 +328,40 @@ p {
 .hero-image img {
     border-radius: var(--radius-lg);
     animation: float 6s ease-in-out infinite;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hero CTA hierarchy */
+.hero-demo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 0.78rem;
+    font-weight: 400;
+    font-family: var(--font-body);
+    padding: 0;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.hero-demo-btn:hover {
+    color: var(--primary);
+}
+
+.hero-trust-line {
+    margin-top: 1.25rem;
+    font-size: 0.78rem;
+    color: #94a3b8;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.hero-trust-line i {
+    color: #10b981;
+    margin-right: 0.25rem;
 }
 
 .hero-stats {
@@ -738,25 +759,14 @@ p {
     animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* Mobile Responsive */
+/* ============================================
+   MOBILE RESPONSIVE — clean unified rules
+   ============================================ */
+
+/* --- Tablet & below (≤968px) --- */
 @media (max-width: 968px) {
 
-    .hero-grid,
-    .tour-container,
-    .contact-grid,
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-
-    .hero {
-        text-align: center;
-    }
-
-    .hero-stats {
-        justify-content: center;
-    }
-
+    /* Header */
     .mobile-menu-btn {
         display: block;
     }
@@ -769,23 +779,85 @@ p {
         width: 100%;
         background: white;
         flex-direction: column;
-        padding: 2rem;
+        padding: 1.5rem;
+        gap: 1rem;
         box-shadow: var(--shadow-lg);
+        z-index: 999;
     }
 
     .nav-links.active {
         display: flex;
     }
 
+    /* Hero */
+    .hero {
+        text-align: center;
+        padding-top: calc(var(--header-height) + 2.5rem);
+        padding-bottom: 2.5rem;
+        overflow: hidden;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero-content .flex {
+        justify-content: center;
+    }
+
+    .hero-badge {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-stats {
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+    }
+
+    /* Hide floating elements — they overflow on mobile */
+    #floating-el-1,
+    #floating-el-2 {
+        display: none !important;
+    }
+
+    #hero-main-img {
+        width: 100% !important;
+        border-radius: var(--radius-md) !important;
+    }
+
+    .view-toggle-wrapper {
+        margin-bottom: 1rem !important;
+    }
+
+    /* Layouts */
     .tour-container {
+        grid-template-columns: 1fr;
         display: flex;
         flex-direction: column-reverse;
+        gap: 2rem;
     }
-}
 
-/* Support Section Responsive */
-/* The support banners use inline styles; mobile overrides ensure proper stacking */
-@media (max-width: 968px) {
+    .contact-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Product Tour */
+    .product-tour {
+        padding: 3rem 0;
+    }
+
+    .phone-mockup {
+        max-width: 220px;
+    }
+
+    /* Support banners */
     #support .support-banner {
         flex-direction: column;
         border-radius: 1.5rem;
@@ -800,18 +872,262 @@ p {
     }
 
     #support .support-banner img {
-        height: 220px !important;
+        height: 200px !important;
         width: auto !important;
         object-fit: contain !important;
     }
 
     #support .support-banner h2 {
-        font-size: 1.5rem !important;
+        font-size: 1.4rem !important;
     }
 
     #support .support-banner p,
     #support .support-banner li span {
-        font-size: 1rem !important;
+        font-size: 0.95rem !important;
+    }
+}
+
+/* --- Mobile (≤640px) --- */
+@media (max-width: 640px) {
+
+    /* Header shrink */
+    .header {
+        height: 56px;
+    }
+
+    .nav-links {
+        top: 56px !important;
+    }
+
+    .logo img {
+        height: 24px;
+    }
+
+    .header .btn-primary {
+        padding: 0.4rem 0.85rem;
+        font-size: 0.78rem;
+        border-radius: 8px;
+    }
+
+    /* Book Demo in header — subtle ghost style on mobile */
+    .header-demo-btn {
+        background: transparent !important;
+        color: var(--primary) !important;
+        border: 1.5px solid var(--primary) !important;
+        padding: 0.3rem 0.7rem !important;
+        font-size: 0.75rem !important;
+        border-radius: 6px !important;
+        font-weight: 500 !important;
+        box-shadow: none !important;
+    }
+
+    .header-demo-btn:hover {
+        background: var(--primary-light) !important;
+    }
+
+    .mobile-menu-btn {
+        font-size: 1.1rem;
+    }
+
+    .nav-container .gap-4 {
+        gap: 0.35rem;
+    }
+
+    /* Hero */
+    .hero {
+        padding-top: calc(56px + 1.75rem);
+        padding-bottom: 2rem;
+    }
+
+    /* Typography scale-down */
+    h1 {
+        font-size: 1.55rem;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        line-height: 1.3;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Hero description text */
+    .hero-desc {
+        font-size: 0.9rem !important;
+        margin-bottom: 1.1rem !important;
+        line-height: 1.55;
+    }
+
+    /* Hero badge */
+    .hero-badge {
+        font-size: 0.78rem;
+        padding: 0.35rem 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Hero buttons — side by side, not full width */
+    .hero-content .flex.gap-4 {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.6rem;
+    }
+
+    .hero-content .flex.gap-4 .btn {
+        width: auto;
+        padding: 0.6rem 1.1rem;
+        font-size: 0.82rem;
+    }
+
+    /* Hero stats */
+    .hero-stats {
+        gap: 1rem;
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+    }
+
+    .hero-stats>div {
+        flex: 1 1 60px;
+        text-align: center;
+    }
+
+    .hero-stats h4 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.1rem !important;
+    }
+
+    .hero-stats .text-sm {
+        font-size: 0.72rem;
+    }
+
+    /* Hint text below buttons */
+    .hero-content>p.text-muted {
+        font-size: 0.75rem !important;
+        margin-top: 0.6rem !important;
+    }
+
+    /* Sections */
+    .section {
+        padding: 2.5rem 0;
+    }
+
+    .section-header {
+        margin-bottom: 1.75rem;
+    }
+
+    .section-header p {
+        font-size: 0.9rem;
+    }
+
+    /* Feature grid */
+    .feature-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .feature-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .feature-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .feature-card h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .feature-card p {
+        font-size: 0.8rem;
+    }
+
+    /* Testimonials */
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* POS tabs */
+    .pos-tabs {
+        gap: 0.4rem;
+    }
+
+    .pos-tab {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.8rem;
+    }
+
+    /* POS image */
+    .pos-image-container::before {
+        display: none;
+    }
+
+    .pos-image-container img {
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer-grid>div:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    .footer h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Contact */
+    .contact-form {
+        padding: 1.25rem;
+    }
+
+    /* Language section */
+    .grid-2-col {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .language-visual {
+        display: none;
+    }
+
+    /* Logos */
+    .logos-grid {
+        gap: 1.25rem;
+    }
+
+    .logo-item {
+        font-size: 1rem;
+    }
+
+    /* Trusted by */
+    .trusted-by {
+        padding: 2rem 0;
     }
 }
 
@@ -932,6 +1248,63 @@ p {
     font-weight: 600;
     color: var(--text-main);
     font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+    .modal-content {
+        padding: 1.25rem 1rem;
+        width: 92%;
+        border-radius: var(--radius-md);
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-content .text-center h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .modal-content .text-center p {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+
+    .platform-grid {
+        gap: 0.6rem;
+        margin: 1rem 0;
+    }
+
+    .platform-card {
+        padding: 0.75rem 0.5rem;
+        border-radius: var(--radius-sm);
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 0.75rem;
+        text-align: left;
+    }
+
+    .platform-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .platform-name {
+        font-size: 0.875rem;
+    }
+
+    .close-modal {
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+
+    #modal-download-btn {
+        padding: 0.65rem 1rem;
+        font-size: 0.875rem;
+    }
 }
 
 .coming-soon-badge {
@@ -1135,13 +1508,10 @@ p {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .pos-tabs {
-        gap: 0.5rem;
-    }
 
-    .pos-tab {
-        padding: 0.5rem 1rem;
-        font-size: 0.875rem;
+/* Hero image wrapper - desktop only */
+@media (min-width: 969px) {
+    .hero-img-wrapper {
+        min-height: 400px;
     }
 }
